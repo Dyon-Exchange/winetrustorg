@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
     <!-- jquery -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 </head>
 
 <body>
@@ -117,6 +118,22 @@
                                 stroke-linejoin="round" />
                         </svg>
                     </a>
+                    <br><br><br>
+                    <p>
+                    <div>
+                        <input type="search" placeholder="Enter Asset Name" id="assetsearchbyname" name="assetsearchbyname" maxlength="100" size="100">
+                        <br><br>
+                        <button type="button" class="btn btn-light py-2 px-4 fw-bold is-rounded px-4 d-inline-flex align-items-center gap-1" onClick="getAssetByName()">Search By Asset Name</button>
+                    </div>
+                    </p>
+                    <br><br>
+                    <p>
+                    <div>
+                        <input type="search" placeholder="Enter Asset Token ID" id="assetsearchbyid" name="assetsearchbyid" maxlength="100" size="100"><br><br>
+                        <button type="button" class="btn btn-light py-2 px-4 fw-bold is-rounded px-4 d-inline-flex align-items-center gap-1" onClick="getAssetByTokenId()">Search By Token ID</button>
+                    </div>
+                    </p>
+
                     <a href="#story" class="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
                         <p class="mb-2 text-white text-uppercase" style="letter-spacing: 4px;">
                             <small>Scroll Down</small>
