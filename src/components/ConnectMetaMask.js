@@ -8,30 +8,37 @@ import { SUPPORTED_NETWORKS } from "./network";
 const ConnectMetaMask = () => {
     const [walletaddress, setwalletaddress] = useState();
     const [chainid, setchainid] = useState();
+    const [isconnected, setisconnected] = useState(false);
     useEffect(() => {
-         window.ethereum.on('chainChanged', () => {
-                    //window.location.reload();
-                    connectMetaMask();
-        })
+        //if(isconnected = false) {
+            window.ethereum.on('chainChanged', () => {
+                connectMetaMask();
+            })
+        //}
+         
     });
 
     async function connectMetaMask() {
             const chainId = await window.ethereum.request({ method: 'eth_chainId'});
-             const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
+            const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
+            //const selectedAddress = await window.ethereum.request({method: 'eth_selectedAddress'});
             console.log(chainId);
             //check if connected to the supported network
             if(chainId != '0x4' && chainId != '0x1') {
+                //setisconnected(false);
                 alert("Please connect to either Ethereum or Rinkeby");
             } 
             else {
                
                 let wallet = accounts[0];
-                alert(`Connected with ${wallet}`)
+                setwalletaddress(wallet);
+                //setisconnected(true);
+                console.log(`Connected with ${wallet}`)
             }
     };
 
     return (
-        <div>
+        <div className="content">
             <Button onClick={connectMetaMask}>Connect to Metamask</Button>
         </div>
     
