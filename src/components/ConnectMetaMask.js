@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useEffect, useState, ReactNode } from "react";
+import React, { createContext, useCallback, useEffect, useState, useMemo, ReactNode } from "react";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { providers } from "ethers";
 import { Button } from '@material-ui/core';
@@ -33,26 +33,40 @@ const INITIAL_WALLET_CONTEXT = {
 
 const ConnectMetaMask = () => {
     const [walletaddress, setWalletAddress] = useState();
-    
+    const [chainid, setChainId] = useState();
+    useMemo(() => {
+        if(walletaddress != 'undefined') {
+            if(window.ethereum) {
+                window.ethereum.on('chainChanged', () => {
+                    //window.location.reload();
+                    connectMetaMask();
+                })
+
+                /*window.ethereum.on('accountsChanged', () => {
+                    //window.location.reload();
+                    connectMetaMask();
+                })*/
+            }
+            else {
+                alert("Please install Mask");
+            }
+        }
+    });
+
     async function connectMetaMask() {
-        if(window.ehtereum) {
-            const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-            const chainId = await window.ethereum.request({ method: 'eth_chainId'});
+            const _chainId = await window.ethereum.request({ method: 'eth_chainId'});
+            setChainId(_chainId);
             //check if connected to the supported network
-            if(chainId != '4' || chainId != 1) {
-                alert("Please connect to either Mainnet or Rinkeby");
+            if(chainid != '0x4' && chainid != '0x1') {
+                alert("Please connect to either Ethereum or Rinkeby");
             } 
             else {
+                const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
                 let wallet = accounts[0];
                 setWalletAddress(wallet);
+                alert(`Connected with ${walletaddress}`)
             }
-        } 
-        else {
-            // Show alert if Ethereum provider is not detected
-            alert("Please install Mask");
-        }
     };
-
 
     return (
         <div>
