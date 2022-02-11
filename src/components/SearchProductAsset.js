@@ -4,6 +4,7 @@ import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper}
 import { DataGrid } from '@mui/x-data-grid';
 import { extendTheme } from '@chakra-ui/react';
 import axios from 'axios';
+import env from 'react-dotenv';
 
 const SearchProductAsset = () => {
 
@@ -12,17 +13,17 @@ const SearchProductAsset = () => {
 
     const columns = [
         {field: 'id',headerName: 'ID', width: 5 },
-        {field: 'assetname',headerName: 'Asset Name', width: 20 },
-        {field: 'description',headerName: 'Product Description', width: 20 },
-        {field: 'tokenid',headerName: 'Token ID', width: 20 },
-        {field: 'location',headerName: 'Location', width: 20 },
-        {field: 'owner',headerName: 'Owner', width: 20 }
+        {field: 'assetname',headerName: 'Asset', width: 100, length: 100 },
+        {field: 'description',headerName: 'Description', width: 100, length: 100 },
+        {field: 'tokenid',headerName: 'Token', width: 100, length: 100 },
+        {field: 'location',headerName: 'Location', width: 100, length: 100 },
+        {field: 'owner',headerName: 'Owner', width: 100, length: 100 }
     ];
 
 
     function searchProduct() {
         let rowCounter = 1;
-        let queryStr = `https://dev.winetrust.org/db/public/assets/product/${srchstrg}`;
+        let queryStr = `${env.PRODUCT_SEARCH_ENDPOINT}${srchstrg}`;
         axios.get(queryStr)
         .then(result => {
             result.data.forEach(prod => {
