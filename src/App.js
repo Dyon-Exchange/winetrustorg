@@ -10,17 +10,8 @@ const App  = () => {
   return (
     <Box display="flex" flexDirection="column" minH="inherit">
         <Box>
-          <ConnectMetaMask />
-        </Box>
-        
-        <Box>
-          <ProfileSettings />
-        </Box>
-
-        <Box>
           <SearchProductAsset />
         </Box>
-        
     </Box>
     
 

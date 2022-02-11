@@ -9,6 +9,7 @@ const ConnectMetaMask = () => {
     const [walletaddress, setwalletaddress] = useState();
     const [chainid, setchainid] = useState();
     const [isconnected, setisconnected] = useState(false);
+    
     useEffect(() => {
         //if(isconnected = false) {
             window.ethereum.on('chainChanged', () => {
