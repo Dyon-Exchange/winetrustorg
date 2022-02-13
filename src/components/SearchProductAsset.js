@@ -9,6 +9,7 @@ import env from 'react-dotenv';
 const SearchProductAsset = () => {
 
     let [srchstrg, setsrchstrg] = useState();
+    let [srchqry,setsrchqry] = useState();
     let [rowdata, setrowdata] = useState([]);
 
     const columns = [
@@ -23,7 +24,8 @@ const SearchProductAsset = () => {
 
     function searchProduct() {
         let rowCounter = 1;
-        let queryStr = `${env.PRODUCT_SEARCH_ENDPOINT}${srchstrg}`;
+        let queryStr = `${env.PRODUCT_SEARCH_ENDPOINT}${srchqry}/${srchstrg}`;
+        setrowdata([]);
         axios.get(queryStr)
         .then(result => {
             result.data.forEach(prod => {
@@ -40,11 +42,20 @@ const SearchProductAsset = () => {
         setsrchstrg(event.target.value);
     }
 
+    function getSrchqry(event) {
+        console.log(event.target.value)
+        setsrchqry(event.target.value);
+    }
+
     return(
         
         <div className="content">
             <div className="search-pane">
                 <input type="search" onChange={getSrchStr} placeholder="Enter Partial or whole Product Name" />
+                <select name="srchQry" id="srchQry" onChange={getSrchqry}>
+                    <option value="product">Product</option>
+                    <option value="token">Token</option>
+                </select>
                 <Button onClick={searchProduct}>Search</Button> 
             </div>
             <div style={{ height: 400, width: '100%' }}>
