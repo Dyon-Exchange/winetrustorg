@@ -17,7 +17,7 @@ const SearchProductAsset = () => {
         {field: 'description',headerName: 'Description', width: 100, length: 100 },
         {field: 'tokenid',headerName: 'Token', width: 100, length: 100 },
         {field: 'location',headerName: 'Location', width: 100, length: 100 },
-        {field: 'owner',headerName: 'Owner', width: 100, length: 100 }
+       // {field: 'owner',headerName: 'Owner', width: 100, length: 100 }
     ];
 
 
@@ -29,7 +29,7 @@ const SearchProductAsset = () => {
             result.data.forEach(prod => {
                 //console.log(`${prod.product.longName} ${prod.product.description}`);
                 setrowdata(
-                        rowdata => [...rowdata, {id: rowCounter++, assetname:prod.product.longName, description:prod.product.description, tokenid: 123, location:"United States", owner: "Jayper Sanchez"}]
+                        rowdata => [...rowdata, {id: rowCounter++, assetname:prod.product.longName, description:prod.product.description, tokenid: prod.tokenid, location:prod.warehouseLocationNo}]
                 )
             })
             
