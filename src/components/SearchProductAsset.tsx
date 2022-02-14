@@ -23,13 +23,14 @@ const SearchProductAsset = () => {
     axios.get(queryStr).then((result: any) => {
       const rowData: any = []
       result.data.forEach((prod: any) => {
+        let ownerName = prod.preAdvice.owner.firstName + " " + prod.preAdvice.owner.lastName;
         rowData.push({
           id: rowCounter++,
           assetname: prod.product.longName,
           description: prod.product.description,
           tokenid: 123,
-          location: 'United States',
-          owner: 'Jayper Sanchez'
+          location: prod.warehouseLocationNo,
+          owner: ownerName
         })
       })
       setrowdata(rowData)
