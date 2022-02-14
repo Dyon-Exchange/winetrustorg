@@ -10,6 +10,7 @@ const App = () => {
   return (
     <Box display="flex" flexDirection="column" minH="inherit">
       <TopBar />
+      <SearchProductAsset />
    </Box>
   )
 }
