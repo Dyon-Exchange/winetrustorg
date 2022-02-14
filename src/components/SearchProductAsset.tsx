@@ -14,7 +14,7 @@ const SearchProductAsset = () => {
     { field: 'description', headerName: 'Description', width: 100, length: 100 },
     { field: 'tokenid', headerName: 'Token', width: 100, length: 100 },
     { field: 'location', headerName: 'Location', width: 100, length: 100 },
-    { field: 'owner', headerName: 'Owner', width: 100, length: 100 }
+    { field: 'owner', headerName: 'Asset Owner', width: 100, length: 100 }
   ]
 
   function searchProduct() {
@@ -23,13 +23,15 @@ const SearchProductAsset = () => {
     axios.get(queryStr).then((result: any) => {
       const rowData: any = []
       result.data.forEach((prod: any) => {
+        let ownerName = prod.preAdvice._id;
+        console.log(prod.preAdvice);
         rowData.push({
           id: rowCounter++,
           assetname: prod.product.longName,
           description: prod.product.description,
-          tokenid: 123,
-          location: 'United States',
-          owner: 'Jayper Sanchez'
+          tokenid: prod.tokenid,
+          location: prod.warehouseLocationNo,
+          owner: ownerName
         })
       })
       setrowdata(rowData)

@@ -15,17 +15,19 @@ import SearchProductAsset from '../SearchProductAsset'
 import './Header.css'
 
 const pages = ['Home', 'Security', 'Ownership', 'Network', 'Technology', 'About']
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
+const settings = ['Connect Metamask','Profile', 'Account', 'Dashboard', 'Logout']
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    
     setAnchorElNav(event.currentTarget)
   }
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget)
+    setAnchorElUser(event.currentTarget);
+    console.log(anchorElUser)
   }
 
   const handleCloseNavMenu = () => {
