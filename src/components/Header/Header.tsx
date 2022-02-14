@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
+import SearchProductAsset from '../SearchProductAsset'
 import './Header.css'
 
 const pages = ['Home', 'Security', 'Ownership', 'Network', 'Technology', 'About']
@@ -166,6 +167,7 @@ const ResponsiveAppBar = () => {
           </p>
           <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
         </a>
+        <SearchProductAsset></SearchProductAsset>
       </div>
     </AppBar>
   )
