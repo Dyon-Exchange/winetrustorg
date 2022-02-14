@@ -1,19 +1,17 @@
 import React from 'react'
-import { Box } from '@chakra-ui/react'
+import { Box, Link } from '@chakra-ui/react'
 import './App.css'
-import Header from './components/Header/Header'
-import Footer from 'components/Footer/Footer'
-import Homepage from 'components/Homepage/Homepage'
+import ConnectMetaMask from './components/ConnectMetaMask'
+//import ProfileSettings from './components/WineTrustProfile'
+import SearchProductAsset from './components/SearchProductAsset'
+import TopBar from './components/TopBar'
 
 const App = () => {
   return (
-    <div>
-      <Header></Header>
-      <Box display="flex" flexDirection="column" minH="inherit">
-        <Homepage></Homepage>
-      </Box>
-      <Footer></Footer>
-    </div>
+    <Box display="flex" flexDirection="column" minH="inherit">
+      <TopBar />
+      <SearchProductAsset />
+   </Box>
   )
 }
 

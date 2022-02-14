@@ -23,7 +23,7 @@ const SearchProductAsset = () => {
     axios.get(queryStr).then((result: any) => {
       const rowData: any = []
       result.data.forEach((prod: any) => {
-        let ownerName = prod.preAdvice._id;
+        let ownerName = prod.preAdvice.owner.firstName + " " + prod.preAdvice.owner.lastName;
         console.log(prod.preAdvice);
         rowData.push({
           id: rowCounter++,
@@ -65,4 +65,4 @@ const SearchProductAsset = () => {
   )
 }
 
-export default SearchProductAsset
+export default SearchProductAsset;
