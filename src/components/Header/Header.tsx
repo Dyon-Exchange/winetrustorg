@@ -12,12 +12,31 @@ import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 import SearchProductAsset from '../SearchProductAsset'
+import ConnectMetaMask from '../ConnectMetaMask'
 import './Header.css'
 
 const pages = ['Home', 'Security', 'Ownership', 'Network', 'Technology', 'About']
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
+const settings = ['Profile', 'Account', 'Connect to MetaMask', 'Dashboard', 'Logout']
 
-const ResponsiveAppBar = () => {
+interface HeaderProps {
+  screenName: React.ReactChild
+}
+
+const getHeaderInfo = (screenName: any) => {
+  const headerInfo = {
+    url: '/images/banners/home-banner.jpg'
+  }
+  switch (screenName) {
+    case 'homepage':
+      headerInfo.url = headerInfo.url.toString()
+      break
+    default:
+      break
+  }
+  return headerInfo
+}
+
+const Header: React.FC<HeaderProps> = ({ screenName }) => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
 
@@ -36,13 +55,15 @@ const ResponsiveAppBar = () => {
     setAnchorElUser(null)
   }
 
+  const headerInfo = getHeaderInfo(screenName)
+
   return (
     <AppBar
       position="static"
       style={{
         backgroundColor: 'transparent',
         boxShadow: 'none',
-        background: 'url(/images/banners/home-banner.jpg) no-repeat',
+        background: `url(${headerInfo.url}) no-repeat`,
         height: '100vh',
         backgroundPosition: 'center'
       }}>
@@ -145,7 +166,9 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseUserMenu}>
               {settings.map(setting => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography textAlign="center" component={ConnectMetaMask}>
+                    {setting}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -172,4 +195,4 @@ const ResponsiveAppBar = () => {
     </AppBar>
   )
 }
-export default ResponsiveAppBar
+export default Header
