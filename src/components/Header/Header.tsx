@@ -11,32 +11,13 @@ import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
-import SearchProductAsset from '../SearchProductAsset'
 import ConnectMetaMask from '../ConnectMetaMask'
 import './Header.css'
 
 const pages = ['Home', 'Security', 'Ownership', 'Network', 'Technology', 'About']
 const settings = ['Profile', 'Account', 'Connect to MetaMask', 'Dashboard', 'Logout']
 
-interface HeaderProps {
-  screenName: React.ReactChild
-}
-
-const getHeaderInfo = (screenName: any) => {
-  const headerInfo = {
-    url: '/images/banners/home-banner.jpg'
-  }
-  switch (screenName) {
-    case 'homepage':
-      headerInfo.url = headerInfo.url.toString()
-      break
-    default:
-      break
-  }
-  return headerInfo
-}
-
-const Header: React.FC<HeaderProps> = ({ screenName }) => {
+const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
 
@@ -55,25 +36,23 @@ const Header: React.FC<HeaderProps> = ({ screenName }) => {
     setAnchorElUser(null)
   }
 
-  const headerInfo = getHeaderInfo(screenName)
-
   return (
     <AppBar
       position="static"
       style={{
         backgroundColor: 'transparent',
-        boxShadow: 'none',
-        background: `url(${headerInfo.url}) no-repeat`,
-        height: '100vh',
         backgroundPosition: 'center'
       }}>
       <Container
-        maxWidth="xl"
         style={{
           background: 'linear-gradient( 180deg, #002954 0%, rgba(0, 41, 84, 0) 100%)',
-          padding: '20px'
+          padding: '20px',
+          zIndex: '1000',
+          position: 'absolute',
+          width: '100%',
+          maxWidth: '100%'
         }}>
-        <Toolbar disableGutters>
+        <Toolbar disableGutters style={{maxWidth: '88%', margin: 'auto'}}>
           <Typography
             variant="h6"
             noWrap
@@ -175,23 +154,6 @@ const Header: React.FC<HeaderProps> = ({ screenName }) => {
           </Box>
         </Toolbar>
       </Container>
-      <div className="header-menu-desc">
-        <h1>Trust and Security</h1>
-        <h2>WineTrust is the most secure way to own and store fine wine & spirts today.</h2>
-        <a href="/security" className="btn btn-light learn-more-btn">
-          Learn More
-          <span className="arrow-image"></span>
-        </a>
-        <a
-          href="#wt-revolution"
-          className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
-          <p className="mb-2 text-white text-uppercase">
-            <small>Scroll Down</small>
-          </p>
-          <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
-        </a>
-        <SearchProductAsset></SearchProductAsset>
-      </div>
     </AppBar>
   )
 }

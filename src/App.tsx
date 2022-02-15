@@ -9,6 +9,7 @@ import Header from 'components/Header/Header'
 import Footer from 'components/Footer/Footer'
 import Homepage from 'components/Homepage/Homepage'
 import About from 'components/About/About'
+import NetworkPage from 'components/NetworkPage/NetworkPage'
 
 const App = () => {
   return (
@@ -19,7 +20,7 @@ const App = () => {
             path={constants.RoutesPath.HOMEPAGE}
             element={
               <Fragment>
-                <Header screenName={constants.screenName.HOMEPAGE} />
+                <Header/>
                 <Homepage />
                 <Footer></Footer>
               </Fragment>
@@ -29,12 +30,23 @@ const App = () => {
             path={constants.RoutesPath.ABOUT}
             element={
               <Fragment>
-                <Header screenName={constants.screenName.ABOUT} />
+                <Header />
                 <About />
                 <Footer></Footer>
               </Fragment>
             }
           />
+          <Route
+            path={constants.RoutesPath.NETWORK}
+            element={
+              <Fragment>
+                <Header />
+                <NetworkPage />
+                <Footer></Footer>
+              </Fragment>
+            }
+          />
+          
         </Routes>
       </Box>
     </BrowserRouter>
