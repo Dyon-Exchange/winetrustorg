@@ -21,6 +21,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
+  const [srchstrvalue, setSearchStringValue] = React.useState<null | HTMLElement>(null);
   
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
@@ -35,6 +36,14 @@ const ResponsiveAppBar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
+  }
+
+  const onChangeStatus = (event: any) => {
+    setSearchStringValue(event.target.value);
+  }
+
+  function handleProductSearch() {
+    console.log(srchstrvalue);
   }
 
   return (
@@ -160,6 +169,12 @@ const ResponsiveAppBar = () => {
           Learn More
           <span className="arrow-image"></span>
         </a>
+        <p>
+          <div>
+          <input type="search" onChange={(e) => {onChangeStatus(e)}} placeholder="Enter Partial Product Name" size={100}></input>
+          <button onClick={handleProductSearch}>Search</button>
+          </div>
+        </p>
         <a
           href="#wt-revolution"
           className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">

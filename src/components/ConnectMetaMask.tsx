@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Button } from '@material-ui/core'
 
 const ConnectMetaMask = () => {
+  
   useEffect(() => {
     window.ethereum.on('chainChanged', () => {
       connectMetaMask()

@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from '@material-ui/core'
 import { DataGrid } from '@mui/x-data-grid'
 import axios from 'axios'
 import env from 'react-dotenv'
 
-const SearchProductAsset = () => {
+const SearchProductAsset = (props: any) => {
   let [srchstrg, setsrchstrg] = useState()
   let [rowdata, setrowdata] = useState([])
+  
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 5 },
@@ -16,6 +17,10 @@ const SearchProductAsset = () => {
     { field: 'location', headerName: 'Location', width: 100, length: 100 },
     { field: 'owner', headerName: 'Owner', width: 100, length: 100 }
   ]
+
+  useEffect(() => {
+    setsrchstrg(props.value);
+  },[props.value])
 
   function searchProduct() {
     let rowCounter = 1
