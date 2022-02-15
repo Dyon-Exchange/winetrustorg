@@ -11,8 +11,9 @@ import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
-import SearchProductAsset from '../SearchProductAsset'
+//import SearchProductAsset from '../SearchProductAsset'
 import './Header.css'
+//import { AnyPointerEvent } from 'framer-motion/types/gestures/PanSession'
 
 const pages = ['Home', 'Security', 'Ownership', 'Network', 'Technology', 'About']
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
@@ -20,7 +21,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
-
+  
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
   }
@@ -167,7 +168,9 @@ const ResponsiveAppBar = () => {
           </p>
           <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
         </a>
-        <SearchProductAsset></SearchProductAsset>
+      </div>
+      <div>
+      
       </div>
     </AppBar>
   )
