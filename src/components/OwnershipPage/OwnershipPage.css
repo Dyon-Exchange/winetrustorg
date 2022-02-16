@@ -1,0 +1,18 @@
+.card {
+  border-radius: 22px !important;
+  min-height: 338px;
+  box-shadow: 0px 10px 20px rgb(7 35 41 / 3%) !important;
+}
+
+.story-title {
+  font-size: 16px;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.story-desc {
+  font-size: 0.875em;
+  color: #304151;
+  line-height: 1.8;
+  margin-top: 0;
+}

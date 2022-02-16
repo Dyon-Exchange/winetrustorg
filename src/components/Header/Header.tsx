@@ -52,7 +52,7 @@ const Header = () => {
           width: '100%',
           maxWidth: '100%'
         }}>
-        <Toolbar disableGutters style={{maxWidth: '88%', margin: 'auto'}}>
+        <Toolbar disableGutters style={{ maxWidth: '88%', margin: 'auto' }}>
           <Typography
             variant="h6"
             noWrap
