@@ -11,6 +11,7 @@ import Homepage from 'components/Homepage/Homepage'
 import About from 'components/About/About'
 import NetworkPage from 'components/NetworkPage/NetworkPage'
 import OwnershipPage from 'components/OwnershipPage/OwnershipPage'
+import TechnologyPage from 'components/TechnologyPage/TechnologyPage'
 
 const App = () => {
   return (
@@ -53,6 +54,16 @@ const App = () => {
               <Fragment>
                 <Header />
                 <OwnershipPage />
+                <Footer></Footer>
+              </Fragment>
+            }
+          />
+          <Route
+            path={constants.RoutesPath.TECHNOLOGY}
+            element={
+              <Fragment>
+                <Header />
+                <TechnologyPage />
                 <Footer></Footer>
               </Fragment>
             }
