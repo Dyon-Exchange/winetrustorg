@@ -1,7 +1,24 @@
 import React, { useEffect } from 'react'
 import { Button } from '@material-ui/core'
 
+//export const WalletContext = React.createContext();
+
 const ConnectMetaMask = () => {
+
+  /*interface IWalletContext {
+    provider: undefined;
+    isMetaMaskInstalled: boolean | undefined;
+    walletConnected: boolean;
+    networkDetails: undefined;
+    isConnected: boolean;
+  }*/
+
+  //const [provider, setProvider] = useState();
+  //const [IsMetamaskInstalled, setIsMetamaskInstalled] = useState(false);
+  //const [walletaddress, setWalletAddress] = useState();
+
+  //Rinkeby and Ethereum only
+  const supportNetwork = ['0x4','0x1'] 
   
   useEffect(() => {
     window.ethereum.on('chainChanged', () => {
@@ -17,11 +34,13 @@ const ConnectMetaMask = () => {
     //const selectedAddress = await window.ethereum.request({method: 'eth_selectedAddress'});
     console.log(chainId)
     //check if connected to the supported network
-    if (chainId !== '0x4' && chainId !== '0x1') {
+    if (supportNetwork.includes(chainId)) {
+      //setIsMetamaskInstalled(false);
       alert('Please connect to either Ethereum or Rinkeby')
     } else {
-      let wallet = accounts[0]
-      console.log(`Connected with ${wallet}`)
+      //setIsMetamaskInstalled(true);
+      //setWalletAddress(accounts[0]);
+      console.log(`Connected with ${accounts[0]}`)
     }
   }
 

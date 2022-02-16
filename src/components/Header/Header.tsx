@@ -1,4 +1,5 @@
 import * as React from 'react'
+//import { withRouter } from 'react-router-dom' ;
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -13,10 +14,11 @@ import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 //import SearchProductAsset from '../SearchProductAsset'
 import './Header.css'
+//import SearchProductAsset from 'components/SearchProductAsset'
 //import { AnyPointerEvent } from 'framer-motion/types/gestures/PanSession'
 
 const pages = ['Home', 'Security', 'Ownership', 'Network', 'Technology', 'About']
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
+const settings = ['Profile', 'Account', 'Dashboard', 'Connect Metamask', 'Logout']
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
@@ -153,8 +155,8 @@ const ResponsiveAppBar = () => {
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}>
-              {settings.map(setting => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu} >
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

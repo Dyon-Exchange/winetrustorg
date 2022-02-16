@@ -1,6 +1,14 @@
 import React from 'react'
+import { useEffect, useState } from 'react';
 
-const WineTrustProfile = () => {
+const WineTrustProfile = (props: any) => {
+
+  const [metamaskaddress, setmetamaskaddress] = useState();
+
+  useEffect(() => {
+    setmetamaskaddress(props.value);
+  },[props.value])
+
   return (
     <div className="content">
       <div className="left-pane">
@@ -12,7 +20,7 @@ const WineTrustProfile = () => {
           <p>Email Address *</p>
           <input type="email" placeholder="Enter Email Address"></input>
           <p>Wallet Address</p>
-          <input type="text" disabled></input>
+          <input type="text" value={metamaskaddress} disabled></input>
         </div>
       </div>
       <div className="right-pane">
