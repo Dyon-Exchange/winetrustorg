@@ -28,37 +28,37 @@
   color: #61dafb;
 }
 
-.banner-section{
-    position: relative;
-    z-index: 0;
+.banner-section {
+  position: relative;
+  z-index: 0;
 }
 
-.banner-div{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -100;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+.banner-div {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -100;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
-.banner-img{
-    object-fit: cover;
-    object-position: 50% 50%;
-    max-width: none;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 1838px;
-    height: 949px;
-    overflow: hidden;
-    pointer-events: none;
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-    will-change: transform, opacity;
-    margin-top: 0px;
-    transform: translate3d(0px, 0px, 0px);
+.banner-img {
+  object-fit: cover;
+  object-position: 50% 50%;
+  max-width: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 1838px;
+  height: 949px;
+  overflow: hidden;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  margin-top: 0px;
+  transform: translate3d(0px, 0px, 0px);
 }
 
 @keyframes App-logo-spin {
@@ -68,4 +68,94 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./font/Gilroy-Heavy.woff2') format('woff2'),
+    url('./font/Gilroy-Heavy.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./font/Gilroy-ExtraBold.woff2') format('woff2'),
+    url('./font/Gilroy-ExtraBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./font/Gilroy-HeavyItalic.woff2') format('woff2'),
+    url('./font/Gilroy-HeavyItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./font/Gilroy-Bold.woff2') format('woff2'),
+    url('./font/Gilroy-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./font/Gilroy-Light.woff2') format('woff2'),
+    url('./font/Gilroy-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./font/Gilroy-Medium.woff2') format('woff2'),
+    url('./font/Gilroy-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./font/Gilroy-LightItalic.woff2') format('woff2'),
+    url('./font/Gilroy-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./font/Gilroy-MediumItalic.woff2') format('woff2'),
+    url('./font/Gilroy-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./font/Gilroy-SemiBold.woff2') format('woff2'),
+    url('./font/Gilroy-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./font/Gilroy-Regular.woff2') format('woff2'),
+    url('./font/Gilroy-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }

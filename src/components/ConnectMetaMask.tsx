@@ -3,9 +3,11 @@ import { Button } from '@material-ui/core'
 
 const ConnectMetaMask = () => {
   useEffect(() => {
-    window.ethereum.on('chainChanged', () => {
-      connectMetaMask()
-    })
+    if (window.ethereum !== undefined) {
+      window.ethereum.on('chainChanged', () => {
+        connectMetaMask()
+      })
+    }
   })
 
   async function connectMetaMask() {

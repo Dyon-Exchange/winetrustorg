@@ -10,19 +10,19 @@ import Footer from 'components/Footer/Footer'
 import Homepage from 'components/Homepage/Homepage'
 import About from 'components/About/About'
 import NetworkPage from 'components/NetworkPage/NetworkPage'
+import Security from 'components/Security/Security'
 
 const App = () => {
   return (
     <BrowserRouter>
+      <Header />
       <Box display="flex" flexDirection="column" minH="inherit">
         <Routes>
           <Route
             path={constants.RoutesPath.HOMEPAGE}
             element={
               <Fragment>
-                <Header/>
                 <Homepage />
-                <Footer></Footer>
               </Fragment>
             }
           />
@@ -30,9 +30,7 @@ const App = () => {
             path={constants.RoutesPath.ABOUT}
             element={
               <Fragment>
-                <Header />
                 <About />
-                <Footer></Footer>
               </Fragment>
             }
           />
@@ -40,15 +38,37 @@ const App = () => {
             path={constants.RoutesPath.NETWORK}
             element={
               <Fragment>
-                <Header />
                 <NetworkPage />
-                <Footer></Footer>
               </Fragment>
             }
           />
-          
+          <Route
+            path={constants.RoutesPath.SECURITY}
+            element={
+              <Fragment>
+                <Security />
+              </Fragment>
+            }
+          />
+          <Route
+            path={constants.RoutesPath.OWNERSHIP}
+            element={
+              <Fragment>
+                <NetworkPage />
+              </Fragment>
+            }
+          />
+          <Route
+            path={constants.RoutesPath.TECHNOLOGY}
+            element={
+              <Fragment>
+                <NetworkPage />
+              </Fragment>
+            }
+          />
         </Routes>
       </Box>
+      <Footer />
     </BrowserRouter>
   )
 }

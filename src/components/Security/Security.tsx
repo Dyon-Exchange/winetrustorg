@@ -1,9 +1,9 @@
 import React from 'react'
 import Container from '@mui/material/Container'
-import './NetworkPage.css'
+import './Security.css'
 import { Box, Typography } from '@mui/material'
 
-const NetworkPage = () => {
+const SecurityPage = () => {
   return (
     <section className="banner-section">
       <Container
@@ -20,11 +20,11 @@ const NetworkPage = () => {
           }}>
           <Box sx={{ width: '58%' }}>
             <Typography variant="h2" sx={{ mb: '1.5rem', fontSize: '4.1rem' }}>
-              Network
+              Security
             </Typography>
             <Typography component="div" sx={{ mb: '1.5rem', fontSize: '1.5rem', color: '#c9d4df' }}>
-              WineTrust is a network of the world’s most trusted and most secure, Government
-              regulated, dedicated fine wine and spirits storage facilities.
+              Security of ownership is everything. Total security of title, condition and provenance
+              are the foundations of WineTrust.
             </Typography>
             <a
               href="#story"
@@ -38,10 +38,10 @@ const NetworkPage = () => {
         </Box>
       </Container>
       <div className="banner-div">
-        <img className="banner-img" src="/images/banners/network.png" alt="Banner Image" />
+        <img className="banner-img" src="/images/banners/security.png" alt="WineTrust Network" />
       </div>
     </section>
   )
 }
 
-export default NetworkPage
+export default SecurityPage
