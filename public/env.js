@@ -125,7 +125,7 @@ window.env = {
   "XAUTHORITY": "/run/user/1001/gdm/Xauthority",
   "npm_package_dependencies__types_node": "^17.0.17",
   "npm_package_eslintConfig_extends_0": "react-app",
-  "npm_package_gitHead": "fb9dfabce5a2afc8313ecf5095c2c121c485719f",
+  "npm_package_gitHead": "597e07e07237d82f28b28fc664ba573890909c4c",
   "npm_config_fund": "true",
   "npm_config_fetch_retry_maxtimeout": "60000",
   "npm_config_loglevel": "notice",

@@ -10,6 +10,7 @@ import Footer from 'components/Footer/Footer'
 import Homepage from 'components/Homepage/Homepage'
 import About from 'components/About/About'
 import NetworkPage from 'components/NetworkPage/NetworkPage'
+import OwnershipPage from 'components/OwnershipPage/OwnershipPage'
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
             path={constants.RoutesPath.HOMEPAGE}
             element={
               <Fragment>
-                <Header/>
+                <Header />
                 <Homepage />
                 <Footer></Footer>
               </Fragment>
@@ -46,7 +47,16 @@ const App = () => {
               </Fragment>
             }
           />
-          
+          <Route
+            path={constants.RoutesPath.OWNERSHIP}
+            element={
+              <Fragment>
+                <Header />
+                <OwnershipPage />
+                <Footer></Footer>
+              </Fragment>
+            }
+          />
         </Routes>
       </Box>
     </BrowserRouter>
