@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { RoutesPath } from '../../constants'
 import Container from '@mui/material/Container'
 import './Security.css'
 import { Box, Card, CardContent, Grid, Typography } from '@mui/material'
@@ -190,10 +192,12 @@ const SecurityPage = () => {
                   We believe that tokenization represents the future of completely secure fine wine
                   & spirits ownership and trading.
                 </p>
-                <a href="/security" className="btn btn-blue dyon-exchange-btn border-radius-8">
+                <Link
+                  to={RoutesPath.SECURITY}
+                  className="btn btn-blue dyon-exchange-btn border-radius-8">
                   See Dyon Exchange
                   <span className="arrow-right-white"></span>
-                </a>
+                </Link>
               </Box>
             </Box>
           </Box>
@@ -239,10 +243,12 @@ const SecurityPage = () => {
               participate in the excellent financial performance of the world’s best fine wines,
               whiskies etc.
             </p>
-            <a href="/security" className="btn btn-blue dyon-exchange-btn border-radius-8">
+            <Link
+              to={RoutesPath.SECURITY}
+              className="btn btn-blue dyon-exchange-btn border-radius-8">
               See Dyon Exchange
               <span className="arrow-right-white"></span>
-            </a>
+            </Link>
           </Box>
         </Box>
         <img src="/images/security/dyon-wp.png" className="img-fit-content border-radius-22" />

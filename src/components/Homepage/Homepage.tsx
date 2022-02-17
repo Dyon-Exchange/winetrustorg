@@ -1,5 +1,7 @@
 import { Box, Container, Typography } from '@mui/material'
 import React from 'react'
+import { RoutesPath } from '../../constants'
+import { Link } from 'react-router-dom'
 import './Homepage.css'
 
 const Homepage = () => {
@@ -27,10 +29,10 @@ const Homepage = () => {
                 sx={{ mb: '1.5rem', fontSize: '1.5rem', color: '#c9d4df' }}>
                 WineTrust is the most secure way to own and store fine wine & spirts today.
               </Typography>
-              <a href="/security" className="btn btn-light learn-more-btn">
+              <Link to={RoutesPath.SECURITY} className="btn btn-light learn-more-btn">
                 Learn More
                 <span className="arrow-image"></span>
-              </a>
+              </Link>
               <a
                 href="#story"
                 className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
