@@ -60,7 +60,7 @@
 .scroll-down {
   letter-spacing: 5px;
   position: absolute;
-  bottom: 100px;
+  bottom: 50px;
   left: 50%;
   transform: translate(-50%);
   display: flex;
@@ -71,6 +71,7 @@
 
 .scroll-down img {
   height: 30px;
+  align-self: center;
 }
 
 .btn:hover * {

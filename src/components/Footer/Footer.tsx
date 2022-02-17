@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { RoutesPath } from '../../constants'
 import './Footer.css'
 
 const Footer = () => {
@@ -16,9 +18,9 @@ const Footer = () => {
           </div>
           <div id="wine-trust-info" className="footer-links">
             <div className="footer-title">Winetrust</div>
-            <a href="#id">Home</a>
-            <a href="#id">About</a>
-            <a href="#id">Contact Us</a>
+            <Link to={RoutesPath.HOMEPAGE}>Home</Link>
+            <Link to={RoutesPath.ABOUT}>About</Link>
+            <Link to={RoutesPath.ABOUT}>Contact Us</Link>
             <a href="#id">FAQs</a>
           </div>
           <div id="legal-info" className="footer-links">

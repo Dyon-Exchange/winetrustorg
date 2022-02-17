@@ -21,9 +21,11 @@ const ConnectMetaMask = () => {
   const supportNetwork = ['0x4','0x1'] 
   
   useEffect(() => {
-    window.ethereum.on('chainChanged', () => {
-      connectMetaMask()
-    })
+    if (window.ethereum !== undefined) {
+      window.ethereum.on('chainChanged', () => {
+        connectMetaMask()
+      })
+    }
   })
 
   async function connectMetaMask() {
