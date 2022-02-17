@@ -1,5 +1,6 @@
 import * as React from 'react'
-//import { withRouter } from 'react-router-dom' ;
+import { Link, useNavigate } from 'react-router-dom'
+
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -12,21 +13,22 @@ import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
-//import SearchProductAsset from '../SearchProductAsset'
 import './Header.css'
-//import SearchProductAsset from 'components/SearchProductAsset'
-//import { AnyPointerEvent } from 'framer-motion/types/gestures/PanSession'
 
-const pages = ['Home', 'Security', 'Ownership', 'Network', 'Technology', 'About']
+import { HeaderMenu } from '../../constants'
+
 const settings = ['Profile', 'Account', 'Connect to MetaMask', 'Dashboard', 'Logout']
 
 const Header = () => {
+  const navigate = useNavigate()
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
   }
+
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget)
   }
@@ -91,10 +93,10 @@ const Header = () => {
               sx={{
                 display: { xs: 'block', md: 'none' }
               }}>
-              {pages.map(page => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {HeaderMenu.map(menu => (
+                <MenuItem key={menu.menuName}>
                   <Typography textAlign="center" color="white">
-                    {page}
+                    <Link to={menu.url}>{menu.menuName}</Link>
                   </Typography>
                 </MenuItem>
               ))}
@@ -114,13 +116,13 @@ const Header = () => {
               justifyContent: { md: 'flex-end' },
               paddingRight: { md: '50px' }
             }}>
-            {pages.map(page => (
+            {HeaderMenu.map(menu => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => navigate(menu.url)}
+                key={menu.menuName}
                 sx={{ my: 2, color: 'white', display: 'block' }}
                 style={{ color: 'white', paddingRight: '30px', textTransform: 'capitalize' }}>
-                {page}
+                {menu.menuName}
               </Button>
             ))}
           </Box>
