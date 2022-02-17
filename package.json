@@ -34,7 +34,7 @@
     "web3": "^1.7.0"
   },
   "scripts": {
-    "start": "PORT=2000 && react-dotenv && react-scripts start",
+    "start": "react-dotenv && PORT=2000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
