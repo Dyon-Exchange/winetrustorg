@@ -61,6 +61,18 @@
   transform: translate3d(0px, 0px, 0px);
 }
 
+.white-color {
+  color: #fff;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.section-padding {
+  padding: 100px 0 !important;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -3,6 +3,7 @@ import Container from '@mui/material/Container'
 import { Box, CardContent, Grid, Typography } from '@mui/material'
 import { Card } from '@material-ui/core'
 import './OwnershipPage.css'
+import { wtTokenConst } from './WtTokenConst'
 
 const OwnershipPage = () => {
   return (
@@ -78,43 +79,17 @@ const OwnershipPage = () => {
             WineTrust tokens provide
           </Typography>
           <Grid container spacing={4} sx={{ pb: '70px' }}>
-            <Grid item xs={12} sm={6} md={4}>
-              <Card className="card">
-                <CardContent sx={{ p: '1.5rem 3rem' }}>
-                  <img src="/images/general/discount.svg" />
-                  <p className="story-title">Discount on fees</p>
-                  <p className="story-desc">
-                    The more WineTrust tokens you hold, the bigger the discount you get on custody
-                    fees. Hold enough tokens, and all the services of WineTrust (including storage
-                    fees) are free!
-                  </p>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Card className="card">
-                <CardContent sx={{ p: '1.5rem 3rem' }}>
-                  <img src="/images/general/governance-rights.svg" />
-                  <p className="story-title">Governance rights</p>
-                  <p className="story-desc">
-                    Your WineTrust tokens allow you to vote on important decisions – such as
-                    admitting new warehouses into the network.
-                  </p>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <Card className="card">
-                <CardContent sx={{ p: '1.5rem 3rem' }}>
-                  <img src="/images/general/winetrust-token.svg" />
-                  <p className="story-title">WineTrust tokens are valuable</p>
-                  <p className="story-desc">
-                    WineTrust tokens will trade on digital asset exchanges. As the WineTrust
-                    ecosystem grows, these tokens should increase in value.
-                  </p>
-                </CardContent>
-              </Card>
-            </Grid>
+            {wtTokenConst.map((item: any) => (
+              <Grid item xs={12} sm={6} md={4}>
+                <Card className="card">
+                  <CardContent sx={{ p: '1.5rem 3rem' }}>
+                    <img src={item.icon} />
+                    <p className="story-title">{item.title}</p>
+                    <p className="story-desc">{item.desc}</p>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
           <Box sx={{ display: { xs: 'block', md: 'flex' }, m: '0 4rem' }}>
             <img src="/images/ownershipPage/story-2.png" />
