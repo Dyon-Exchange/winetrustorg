@@ -78,7 +78,11 @@
 }
 
 .card-shadow {
-  box-shadow: 0px 10px 20px rgb(7 35 41 / 3%) !important;
+  box-shadow: 1px 0px 10px 3px rgb(7 35 41 / 3%) !important;
+}
+
+.small-banner {
+  height: 585px;
 }
 
 @keyframes App-logo-spin {

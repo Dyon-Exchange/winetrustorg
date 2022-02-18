@@ -58,33 +58,3 @@
   list-style: none;
   padding-left: 0;
 }
-
-.soln-card-container {
-  display: grid;
-  margin-top: 3rem;
-  grid-template-columns: repeat(3, minmax(150px, 0.6fr));
-}
-
-.soln-card-container.bottom {
-  grid-template-columns: repeat(2, minmax(150px, 0.3fr));
-  align-items: center;
-  justify-content: center;
-}
-
-.soln-card {
-  padding: 1.5rem 3rem;
-  border-radius: 22px;
-  box-shadow: 10px 20px rgb(7 35 41 / 3%);
-  -webkit-box-shadow: 10px 20px rgb(7 35 41 / 3%);
-  color: #304151;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  row-gap: 20px;
-  min-height: 200px;
-}
-
-.soln-card img {
-  height: 100px;
-  width: 100px;
-}
