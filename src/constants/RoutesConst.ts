@@ -4,5 +4,7 @@ export const RoutesPath = {
   SECURITY: '/security',
   OWNERSHIP: '/ownership',
   NETWORK: '/network',
-  TECHNOLOGY: '/technology'
+  TECHNOLOGY: '/technology',
+  WAREHOUSEPARTNER: '/warehouse-partner',
+  MERCHANTPARTNER: '/merchant-partner'
 }

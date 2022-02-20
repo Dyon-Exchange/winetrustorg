@@ -1,8 +1,9 @@
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Card, CardContent, Container, Grid, Typography } from '@mui/material'
 import React from 'react'
 import { RoutesPath } from '../../constants'
 import { Link } from 'react-router-dom'
 import './Homepage.css'
+import { wtProblemsConst } from './WtProblemsConst'
 
 const Homepage = () => {
   return (
@@ -73,55 +74,36 @@ const Homepage = () => {
         </div>
       </div>
 
-      <div className="homepage-container">
-        <div className="section-header-container centered-text">
-          <h2 className="section-title">
-            WineTrust addresses the most important problems facing fine wine & spirits owners
-          </h2>
-          <p className="mb-0 sub-title">
-            WineTrust is the first full service fine wine & spirits custodian backed by public
-            ledger blockchain technology. Legal ownership is recorded on an immutable public
-            blockchain ledger. Owners no longer must accept a merchant’s or exchange’s assurances
-            over what they own.
-          </p>
-        </div>
-        <div className="soln-card-container top">
-          <div className="soln-card">
-            <img src="/images/general/ownership.svg" alt="WineTrust Ownership" />
-            <div className="card-text">
-              WineTrust guarantees ownership independent of any merchant
-            </div>
-          </div>
-          <div className="soln-card">
-            <img src="/images/general/audit.svg" alt="Winetrust Audit" />
-            <div className="card-text">
-              WineTrust provides an independent audit trail of every case / bottle in the protocol
-            </div>
-          </div>
-          <div className="soln-card">
-            <img src="/images/general/certified.svg" alt="Winetrust Certified" />
-            <div className="card-text">
-              WineTrust provides an independent audit trail of every case / bottle in the protocol
-            </div>
-          </div>
-        </div>
-        <div className="soln-card-container bottom">
-          <div className="soln-card">
-            <img src="/images/general/marketplace.svg" alt="WineTrust Marketplace" />
-            <div className="card-text">
-              WineTrust is a gateway to digital marketplaces – allowing owners sell their wines for
-              the best prices
-            </div>
-          </div>
-          <div className="soln-card">
-            <img src="/images/general/wt-connect.svg" alt="Winetrust Connect" />
-            <div className="card-text">
-              WineTrust is a gateway to digital marketplaces – allowing owners sell their wines for
-              the best prices
-            </div>
-          </div>
-        </div>
-      </div>
+      <Box sx={{ background: '#f9fcff' }}>
+        <Container sx={{ p: '100px 0' }}>
+          <Box sx={{ width: '76%', textAlign: 'center', margin: 'auto' }}>
+            <h2 className="section-title text-align-center">
+              WineTrust addresses the most important problems facing fine wine & spirits owners
+            </h2>
+            <p className="sub-title">
+              WineTrust is the first full service fine wine & spirits custodian backed by public
+              ledger blockchain technology. Legal ownership is recorded on an immutable public
+              blockchain ledger. Owners no longer must accept a merchant’s or exchange’s assurances
+              over what they own.
+            </p>
+          </Box>
+          <Grid
+            container
+            spacing={4}
+            sx={{ p: '70px 0', justifyContent: 'center', maxWidth: '1100px' }}>
+            {wtProblemsConst.map((item: any) => (
+              <Grid item xs={12} sm={6} md={4}>
+                <Card className="card-shadow border-radius-22" sx={{ minHeight: '250px' }}>
+                  <CardContent sx={{ p: '1.5rem 3rem', textAlign: 'center' }}>
+                    <img src={item.icon} />
+                    <p className="story-desc">{item.desc}</p>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
     </div>
   )
 }

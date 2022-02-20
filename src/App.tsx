@@ -13,6 +13,8 @@ import NetworkPage from 'components/NetworkPage/NetworkPage'
 import Security from 'components/Security/Security'
 import OwnershipPage from 'components/OwnershipPage/OwnershipPage'
 import TechnologyPage from 'components/TechnologyPage/TechnologyPage'
+import WarehousePartner from 'components/WarehousePartnerPage/WarehousePartnerPage'
+import MerchantPartner from 'components/MerchantPartner/MerchantPartner'
 
 const App = () => {
   return (
@@ -65,6 +67,22 @@ const App = () => {
             element={
               <Fragment>
                 <TechnologyPage />
+              </Fragment>
+            }
+          />
+          <Route
+            path={constants.RoutesPath.WAREHOUSEPARTNER}
+            element={
+              <Fragment>
+                <WarehousePartner />
+              </Fragment>
+            }
+          />
+          <Route
+            path={constants.RoutesPath.MERCHANTPARTNER}
+            element={
+              <Fragment>
+                <MerchantPartner />
               </Fragment>
             }
           />
