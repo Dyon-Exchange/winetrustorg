@@ -27,18 +27,22 @@ const Header = () => {
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
+    console.log(`OpenNavMenu ${event.currentTarget}`)
   }
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget)
+    console.log(`OpenUserMenu ${event.currentTarget}`)
   }
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
+    console.log(`CloseNavMenu`)
   }
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
+  const handleCloseUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget)
+    console.log(`selectedItem ${(event.currentTarget)}`)
   }
 
   return (
