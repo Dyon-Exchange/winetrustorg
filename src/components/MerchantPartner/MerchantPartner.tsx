@@ -6,7 +6,7 @@ import { merchantPartnerConst } from './MerchantPartnerConst'
 const MerchantPartner = () => {
   return (
     <div>
-      <div className="banner-section small-banner">
+      <div className="banner-section small-banner banner-gradient">
         <Container
           style={{
             position: 'relative',
@@ -34,7 +34,7 @@ const MerchantPartner = () => {
         <div className="banner-div">
           <img
             className="banner-img small-banner"
-            src="/images/banners/home-banner.jpg"
+            src="/images/banners/merchant-partners-banner.jpeg"
             alt="Wine Trust Home"
           />
         </div>

@@ -15,6 +15,7 @@ import OwnershipPage from 'components/OwnershipPage/OwnershipPage'
 import TechnologyPage from 'components/TechnologyPage/TechnologyPage'
 import WarehousePartner from 'components/WarehousePartnerPage/WarehousePartnerPage'
 import MerchantPartner from 'components/MerchantPartner/MerchantPartner'
+import ProfileSetting from 'components/ProfileSetting/ProfileSetting'
 
 const App = () => {
   return (
@@ -83,6 +84,14 @@ const App = () => {
             element={
               <Fragment>
                 <MerchantPartner />
+              </Fragment>
+            }
+          />
+          <Route
+            path={constants.RoutesPath.PROFILESETTING}
+            element={
+              <Fragment>
+                <ProfileSetting />
               </Fragment>
             }
           />

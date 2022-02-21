@@ -5,6 +5,7 @@ export const RoutesPath = {
   OWNERSHIP: '/ownership',
   NETWORK: '/network',
   TECHNOLOGY: '/technology',
-  WAREHOUSEPARTNER: '/warehouse-partner',
-  MERCHANTPARTNER: '/merchant-partner'
+  WAREHOUSEPARTNER: '/warehouse-partners',
+  MERCHANTPARTNER: '/merchant-partners',
+  PROFILESETTING: '/profile-setting'
 }
