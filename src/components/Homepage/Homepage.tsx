@@ -95,7 +95,7 @@ const Homepage = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Card className="card-shadow border-radius-22" sx={{ minHeight: '250px' }}>
                   <CardContent sx={{ p: '1.5rem 3rem', textAlign: 'center' }}>
-                    <img src={item.icon} />
+                    <img src={item.icon} alt={item.desc} />
                     <p className="story-desc">{item.desc}</p>
                   </CardContent>
                 </Card>
