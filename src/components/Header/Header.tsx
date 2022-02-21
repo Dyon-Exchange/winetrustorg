@@ -18,7 +18,7 @@ import { useLocation } from 'react-router-dom'
 
 import { HeaderMenu } from '../../constants'
 
-const settings = ['Profile', 'Account', 'Connect to MetaMask', 'Dashboard', 'Logout']
+const settings = ['Profile', 'Account', 'Connect to MetaMask', 'Redeem Token', 'Dashboard', 'Logout']
 
 const Header = () => {
   const navigate = useNavigate()
@@ -42,8 +42,9 @@ const Header = () => {
   }
 
   const handleCloseUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget)
-    console.log(`selectedItem ${(event.currentTarget)}`)
+    setAnchorElUser(null)
+    const { curSetting } = event.currentTarget.dataset
+    console.log(curSetting)
   }
   const HeaderBgColor = () => {
     const location = useLocation()
@@ -159,7 +160,7 @@ const Header = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}>
               {settings.map(setting => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={handleCloseUserMenu} data-cur-setting={setting}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
