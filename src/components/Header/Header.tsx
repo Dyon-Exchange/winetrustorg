@@ -14,6 +14,7 @@ import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 import './Header.css'
+import { useLocation } from 'react-router-dom'
 
 import { HeaderMenu } from '../../constants'
 
@@ -40,6 +41,11 @@ const Header = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
+  const HeaderBgColor = () => {
+    const location = useLocation()
+    const path = location.pathname.split('/')[1]
+    return path + '-header'
+  }
 
   return (
     <AppBar
@@ -51,12 +57,12 @@ const Header = () => {
       <Container
         style={{
           background: 'linear-gradient( 180deg, #002954 0%, rgba(0, 41, 84, 0) 100%)',
-          padding: '20px',
           zIndex: '1000',
           position: 'absolute',
           width: '100%',
           maxWidth: '100%'
-        }}>
+        }}
+        className={HeaderBgColor()}>
         <Toolbar disableGutters style={{ maxWidth: '88%', margin: 'auto' }}>
           <Typography
             variant="h6"

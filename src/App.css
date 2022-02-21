@@ -85,6 +85,20 @@
   height: 585px;
 }
 
+.banner-gradient {
+  background: linear-gradient(
+    90deg,
+    #0a1928 8%,
+    rgba(10, 25, 40, 0.7) 41.79%,
+    rgba(10, 25, 40, 0) 100%
+  );
+  z-index: auto;
+}
+
+.profile-setting-header {
+  background-color: #1d2f40 !important;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

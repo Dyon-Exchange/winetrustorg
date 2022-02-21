@@ -1,5 +1,6 @@
 .footer-container {
   font-size: 14px;
+  background-color: #1d2f40;
 }
 
 .footer-top-container {
@@ -21,7 +22,8 @@
 
 .footer-links {
   display: grid;
-  row-gap: 20px;
+  row-gap: 15px;
+  align-self: baseline;
 }
 
 .footer-links a {
@@ -41,11 +43,11 @@
 .ft-logo-img {
   height: 91px;
   width: 150px;
-  transform: translate(-7px, -10px) scaleY(1.5);
+  transform: translate(-7px, -10px) scaleY(2);
 }
 
 .ft-desc {
-  max-width: 175px;
+  max-width: 215px;
 }
 
 .footer-bottom {
@@ -56,6 +58,10 @@
   align-items: center;
   justify-items: center;
   color: white;
+}
+
+.social-icon-margin img:not(:last-child) {
+  margin-right: 9px;
 }
 
 .footer-bottom > div {
