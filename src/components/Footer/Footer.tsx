@@ -48,8 +48,8 @@ const Footer = () => {
           </div>
           <div id="alliance-info" className="footer-links">
             <div className="footer-title">Alliance</div>
-            <a href="/warehouse-partners">Warehouse Partners</a>
-            <a href="/merchant-partners">Merchant Partners</a>
+            <Link to={RoutesPath.WAREHOUSEPARTNER}>Warehouse Partners</Link>
+            <Link to={RoutesPath.MERCHANTPARTNER}>Merchant Partners</Link>
           </div>
         </Box>
       </Container>
