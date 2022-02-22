@@ -9,6 +9,9 @@ const Homepage = () => {
   return (
     <div>
       <div className="banner-section">
+        <div className="banner-div">
+          <img className="banner-img" src="/images/banners/home-banner.jpg" alt="Wine Trust Home" />
+        </div>
         <Container
           style={{
             position: 'relative',
@@ -45,9 +48,6 @@ const Homepage = () => {
             </Box>
           </Box>
         </Container>
-        <div className="banner-div">
-          <img className="banner-img" src="/images/banners/home-banner.jpg" alt="Wine Trust Home" />
-        </div>
       </div>
       <div id="wt-revolution" className="wt-revolution">
         <div className="wt-revolution-img">

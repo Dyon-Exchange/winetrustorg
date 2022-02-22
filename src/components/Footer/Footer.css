@@ -41,9 +41,9 @@
 }
 
 .ft-logo-img {
-  height: 91px;
-  width: 150px;
-  transform: translate(-7px, -10px) scaleY(2);
+  height: 68px;
+  width: 144px;
+  margin-bottom: 28px;
 }
 
 .ft-desc {
