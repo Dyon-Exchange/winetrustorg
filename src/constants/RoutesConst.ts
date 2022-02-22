@@ -7,5 +7,6 @@ export const RoutesPath = {
   TECHNOLOGY: '/technology',
   WAREHOUSEPARTNER: '/warehouse-partners',
   MERCHANTPARTNER: '/merchant-partners',
-  PROFILESETTING: '/profile-setting'
+  PROFILESETTING: '/profile-setting',
+  ASSETLISTING: '/search/:product'
 }
