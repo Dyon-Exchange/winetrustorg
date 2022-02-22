@@ -141,7 +141,11 @@ const NetworkPage = () => {
           </Box>
         </Container>
         <div className="banner-div">
-          <img className="banner-img" src="/images/banners/network.png" alt="Wine Trust Network" />
+          <img
+            className="banner-img"
+            src="https://media.cruworldwine.com/media/wysiwyg/network.png"
+            alt="Wine Trust Network"
+          />
         </div>
       </div>
       <Container sx={{ textAlign: 'center', p: '100px 0' }}>
