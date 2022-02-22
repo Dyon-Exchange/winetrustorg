@@ -11,7 +11,7 @@
 }
 
 .logo-img {
-  transform: scale(1, 2);
+  margin-top: 6px;
   height: 75px;
   width: 180px;
   padding: 10px;

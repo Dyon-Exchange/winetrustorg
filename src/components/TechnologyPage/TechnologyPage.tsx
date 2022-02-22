@@ -105,7 +105,10 @@ const TechnologyPage = () => {
           <img src="/images/technologyPage/ownership-story-2.png" />
         </Container>
       </Box>
-      <Container className="section-padding">
+
+      {/* Removed as of now by J */}
+
+      {/* <Container className="section-padding">
         <h2 className="section-title text-align-center">
           Tokenized ownership of the
           <br />
@@ -142,7 +145,7 @@ const TechnologyPage = () => {
             </ul>
           </Box>
         </Box>
-      </Container>
+      </Container> */}
     </div>
   )
 }

@@ -28,7 +28,7 @@ const Homepage = () => {
               <Typography
                 component="div"
                 sx={{ mb: '1.5rem', fontSize: '1.5rem', color: '#c9d4df' }}>
-                WineTrust is the most secure way to own and store fine wine & spirts today.
+                WineTrust is the most secure way to own and store fine wine & spirits today.
               </Typography>
               <Link to={RoutesPath.SECURITY} className="btn btn-light learn-more-btn">
                 Learn More
