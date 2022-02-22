@@ -1,17 +1,8 @@
 import React from 'react'
 import Container from '@mui/material/Container'
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Grid,
-  IconButton,
-  Typography
-} from '@mui/material'
-import { foundersConst1 } from './FounderConst1'
-import { foundersConst2 } from './FounderConst2'
+import { Box, Typography } from '@mui/material'
+// import { foundersConst1 } from './FounderConst1'
+// import { foundersConst2 } from './FounderConst2'
 
 const About = () => {
   return (
@@ -68,7 +59,10 @@ const About = () => {
           </p>
         </Box>
       </Container>
-      <Box sx={{ background: '#f9fcff' }}>
+
+      {/* Founders are commented as of now by J */}
+
+      {/* <Box sx={{ background: '#f9fcff' }}>
         <Container sx={{ p: '100px 0' }}>
           <h2 className="section-title text-align-center">Founders</h2>
           <Box sx={{ display: { xs: 'block', md: 'flex' }, m: '0 4rem' }}>
@@ -145,7 +139,7 @@ const About = () => {
             ))}
           </Grid>
         </Box>
-      </Container>
+      </Container> */}
     </div>
   )
 }

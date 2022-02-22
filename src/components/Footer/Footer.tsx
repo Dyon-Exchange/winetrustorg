@@ -55,7 +55,7 @@ const Footer = () => {
       </Container>
       <div className="footer-bottom">
         <div>
-          Copyright© 2022. <span className="blue-text"> Wine Trust </span> All rights reserved.
+          Copyright© 2022. <span className="blue-text"> WineTrust </span> All rights reserved.
         </div>
         <div className="tnc-policy">
           <div>Terms and Conditions</div>
