@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from '@mui/material/Container'
 import './ProfileSetting.css'
-import { Button, FormControl, FormLabel, TextField } from '@mui/material'
+import { Box, Button, FormControl, FormLabel, TextField } from '@mui/material'
 import { styled } from '@material-ui/core'
 
 const BootstrapButton = styled(Button)({
@@ -17,7 +17,22 @@ const ProfileSetting = () => {
   return (
     <div>
       <Container>
-        
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: '66vh',
+            justifyContent: 'center',
+            mt: '50px'
+          }}>
+          <h2>Profile Settings</h2>
+          <div className="profile-backdrop">
+            <div className="profile-outer">
+              <img className="profile-pic" src="/images/profileSetting/profile-img.jpeg" />
+              <h2 className="profile-name">John Wick</h2>
+            </div>
+          </div>
+        </Box>
         <FormControl sx={{ width: '40%', pb: '150px', pl: '7rem' }}>
           <FormLabel htmlFor="my-input" className="account-label" sx={{ color: '#212925' }}>
             Email Address

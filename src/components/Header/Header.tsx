@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import AppBar from '@mui/material/AppBar'
@@ -15,6 +15,7 @@ import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 import './Header.css'
 import { useLocation } from 'react-router-dom'
+import ProfileSetting from '../ProfileSetting/ProfileSetting'
 
 import { HeaderMenu } from '../../constants'
 
@@ -25,6 +26,20 @@ const Header = () => {
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
+  const supportNetwork = ['0x4','0x1']
+  const [walletaddress, setwalletaddress] = useState();
+  const [chainid, setchainid] = useState();
+  const [isconnected, setisconnected] = useState(false);
+  const [warned, setwarned] = useState(false);
+  const [showprofile, setshowprofile] = useState(false);
+
+  useEffect(() => {
+    if (window.ethereum !== undefined && !warned) {
+      window.ethereum.on('chainChanged', () => {
+            connectMetaMask()
+      })
+    }
+  }, [walletaddress,chainid])
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
@@ -44,8 +59,49 @@ const Header = () => {
   const handleCloseUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(null)
     const { curSetting } = event.currentTarget.dataset
-    console.log(curSetting)
+    const id  = event.currentTarget.dataset.id
+    console.log(`${curSetting} ${id}`)
+    //temporary logic check
+    if(curSetting === "Connect to MetaMask") {
+      console.log("connect to metamask")
+      connectMetaMask();
+    }
+    if(curSetting === "Profile") {
+      console.log("User Profile")
+      //make sure that user is connected to Metamask otherwise warn
+      if(!isconnected) {
+        alert(`Please connect to Metamask in order to create or edit your profile`);
+      }
+      else {
+        //render ProfileSetting component to a new page
+        setshowprofile(true);
+        
+      }
+    }
   }
+
+  async function connectMetaMask() {
+    
+    const chainId = await window.ethereum.request({ method: 'eth_chainId' })
+    const accounts = await window.ethereum.request({
+      method: 'eth_requestAccounts'
+    })
+    //const selectedAddress = await window.ethereum.request({method: 'eth_selectedAddress'});
+    console.log(chainId, supportNetwork, supportNetwork.includes(chainId))
+    //check if connected to the supported network
+    if (supportNetwork.includes(chainId)) {
+      await setwalletaddress(accounts[0]);
+      await setchainid(chainId)
+      await setisconnected(true);
+      console.log(`Connected with ${walletaddress} on ${chainid} ${isconnected}`)
+      
+    } else {
+      await setisconnected(false);
+      await setwarned(true)
+      alert(`Please connect to either Ethereum or Rinkeby ${chainid} ${isconnected}`)
+    }
+  }
+
   const HeaderBgColor = () => {
     const location = useLocation()
     const path = location.pathname.split('/')[1]
@@ -159,14 +215,18 @@ const Header = () => {
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}>
-              {settings.map(setting => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu} data-cur-setting={setting}>
+              {settings.map( (setting, index: any) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu} data-cur-setting={setting} id={index}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
         </Toolbar>
+        {
+            showprofile && <ProfileSetting />
+        }
+        
       </Container>
     </AppBar>
   )
