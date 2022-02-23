@@ -44,7 +44,7 @@ const Homepage = () => {
                   display: 'flex',
                   columnGap: '10px',
                   alignContent: 'center',
-                  justifyContent: 'flex-start',
+                  justifyContent: 'space-between',
                   border: '1px solid white',
                   color: 'white',
                   borderRadius: '5px',
@@ -67,7 +67,7 @@ const Homepage = () => {
                 </Typography>
                 <TextField
                   id="outlined-start-adornment"
-                  style={{ color: 'white' }}
+                  style={{ color: 'white', width: '42%' }}
                   InputProps={{
                     style: {
                       color: 'white',
@@ -81,7 +81,7 @@ const Homepage = () => {
                           src="/images/general/search-icon.svg"
                           alt="WineTrust Search"
                           onClick={() => navigate('search', { state: 'hello' })}
-                          style={{ cursor: 'pointer', padding: '0 10px' }}
+                          style={{ cursor: 'pointer', paddingRight: '16px' }}
                         />
                       </InputAdornment>
                     ),
