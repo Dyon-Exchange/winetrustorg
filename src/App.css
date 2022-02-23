@@ -51,6 +51,7 @@
   position: fixed;
   top: 0px;
   left: 0px;
+  max-width: 100%;
   width: 1838px;
   height: 949px;
   overflow: hidden;

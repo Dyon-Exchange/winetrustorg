@@ -1,11 +1,13 @@
-import { Box, Card, CardContent, Container, Grid, Typography } from '@mui/material'
+import { Box, Card, CardContent, Container, Grid, InputAdornment, Typography } from '@mui/material'
 import React from 'react'
 import { RoutesPath } from '../../constants'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Homepage.css'
 import { wtProblemsConst } from './WtProblemsConst'
+import { TextField } from '@material-ui/core'
 
 const Homepage = () => {
+  const navigate = useNavigate()
   return (
     <div>
       <div className="banner-section">
@@ -37,6 +39,56 @@ const Homepage = () => {
                 Learn More
                 <span className="arrow-image"></span>
               </Link>
+              <Box
+                style={{
+                  display: 'flex',
+                  columnGap: '10px',
+                  alignContent: 'center',
+                  justifyContent: 'flex-start',
+                  border: '1px solid white',
+                  color: 'white',
+                  borderRadius: '5px',
+                  marginTop: '20px'
+                }}>
+                <Typography
+                  component="div"
+                  style={{
+                    marginTop: 'auto',
+                    borderRadius: '5px 0px 0px 5px',
+                    marginBottom: 'auto',
+                    background: 'rgba(255, 255, 255, 0.2)',
+                    backdropFilter: 'blur(60px)',
+                    overflow: 'hidden',
+                    margin: '0px'
+                  }}>
+                  <div style={{ padding: '10px 20px' }}>
+                    Enter the name of a product or your token ID
+                  </div>
+                </Typography>
+                <TextField
+                  id="outlined-start-adornment"
+                  style={{ color: 'white' }}
+                  InputProps={{
+                    style: {
+                      color: 'white',
+                      borderRadius: '5px',
+                      border: 'none',
+                      padding: '5px 0px'
+                    },
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <img
+                          src="/images/general/search-icon.svg"
+                          alt="WineTrust Search"
+                          onClick={() => navigate('search', { state: 'hello' })}
+                          style={{ cursor: 'pointer', padding: '0 10px' }}
+                        />
+                      </InputAdornment>
+                    ),
+                    disableUnderline: true
+                  }}
+                />
+              </Box>
               <a
                 href="#story"
                 className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
