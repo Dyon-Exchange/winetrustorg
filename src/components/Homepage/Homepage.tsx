@@ -1,5 +1,5 @@
 import { Box, Card, CardContent, Container, Grid, InputAdornment, Typography } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import { RoutesPath } from '../../constants'
 import { Link, useNavigate } from 'react-router-dom'
 import './Homepage.css'
@@ -7,7 +7,17 @@ import { wtProblemsConst } from './WtProblemsConst'
 import { TextField } from '@material-ui/core'
 
 const Homepage = () => {
+  const [name, setName] = useState('')
   const navigate = useNavigate()
+  function handleKeyDown(e: any) {
+    if (e.keyCode === 13) {
+      e.preventDefault()
+      search()
+    }
+  }
+  function search() {
+    navigate(`search/${name}`)
+  }
   return (
     <div>
       <div className="banner-section">
@@ -26,13 +36,20 @@ const Homepage = () => {
               minHeight: '100vh',
               justifyContent: 'center'
             }}>
-            <Box sx={{ width: '58%' }}>
+            <Box sx={{ width: '58%', textAlign: 'center', m: '0 auto' }}>
               <Typography variant="h2" sx={{ mb: '1.5rem', fontSize: '4.1rem', color: '#fff' }}>
                 Trust and Security
               </Typography>
               <Typography
                 component="div"
-                sx={{ mb: '1.5rem', fontSize: '1.5rem', color: '#c9d4df' }}>
+                sx={{
+                  mb: '1.5rem',
+                  fontSize: '1.5rem',
+                  color: '#c9d4df',
+                  width: '88%',
+                  ml: 'auto',
+                  mr: 'auto'
+                }}>
                 WineTrust is the most secure way to own and store fine wine & spirits today.
               </Typography>
               <Link to={RoutesPath.SECURITY} className="btn btn-light learn-more-btn">
@@ -48,7 +65,7 @@ const Homepage = () => {
                   border: '1px solid white',
                   color: 'white',
                   borderRadius: '5px',
-                  marginTop: '20px'
+                  marginTop: '6%'
                 }}>
                 <Typography
                   component="div"
@@ -67,6 +84,11 @@ const Homepage = () => {
                 </Typography>
                 <TextField
                   id="outlined-start-adornment"
+                  value={name}
+                  onChange={e => {
+                    setName(e.target.value)
+                  }}
+                  onKeyDown={handleKeyDown}
                   style={{ color: 'white', width: '42%' }}
                   InputProps={{
                     style: {
@@ -80,7 +102,7 @@ const Homepage = () => {
                         <img
                           src="/images/general/search-icon.svg"
                           alt="WineTrust Search"
-                          onClick={() => navigate('search', { state: 'hello' })}
+                          onClick={search}
                           style={{ cursor: 'pointer', paddingRight: '16px' }}
                         />
                       </InputAdornment>

@@ -1,18 +1,9 @@
 import React from 'react'
 import Container from '@mui/material/Container'
 import './ProfileSetting.css'
-import { Box, Button, FormControl, FormLabel, TextField } from '@mui/material'
-import { styled } from '@material-ui/core'
+import { Box, FormControl, FormLabel, TextField } from '@mui/material'
+import BootStrapBlueBtn from './../atoms/buttons/BootStrapBlueBtn'
 
-const BootstrapButton = styled(Button)({
-  textTransform: 'none',
-  padding: '10px 30px',
-  border: '1px solid',
-  backgroundColor: '#1483f8',
-  borderColor: '#1483f8',
-  width: 'max-content',
-  borderRadius: '10px'
-})
 const ProfileSetting = () => {
   return (
     <div>
@@ -42,9 +33,9 @@ const ProfileSetting = () => {
             Wallet Address
           </FormLabel>
           <TextField id="wallet-address" variant="outlined" sx={{ mb: '11%' }} />
-          <BootstrapButton variant="contained" disableRipple size="large">
+          <BootStrapBlueBtn variant="contained" disableRipple size="large">
             Save
-          </BootstrapButton>
+          </BootStrapBlueBtn>
         </FormControl>
       </Container>
     </div>
