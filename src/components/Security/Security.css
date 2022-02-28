@@ -8,6 +8,8 @@
 
 .img-fit-content {
   height: fit-content;
+  height: -moz-max-content;
+  height: intrinsic;
 }
 
 .btn-blue {
