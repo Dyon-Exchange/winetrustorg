@@ -8,5 +8,6 @@ export const RoutesPath = {
   WAREHOUSEPARTNER: '/warehouse-partners',
   MERCHANTPARTNER: '/merchant-partners',
   PROFILESETTING: '/profile-setting',
-  ASSETLISTING: '/search/:product'
+  ASSETLISTING: '/search/:product',
+  ASSETHOME: '/asset-home'
 }

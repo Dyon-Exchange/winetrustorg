@@ -4,51 +4,18 @@ import { Box, CardContent, Grid, Typography } from '@mui/material'
 import { Card } from '@material-ui/core'
 import './OwnershipPage.css'
 import { wtTokenConst } from './WtTokenConst'
+import BannerWithScroll from 'components/atoms/banner/BannerWithScroll'
+
+const bannerConst = {
+  title: 'Ownership & Governance',
+  image: '/images/banners/ownership-banner.jpg',
+  description: `WineTrust is unlike any other fine wine & spirits custodian.`
+}
 
 const OwnershipPage = () => {
   return (
     <div>
-      <div className="banner-section">
-        <Container
-          style={{
-            position: 'relative',
-            zIndex: '0'
-          }}>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              minHeight: '100vh',
-              justifyContent: 'center'
-            }}>
-            <Box>
-              <Typography variant="h2" sx={{ mb: '1.5rem', fontSize: '4.1rem', color: '#fff' }}>
-                Ownership & Governance
-              </Typography>
-              <Typography
-                component="div"
-                sx={{ mb: '1.5rem', fontSize: '1.5rem', color: '#c9d4df' }}>
-                WineTrust is unlike any other fine wine & spirits custodian.
-              </Typography>
-              <a
-                href="#story"
-                className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
-                <p className="mb-2 text-white text-uppercase">
-                  <small>Scroll Down</small>
-                </p>
-                <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
-              </a>
-            </Box>
-          </Box>
-        </Container>
-        <div className="banner-div">
-          <img
-            className="banner-img"
-            src="/images/banners/ownership-banner.jpg"
-            alt="Banner Image"
-          />
-        </div>
-      </div>
+      <BannerWithScroll>{bannerConst}</BannerWithScroll>
       <Container sx={{ p: '100px 0' }}>
         <Box sx={{ display: { xs: 'block', md: 'flex' } }}>
           <img src="/images/ownershipPage/story.png" />

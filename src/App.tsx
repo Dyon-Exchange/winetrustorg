@@ -17,6 +17,7 @@ import WarehousePartner from 'components/WarehousePartnerPage/WarehousePartnerPa
 import MerchantPartner from 'components/MerchantPartner/MerchantPartner'
 import ProfileSetting from 'components/ProfileSetting/ProfileSetting'
 import AssetListing from 'components/AssetListing/AssetListing'
+import AssetHome from 'components/AssetHome/AssetHome'
 
 const App = () => {
   return (
@@ -101,6 +102,14 @@ const App = () => {
             element={
               <Fragment>
                 <AssetListing />
+              </Fragment>
+            }
+          />
+          <Route
+            path={constants.RoutesPath.ASSETHOME}
+            element={
+              <Fragment>
+                <AssetHome />
               </Fragment>
             }
           />
