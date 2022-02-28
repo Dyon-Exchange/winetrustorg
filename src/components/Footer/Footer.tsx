@@ -17,7 +17,8 @@ const Footer = () => {
           }}>
           <div className="logo-desc">
             <div className="ft-logo">
-              <img src="/logo/logo.png" alt="wine trust" className="ft-logo-img" />
+            <Link to={RoutesPath.HOMEPAGE}><img src="/logo/logo.png" alt="wine trust" className="ft-logo-img" /></Link>
+              
             </div>
             <div className="ft-desc">
               WineTrust is the most secure way to own and store fine wine & spirts today.

@@ -16,7 +16,7 @@ import MenuItem from '@mui/material/MenuItem'
 import './Header.css'
 import { useLocation } from 'react-router-dom'
 
-import { HeaderMenu } from '../../constants'
+import { HeaderMenu, RoutesPath } from '../../constants'
 import BootstrapBlueBtn from './../atoms/buttons/BootStrapBlueBtn'
 
 // const settings = ['Profile', 'Account', 'Connect to MetaMask', 'Dashboard', 'Logout']
@@ -70,7 +70,8 @@ const Header = () => {
             noWrap
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
-            <img src="/logo/logo.png" alt="Wine Trust logo" className="logo-img" />
+             <Link to={RoutesPath.HOMEPAGE}><img src="/logo/logo.png" alt="Wine Trust logo" className="logo-img" /></Link>
+            
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

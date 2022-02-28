@@ -4,48 +4,19 @@ import './Security.css'
 import { Box, Card, CardContent, Grid, Typography } from '@mui/material'
 import { securityConst } from './SecurityConst'
 import { ledgerConst } from './LedgerConst'
+import BannerWithScroll from 'components/atoms/banner/BannerWithScroll'
+
+const bannerConst = {
+  title: 'Security',
+  image: '/images/banners/security.png',
+  description: `Security of ownership is everything. Total security of title, condition and
+                provenance are the foundations of WineTrust.`
+}
 
 const SecurityPage = () => {
   return (
     <div>
-      <div className="banner-section">
-        <Container
-          style={{
-            position: 'relative',
-            zIndex: '0'
-          }}>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              minHeight: '100vh',
-              justifyContent: 'center'
-            }}>
-            <Box sx={{ width: '58%' }}>
-              <Typography variant="h2" sx={{ mb: '1.5rem', fontSize: '4.1rem', color: '#fff' }}>
-                Security
-              </Typography>
-              <Typography
-                component="div"
-                sx={{ mb: '1.5rem', fontSize: '1.5rem', color: '#c9d4df' }}>
-                Security of ownership is everything. Total security of title, condition and
-                provenance are the foundations of WineTrust.
-              </Typography>
-              <a
-                href="#story"
-                className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
-                <p className="mb-2 text-white text-uppercase">
-                  <small>Scroll Down</small>
-                </p>
-                <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
-              </a>
-            </Box>
-          </Box>
-        </Container>
-        <div className="banner-div">
-          <img className="banner-img" src="/images/banners/security.png" alt="WineTrust Network" />
-        </div>
-      </div>
+      <BannerWithScroll>{bannerConst}</BannerWithScroll>
       <Box sx={{ background: '#f9fcff' }}>
         <Container sx={{ p: '100px 0' }}>
           <Typography

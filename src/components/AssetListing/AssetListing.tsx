@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Container from '@mui/material/Container'
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import { GridColDef } from '@mui/x-data-grid'
 import StyledDataGrid from '../atoms/tables/StyledDataGrid'
 import { makeStyles } from '@material-ui/core/styles'
 import { useParams } from 'react-router'
 import axios from 'axios'
 import './AssetListing.css'
+import BannerSection from 'components/atoms/banner/commonBannerSection'
 
 const useStyles = makeStyles({
   root: {
@@ -70,6 +71,11 @@ const assetsTableColumns: GridColDef[] = [
   }
 ]
 
+const bannerConst = {
+  title: 'Asset Listing',
+  image: '/images/banners/home-banner.jpg',
+  description: ''
+}
 const AssetListing = () => {
   let [rowdata, setrowdata] = useState([])
   const params = useParams()
@@ -102,34 +108,7 @@ const AssetListing = () => {
 
   return (
     <div>
-      <div className="banner-section small-banner">
-        <Container
-          style={{
-            position: 'relative',
-            zIndex: '0'
-          }}>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              minHeight: '66vh',
-              justifyContent: 'center'
-            }}>
-            <Box sx={{ width: '58%' }}>
-              <Typography variant="h2" sx={{ mb: '1.5rem', fontSize: '4.1rem', color: '#fff' }}>
-                Asset Listing
-              </Typography>
-            </Box>
-          </Box>
-        </Container>
-        <div className="banner-div">
-          <img
-            className="banner-img small-banner"
-            src="/images/banners/home-banner.jpg"
-            alt="Wine Trust Home"
-          />
-        </div>
-      </div>
+      <BannerSection>{bannerConst}</BannerSection>
       <Box sx={{ background: '#e2e8f0', p: '12px 0' }}>
         <Container>
           <b>Result Found:</b> <span style={{ marginLeft: '10px' }}>{params.product}</span>

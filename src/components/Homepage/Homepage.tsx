@@ -36,7 +36,7 @@ const Homepage = () => {
               minHeight: '100vh',
               justifyContent: 'center'
             }}>
-            <Box sx={{ width: '58%', textAlign: 'center', m: '0 auto' }}>
+            <Box sx={{ width: '65%', textAlign: 'center', m: '0 auto' }}>
               <Typography variant="h2" sx={{ mb: '1.5rem', fontSize: '4.1rem', color: '#fff' }}>
                 Trust and Security
               </Typography>
@@ -65,7 +65,7 @@ const Homepage = () => {
                   border: '1px solid white',
                   color: 'white',
                   borderRadius: '5px',
-                  marginTop: '6%'
+                  marginTop:'6%'
                 }}>
                 <Typography
                   component="div"
@@ -78,8 +78,8 @@ const Homepage = () => {
                     overflow: 'hidden',
                     margin: '0px'
                   }}>
-                  <div style={{ padding: '10px 20px' }}>
-                    Enter the name of a product or your token ID
+                  <div style={{ padding: '10px 12px',opacity:'0.4' ,fontStyle:'italic'}}>
+                  Enter the ID of your token ID or search for a product
                   </div>
                 </Typography>
                 <TextField
@@ -89,7 +89,7 @@ const Homepage = () => {
                     setName(e.target.value)
                   }}
                   onKeyDown={handleKeyDown}
-                  style={{ color: 'white', width: '42%' }}
+                  style={{ color: 'white', width: '44%' }}
                   InputProps={{
                     style: {
                       color: 'white',
