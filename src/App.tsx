@@ -20,6 +20,7 @@ import AssetListing from 'components/AssetListing/AssetListing'
 import AssetHome from 'components/AssetHome/AssetHome'
 import WalletHome from 'components/WalletHome/WalletHome'
 import ContactUs from 'components/ContactUs/ContactUs'
+import PageNotFound from 'components/PageNotFound/PageNotFound'
 
 const App = () => {
   return (
@@ -128,6 +129,14 @@ const App = () => {
             element={
               <Fragment>
                 <ContactUs />
+              </Fragment>
+            }
+          />
+          <Route
+            path="/*"
+            element={
+              <Fragment>
+                <PageNotFound />
               </Fragment>
             }
           />
