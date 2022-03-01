@@ -17,7 +17,7 @@ import './Header.css'
 import { useLocation } from 'react-router-dom'
 
 import { HeaderMenu, RoutesPath } from '../../constants'
-import BootstrapBlueBtn from './../atoms/buttons/BootStrapBlueBtn'
+import ConnectMetaMask from '../ConnectMetaMask'
 
 // const settings = ['Profile', 'Account', 'Connect to MetaMask', 'Dashboard', 'Logout']
 
@@ -70,8 +70,9 @@ const Header = () => {
             noWrap
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
-             <Link to={RoutesPath.HOMEPAGE}><img src="/logo/logo.png" alt="Wine Trust logo" className="logo-img" /></Link>
-            
+            <Link to={RoutesPath.HOMEPAGE}>
+              <img src="/logo/logo.png" alt="Wine Trust logo" className="logo-img" />
+            </Link>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -122,7 +123,7 @@ const Header = () => {
               flexGrow: 1,
               display: { xs: 'none', md: 'flex' },
               justifyContent: { md: 'flex-end' },
-              paddingRight: { md: '50px' }
+              paddingRight: { md: '30px' }
             }}>
             {HeaderMenu.map(menu => (
               <Button
@@ -134,13 +135,7 @@ const Header = () => {
               </Button>
             ))}
           </Box>
-          <BootstrapBlueBtn
-            variant="contained"
-            disableRipple
-            size="medium"
-            sx={{ p: '6px 25px!important' }}>
-            Log In
-          </BootstrapBlueBtn>
+          <ConnectMetaMask></ConnectMetaMask>
           {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

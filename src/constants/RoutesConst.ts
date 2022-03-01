@@ -9,5 +9,7 @@ export const RoutesPath = {
   MERCHANTPARTNER: '/merchant-partners',
   PROFILESETTING: '/profile-setting',
   ASSETLISTING: '/search/:product',
-  ASSETHOME: '/asset-home'
+  ASSETHOME: '/asset-home',
+  WALLETHOME:'/wallet-home',
+  CONTACTUS:'/contact-us'
 }

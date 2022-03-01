@@ -18,6 +18,8 @@ import MerchantPartner from 'components/MerchantPartner/MerchantPartner'
 import ProfileSetting from 'components/ProfileSetting/ProfileSetting'
 import AssetListing from 'components/AssetListing/AssetListing'
 import AssetHome from 'components/AssetHome/AssetHome'
+import WalletHome from 'components/WalletHome/WalletHome'
+import ContactUs from 'components/ContactUs/ContactUs'
 
 const App = () => {
   return (
@@ -110,6 +112,22 @@ const App = () => {
             element={
               <Fragment>
                 <AssetHome />
+              </Fragment>
+            }
+          />
+          <Route
+            path={constants.RoutesPath.WALLETHOME}
+            element={
+              <Fragment>
+                <WalletHome />
+              </Fragment>
+            }
+          />
+          <Route
+            path={constants.RoutesPath.CONTACTUS}
+            element={
+              <Fragment>
+                <ContactUs />
               </Fragment>
             }
           />
