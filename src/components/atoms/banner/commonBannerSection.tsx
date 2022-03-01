@@ -19,7 +19,7 @@ interface Props {
 }
 const BannerSection: React.FC<Props> = ({ children }) => {
   return (
-    <div className="banner-section small-banner">
+    <div className="banner-section small-banner banner-gradient">
       <Container
         style={{
           position: 'relative',

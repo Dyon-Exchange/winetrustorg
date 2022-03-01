@@ -90,9 +90,9 @@
 .banner-gradient {
   background: linear-gradient(
     90deg,
-    #0a1928 8%,
-    rgba(10, 25, 40, 0.7) 41.79%,
-    rgba(10, 25, 40, 0) 100%
+    #0a1928 0%,
+    rgba(10, 25, 40, 0.7),
+    rgba(10, 25, 40, 0)
   );
   z-index: auto;
 }
@@ -103,6 +103,13 @@
 
 .mr-t-0 {
   margin-top: 0;
+}
+
+.asset-img {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  margin: 0 5px;
 }
 
 @keyframes App-logo-spin {
