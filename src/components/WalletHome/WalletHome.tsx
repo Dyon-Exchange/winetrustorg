@@ -71,11 +71,11 @@ const assetsTableColumns: GridColDef[] = [
 ]
 
 const bannerConst = {
-  title: 'Asset Listing',
+  title: 'Wallet Home',
   image: '/images/banners/home-banner.jpg',
   description: ''
 }
-const AssetListing = () => {
+const WalletHome = () => {
   let [rowdata, setrowdata] = useState([])
   const params = useParams()
 
@@ -114,6 +114,7 @@ const AssetListing = () => {
         </Container>
       </Box>
       <Container sx={{ pt: '4%', pb: '10%' }}>
+          <h3>My Assets</h3>
         <StyledDataGrid
           disableSelectionOnClick
           disableColumnSelector
@@ -126,4 +127,4 @@ const AssetListing = () => {
   )
 }
 
-export default AssetListing
+export default WalletHome
