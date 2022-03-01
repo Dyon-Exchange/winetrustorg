@@ -83,7 +83,9 @@ const contactUsStyles = makeStyles(theme => {
       },
 
       '& .MuiCheckbox-root': {
-        padding: '0'
+        padding: '0',
+        paddingRight: '6px',
+        verticalAlign: 'sub'
       },
       '& .checkbox-outer': {
         margin: '8px 0 24px 0'
