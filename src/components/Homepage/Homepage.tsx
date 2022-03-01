@@ -65,7 +65,7 @@ const Homepage = () => {
                   border: '1px solid white',
                   color: 'white',
                   borderRadius: '5px',
-                  marginTop:'6%'
+                  marginTop: '6%'
                 }}>
                 <Typography
                   component="div"
@@ -78,8 +78,8 @@ const Homepage = () => {
                     overflow: 'hidden',
                     margin: '0px'
                   }}>
-                  <div style={{ padding: '10px 12px',opacity:'0.4' ,fontStyle:'italic'}}>
-                  Enter the ID of your token ID or search for a product
+                  <div style={{ padding: '10px 12px', opacity: '0.4', fontStyle: 'italic' }}>
+                    Enter the ID of your token ID or search for a product
                   </div>
                 </Typography>
                 <TextField
@@ -166,7 +166,7 @@ const Homepage = () => {
             spacing={4}
             sx={{ p: '70px 0', justifyContent: 'center', maxWidth: '1100px' }}>
             {wtProblemsConst.map((item: any) => (
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid item xs={12} sm={6} md={4} key={item.id}>
                 <Card className="card-shadow border-radius-22" sx={{ minHeight: '250px' }}>
                   <CardContent sx={{ p: '1.5rem 3rem', textAlign: 'center' }}>
                     <img src={item.icon} alt={item.desc} />

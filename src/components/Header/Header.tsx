@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -9,39 +9,42 @@ import Typography from '@mui/material/Typography'
 import Menu from '@mui/material/Menu'
 import MenuIcon from '@mui/icons-material/Menu'
 import Container from '@mui/material/Container'
-// import Avatar from '@mui/material/Avatar'
+
+import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
-// import Tooltip from '@mui/material/Tooltip'
+import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
-import './Header.css'
-import { useLocation } from 'react-router-dom'
 
 import { HeaderMenu, RoutesPath } from '../../constants'
-import ConnectMetaMask from '../ConnectMetaMask'
 
-// const settings = ['Profile', 'Account', 'Connect to MetaMask', 'Dashboard', 'Logout']
+import { WalletContext } from '../../contexts/WalletContext'
+import BootstrapBlueBtn from '../atoms/buttons/BootStrapBlueBtn'
+
+import './Header.css'
 
 const Header = () => {
+  const { walletConnected, connectAccount } = React.useContext(WalletContext)
   const navigate = useNavigate()
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
-  // const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
   }
 
-  // const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-  //   setAnchorElUser(event.currentTarget)
-  // }
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget)
+  }
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
   }
 
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null)
-  // }
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null)
+  }
+
   const HeaderBgColor = () => {
     const location = useLocation()
     const path = location.pathname.split('/')[1]
@@ -135,35 +138,52 @@ const Header = () => {
               </Button>
             ))}
           </Box>
-          <ConnectMetaMask></ConnectMetaMask>
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right'
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right'
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}>
-              {settings.map(setting => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+          {!walletConnected ? (
+            <BootstrapBlueBtn
+              variant="contained"
+              disableRipple
+              size="medium"
+              style={{ borderRadius: '5px' }}
+              sx={{ p: '6px 25px!important' }}
+              onClick={connectAccount}>
+              Connect
+            </BootstrapBlueBtn>
+          ) : (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar
+                    alt="Unnamed"
+                    src="/static/images/avatar/2.jpg"
+                    sx={{
+                      background: 'linear-gradient(rgb(0, 41, 84) 0%, rgba(0, 41, 84, 0) 100%)',
+                      border: '1px solid white',
+                      borderRadius: '50%'
+                    }}
+                  />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}>
+                <MenuItem key={123} onClick={() => navigate(RoutesPath.PROFILESETTING)}>
+                  <Typography textAlign="center">Profile</Typography>
                 </MenuItem>
-              ))}
-            </Menu>
-          </Box> */}
+              </Menu>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

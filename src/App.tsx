@@ -21,129 +21,132 @@ import AssetHome from 'components/AssetHome/AssetHome'
 import WalletHome from 'components/WalletHome/WalletHome'
 import ContactUs from 'components/ContactUs/ContactUs'
 import PageNotFound from 'components/PageNotFound/PageNotFound'
+import { WalletContextProvider } from 'contexts/WalletContext'
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Header />
-      <Box display="flex" flexDirection="column" minH="inherit">
-        <Routes>
-          <Route
-            path={constants.RoutesPath.HOMEPAGE}
-            element={
-              <Fragment>
-                <Homepage />
-              </Fragment>
-            }
-          />
-          <Route
-            path={constants.RoutesPath.ABOUT}
-            element={
-              <Fragment>
-                <About />
-              </Fragment>
-            }
-          />
-          <Route
-            path={constants.RoutesPath.NETWORK}
-            element={
-              <Fragment>
-                <NetworkPage />
-              </Fragment>
-            }
-          />
-          <Route
-            path={constants.RoutesPath.SECURITY}
-            element={
-              <Fragment>
-                <Security />
-              </Fragment>
-            }
-          />
-          <Route
-            path={constants.RoutesPath.OWNERSHIP}
-            element={
-              <Fragment>
-                <OwnershipPage />
-              </Fragment>
-            }
-          />
-          <Route
-            path={constants.RoutesPath.TECHNOLOGY}
-            element={
-              <Fragment>
-                <TechnologyPage />
-              </Fragment>
-            }
-          />
-          <Route
-            path={constants.RoutesPath.WAREHOUSEPARTNER}
-            element={
-              <Fragment>
-                <WarehousePartner />
-              </Fragment>
-            }
-          />
-          <Route
-            path={constants.RoutesPath.MERCHANTPARTNER}
-            element={
-              <Fragment>
-                <MerchantPartner />
-              </Fragment>
-            }
-          />
-          <Route
-            path={constants.RoutesPath.PROFILESETTING}
-            element={
-              <Fragment>
-                <ProfileSetting />
-              </Fragment>
-            }
-          />
-          <Route
-            path={constants.RoutesPath.ASSETLISTING}
-            element={
-              <Fragment>
-                <AssetListing />
-              </Fragment>
-            }
-          />
-          <Route
-            path={constants.RoutesPath.ASSETHOME}
-            element={
-              <Fragment>
-                <AssetHome />
-              </Fragment>
-            }
-          />
-          <Route
-            path={constants.RoutesPath.WALLETHOME}
-            element={
-              <Fragment>
-                <WalletHome />
-              </Fragment>
-            }
-          />
-          <Route
-            path={constants.RoutesPath.CONTACTUS}
-            element={
-              <Fragment>
-                <ContactUs />
-              </Fragment>
-            }
-          />
-          <Route
-            path="/*"
-            element={
-              <Fragment>
-                <PageNotFound />
-              </Fragment>
-            }
-          />
-        </Routes>
-      </Box>
-      <Footer />
-    </BrowserRouter>
+    <WalletContextProvider>
+      <BrowserRouter>
+        <Header />
+        <Box display="flex" flexDirection="column" minH="inherit">
+          <Routes>
+            <Route
+              path={constants.RoutesPath.HOMEPAGE}
+              element={
+                <Fragment>
+                  <Homepage />
+                </Fragment>
+              }
+            />
+            <Route
+              path={constants.RoutesPath.ABOUT}
+              element={
+                <Fragment>
+                  <About />
+                </Fragment>
+              }
+            />
+            <Route
+              path={constants.RoutesPath.NETWORK}
+              element={
+                <Fragment>
+                  <NetworkPage />
+                </Fragment>
+              }
+            />
+            <Route
+              path={constants.RoutesPath.SECURITY}
+              element={
+                <Fragment>
+                  <Security />
+                </Fragment>
+              }
+            />
+            <Route
+              path={constants.RoutesPath.OWNERSHIP}
+              element={
+                <Fragment>
+                  <OwnershipPage />
+                </Fragment>
+              }
+            />
+            <Route
+              path={constants.RoutesPath.TECHNOLOGY}
+              element={
+                <Fragment>
+                  <TechnologyPage />
+                </Fragment>
+              }
+            />
+            <Route
+              path={constants.RoutesPath.WAREHOUSEPARTNER}
+              element={
+                <Fragment>
+                  <WarehousePartner />
+                </Fragment>
+              }
+            />
+            <Route
+              path={constants.RoutesPath.MERCHANTPARTNER}
+              element={
+                <Fragment>
+                  <MerchantPartner />
+                </Fragment>
+              }
+            />
+            <Route
+              path={constants.RoutesPath.PROFILESETTING}
+              element={
+                <Fragment>
+                  <ProfileSetting />
+                </Fragment>
+              }
+            />
+            <Route
+              path={constants.RoutesPath.ASSETLISTING}
+              element={
+                <Fragment>
+                  <AssetListing />
+                </Fragment>
+              }
+            />
+            <Route
+              path={constants.RoutesPath.ASSETHOME}
+              element={
+                <Fragment>
+                  <AssetHome />
+                </Fragment>
+              }
+            />
+            <Route
+              path={constants.RoutesPath.WALLETHOME}
+              element={
+                <Fragment>
+                  <WalletHome />
+                </Fragment>
+              }
+            />
+            <Route
+              path={constants.RoutesPath.CONTACTUS}
+              element={
+                <Fragment>
+                  <ContactUs />
+                </Fragment>
+              }
+            />
+            <Route
+              path="/*"
+              element={
+                <Fragment>
+                  <PageNotFound />
+                </Fragment>
+              }
+            />
+          </Routes>
+        </Box>
+        <Footer />
+      </BrowserRouter>
+    </WalletContextProvider>
   )
 }
 
