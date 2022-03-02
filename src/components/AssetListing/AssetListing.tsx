@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Container from '@mui/material/Container'
 import { Box } from '@mui/material'
-import { GridColDef } from '@mui/x-data-grid'
+import { GridColDef, GridRowParams } from '@mui/x-data-grid'
 import StyledDataGrid from '../atoms/tables/StyledDataGrid'
 import { useParams } from 'react-router'
 import axios from 'axios'
 import assetListingStyle from './AssetListingStyle'
+import { useNavigate } from 'react-router-dom'
 
 const assetsTableColumns: GridColDef[] = [
   {
@@ -25,10 +26,10 @@ const assetsTableColumns: GridColDef[] = [
     }
   },
   {
-    field: 'tokenId',
+    field: 'assetId',
     headerClassName: 'super-app-theme--header',
     headerAlign: 'center',
-    headerName: 'Token ID',
+    headerName: 'Asset ID',
     minWidth: 100,
     flex: 1,
     cellClassName: 'blue-text'
@@ -54,6 +55,7 @@ const assetsTableColumns: GridColDef[] = [
 const AssetListing = () => {
   let [rowdata, setrowdata] = useState([])
   const params = useParams()
+  const navigate = useNavigate()
   const classes = assetListingStyle()
 
   useEffect(() => {
@@ -61,17 +63,16 @@ const AssetListing = () => {
   }, [])
 
   function fetchAssets(params: any) {
-    let rowCounter = 1
     let queryStr = `${process.env.REACT_APP_PRODUCT_SEARCH_ENDPOINT}${params.product}`
     axios.get(queryStr).then((result: any) => {
       const rowData: any = []
       result.data.forEach((prod: any) => {
         let ownerName = prod.preAdvice.owner.firstName + ' ' + prod.preAdvice.owner.lastName
         rowData.push({
-          id: rowCounter++,
+          id: prod._id,
           assetImg: '/images/assetImg.jpeg',
           assetName: prod.product.longName,
-          tokenId: prod.product.id,
+          assetId: prod._id,
           location: prod.warehouseLocationNo,
           owner: ownerName
         })
@@ -80,6 +81,9 @@ const AssetListing = () => {
     })
   }
 
+  function handleOnClick(params: GridRowParams) {
+    navigate(`/asset-home/${params.row.assetId}`)
+  }
   return (
     <div>
       <Container sx={{ mt: '14%', pb: '10%' }}>
@@ -92,6 +96,7 @@ const AssetListing = () => {
           columns={assetsTableColumns}
           rows={rowdata}
           className={classes.root}
+          onRowClick={(params: GridRowParams) => handleOnClick(params)}
         />
       </Container>
     </div>

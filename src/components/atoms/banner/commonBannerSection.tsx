@@ -19,26 +19,37 @@ interface Props {
 }
 const BannerSection: React.FC<Props> = ({ children }) => {
   return (
-    <div className="banner-section small-banner banner-gradient">
-      <Container
-        style={{
-          position: 'relative',
-          zIndex: '9'
-        }}>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            minHeight: '585px',
-            justifyContent: 'center'
+    <div className="banner-section small-banner">
+      <div className="banner-gradient">
+        <Container
+          style={{
+            position: 'relative',
+            zIndex: '9'
           }}>
-          <Box sx={{ width: '58%' }}>
-            <Typography variant="h2" sx={{ mb: '1.5rem', fontSize: '4.1rem', color: '#fff' }}>
-              {children.title}
-            </Typography>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              minHeight: '585px',
+              justifyContent: 'center'
+            }}>
+            <Box sx={{ width: '58%' }}>
+              <Typography variant="h2" sx={{ mb: '1.5rem', fontSize: '4.1rem', color: '#fff' }}>
+                {children.title}
+              </Typography>
+              {children.description ? (
+                <Typography
+                  component="div"
+                  sx={{ mb: '1.5rem', fontSize: '1.5rem', color: '#c9d4df' }}>
+                  {children.description}
+                </Typography>
+              ) : (
+                ''
+              )}
+            </Box>
           </Box>
-        </Box>
-      </Container>
+        </Container>
+      </div>
       <div className="banner-div">
         <img className="banner-img small-banner" src={children.image} alt="Wine Trust Home" />
       </div>
