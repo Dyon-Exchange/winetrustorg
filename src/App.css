@@ -88,7 +88,7 @@
 }
 
 .banner-gradient {
-  background: linear-gradient(90deg, #0a1928 0%, , rgba(10, 25, 40, 0.7), rgba(10, 25, 40, 0));
+  background: linear-gradient(90deg, #0a1928 0%, rgba(10, 25, 40, 0.7), rgba(10, 25, 40, 0));
   z-index: auto;
 }
 

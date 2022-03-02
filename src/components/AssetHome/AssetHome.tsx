@@ -4,7 +4,6 @@ import { Box } from '@mui/material'
 import customStyles from './AssetHomeStyle'
 import clsx from 'clsx'
 import 'react-multi-carousel/lib/styles.css'
-import BannerSection from 'components/atoms/banner/commonBannerSection'
 import StyledCarousel from './../atoms/carousel/StyledCarousel'
 // import { useParams } from 'react-router'
 // import axios from 'axios'
@@ -43,21 +42,15 @@ const AssetHome = () => {
       items: 1
     }
   }
-  const bannerConst = {
-    title: 'Asset Home',
-    image: '/images/banners/home-banner.jpg',
-    description: ''
-  }
   return (
     <div>
-      <BannerSection>{bannerConst}</BannerSection>
       <Box sx={{ background: '#e2e8f0', p: '12px 0' }}>
         {/* <Container>
           <b>Result Found:</b> <span style={{ marginLeft: '10px' }}>{params.product}</span>
         </Container> */}
       </Box>
-      <Container>
-        <Box className={clsx(classes.sectionMargin, classes.flex, classes.sectionPadding)}>
+      <Container sx={{ marginTop: '9rem' }}>
+        <Box className={clsx(classes.flex, classes.sectionPadding)}>
           <img
             src="/images/assetImg.jpeg"
             alt="asset home label"
