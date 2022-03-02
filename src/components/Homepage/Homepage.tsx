@@ -36,7 +36,7 @@ const Homepage = () => {
               minHeight: '100vh',
               justifyContent: 'center'
             }}>
-            <Box sx={{ width: '65%', textAlign: 'center', m: '0 auto' }}>
+            <Box sx={{ width: '66%', textAlign: 'center', m: '0 auto' }}>
               <Typography variant="h2" sx={{ mb: '1.5rem', fontSize: '4.1rem', color: '#fff' }}>
                 Trust and Security
               </Typography>
@@ -46,50 +46,32 @@ const Homepage = () => {
                   mb: '1.5rem',
                   fontSize: '1.5rem',
                   color: '#c9d4df',
-                  width: '88%',
+                  width: '100%',
                   ml: 'auto',
                   mr: 'auto'
                 }}>
-                WineTrust is the most secure way to own and store fine wine & spirits today.
+                WineTrust is the most secure way to own and store fine wine & spirits.
               </Typography>
               <Link to={RoutesPath.SECURITY} className="btn btn-light learn-more-btn">
                 Learn More
                 <span className="arrow-image"></span>
               </Link>
-              <Box
-                style={{
-                  display: 'flex',
-                  columnGap: '10px',
-                  alignContent: 'center',
-                  justifyContent: 'space-between',
-                  border: '1px solid white',
-                  color: 'white',
-                  borderRadius: '5px',
-                  marginTop: '6%'
-                }}>
-                <Typography
-                  component="div"
-                  style={{
-                    marginTop: 'auto',
-                    borderRadius: '5px 0px 0px 5px',
-                    marginBottom: 'auto',
-                    background: 'rgba(255, 255, 255, 0.2)',
-                    backdropFilter: 'blur(60px)',
-                    overflow: 'hidden',
-                    margin: '0px'
-                  }}>
-                  <div style={{ padding: '10px 12px', opacity: '0.4', fontStyle: 'italic' }}>
-                    Enter the ID of your token ID or search for a product
-                  </div>
-                </Typography>
+              <Box sx={{ marginTop: '6%' }}>
                 <TextField
                   id="outlined-start-adornment"
+                  placeholder="Enter the ID of your token ID or search for a product"
                   value={name}
                   onChange={e => {
                     setName(e.target.value)
                   }}
                   onKeyDown={handleKeyDown}
-                  style={{ color: 'white', width: '44%' }}
+                  style={{
+                    color: 'white',
+                    width: '90%',
+                    border: '1px solid #fff',
+                    padding: '0 12px',
+                    borderRadius: '5px'
+                  }}
                   InputProps={{
                     style: {
                       color: 'white',
@@ -111,6 +93,7 @@ const Homepage = () => {
                   }}
                 />
               </Box>
+
               <a
                 href="#story"
                 className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">

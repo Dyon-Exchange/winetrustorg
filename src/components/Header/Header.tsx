@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -7,7 +7,6 @@ import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import Menu from '@mui/material/Menu'
-import MenuIcon from '@mui/icons-material/Menu'
 import Container from '@mui/material/Container'
 
 import Avatar from '@mui/material/Avatar'
@@ -45,12 +44,6 @@ const Header = () => {
     setAnchorElUser(null)
   }
 
-  const HeaderBgColor = () => {
-    const location = useLocation()
-    const path = location.pathname.split('/')[1]
-    return path + '-header'
-  }
-
   return (
     <AppBar
       position="static"
@@ -60,14 +53,13 @@ const Header = () => {
       }}>
       <Container
         style={{
-          background: 'linear-gradient( 180deg, #002954 0%, rgba(0, 41, 84, 0) 100%)',
-          zIndex: '1000',
+          backgroundColor: '#002954',
+
           position: 'absolute',
           width: '100%',
           maxWidth: '100%'
-        }}
-        className={HeaderBgColor()}>
-        <Toolbar disableGutters style={{ maxWidth: '88%', margin: 'auto' }}>
+        }}>
+        <Toolbar disableGutters style={{ maxWidth: '88%', margin: 'auto', zIndex: '9999' }}>
           <Typography
             variant="h6"
             noWrap
@@ -86,7 +78,7 @@ const Header = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit">
-              <MenuIcon />
+              <img src="/images/general/menu.svg" />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -103,7 +95,8 @@ const Header = () => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' }
+                display: { xs: 'block', md: 'none' },
+                zIndex: '9999'
               }}>
               {HeaderMenu.map(menu => (
                 <MenuItem key={menu.menuName}>

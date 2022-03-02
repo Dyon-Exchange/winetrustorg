@@ -23,7 +23,7 @@ const BannerSection: React.FC<Props> = ({ children }) => {
       <Container
         style={{
           position: 'relative',
-          zIndex: '0'
+          zIndex: '9'
         }}>
         <Box
           sx={{

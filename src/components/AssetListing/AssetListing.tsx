@@ -3,28 +3,9 @@ import Container from '@mui/material/Container'
 import { Box } from '@mui/material'
 import { GridColDef } from '@mui/x-data-grid'
 import StyledDataGrid from '../atoms/tables/StyledDataGrid'
-import { makeStyles } from '@material-ui/core/styles'
 import { useParams } from 'react-router'
 import axios from 'axios'
-import BannerSection from 'components/atoms/banner/commonBannerSection'
-
-const useStyles = makeStyles({
-  root: {
-    '& .MuiDataGrid-row': {
-      border: '1px solid rgba(224, 224, 224, 1)',
-      marginTop: '8px',
-      borderRadius: '6px',
-      width: 'calc(100% - 6px)'
-    },
-    '& .MuiDataGrid-columnHeaders': {
-      width: 'calc(100% - 1px)',
-      borderRadius: '6px'
-    },
-    '& .MuiDataGrid-columnHeaderTitleContainer': {
-      justifyContent: 'normal!important'
-    }
-  }
-})
+import assetListingStyle from './AssetListingStyle'
 
 const assetsTableColumns: GridColDef[] = [
   {
@@ -56,7 +37,7 @@ const assetsTableColumns: GridColDef[] = [
     field: 'location',
     headerClassName: 'super-app-theme--header',
     headerAlign: 'center',
-    headerName: 'Location',
+    headerName: 'Warehouse Name',
     minWidth: 100,
     flex: 1
   },
@@ -70,14 +51,10 @@ const assetsTableColumns: GridColDef[] = [
   }
 ]
 
-const bannerConst = {
-  title: 'Asset Listing',
-  image: '/images/banners/home-banner.jpg',
-  description: ''
-}
 const AssetListing = () => {
   let [rowdata, setrowdata] = useState([])
   const params = useParams()
+  const classes = assetListingStyle()
 
   useEffect(() => {
     fetchAssets(params)
@@ -103,17 +80,12 @@ const AssetListing = () => {
     })
   }
 
-  const classes = useStyles()
-
   return (
     <div>
-      <BannerSection>{bannerConst}</BannerSection>
-      <Box sx={{ background: '#e2e8f0', p: '12px 0' }}>
-        <Container>
-          <b>Result Found:</b> <span style={{ marginLeft: '10px' }}>{params.product}</span>
-        </Container>
-      </Box>
-      <Container sx={{ pt: '4%', pb: '10%' }}>
+      <Container sx={{ mt: '14%', pb: '10%' }}>
+        <Box className={classes.resultFoundDiv}>
+          <b>Result Found:</b> <span>{params.product}</span>
+        </Box>
         <StyledDataGrid
           disableSelectionOnClick
           disableColumnSelector
