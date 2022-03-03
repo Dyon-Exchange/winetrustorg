@@ -1,12 +1,24 @@
-import { Box, Card, CardContent, Container, Grid, InputAdornment, Typography } from '@mui/material'
+import {
+  Avatar,
+  Box,
+  Card,
+  CardContent,
+  Container,
+  Grid,
+  InputAdornment,
+  Typography
+} from '@mui/material'
 import React, { useState } from 'react'
 import { RoutesPath } from '../../constants'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './Homepage.css'
 import { wtProblemsConst } from './WtProblemsConst'
 import { TextField } from '@material-ui/core'
+import BootstrapBlueBtn from 'components/atoms/buttons/BootStrapBlueBtn'
+import homePageStyles from './HomePageStyle'
 
 const Homepage = () => {
+  const classes = homePageStyles()
   const [name, setName] = useState('')
   const navigate = useNavigate()
   function handleKeyDown(e: any) {
@@ -36,45 +48,34 @@ const Homepage = () => {
               minHeight: '100vh',
               justifyContent: 'center'
             }}>
-            <Box sx={{ width: '66%', textAlign: 'center', m: '0 auto' }}>
-              <Typography variant="h2" sx={{ mb: '1.5rem', fontSize: '4.1rem', color: '#fff' }}>
-                Trust and Security
+            <Box className={classes.homeTopBlock}>
+              <Typography variant="h2" className="top-heading">
+                The most secure way to own & store fine wine & spirits.
               </Typography>
-              <Typography
-                component="div"
-                sx={{
-                  mb: '1.5rem',
-                  fontSize: '1.5rem',
-                  color: '#c9d4df',
-                  width: '100%',
-                  ml: 'auto',
-                  mr: 'auto'
+              <BootstrapBlueBtn
+                variant="contained"
+                disableRipple
+                size="small"
+                endIcon={<Avatar src={'/images/general/arrow-right-white.svg'} />}
+                className="learn-more-btn"
+                onClick={() => {
+                  navigate(RoutesPath.SECURITY)
                 }}>
-                WineTrust is the most secure way to own and store fine wine & spirits.
-              </Typography>
-              <Link to={RoutesPath.SECURITY} className="btn btn-light learn-more-btn">
                 Learn More
-                <span className="arrow-image"></span>
-              </Link>
+              </BootstrapBlueBtn>
               <Box sx={{ marginTop: '6%' }}>
+                <Box className="search-heading">Find a Token or Product:</Box>
                 <TextField
                   id="outlined-start-adornment"
-                  placeholder="Enter the ID of your token ID or search for a product"
+                  placeholder="Enter your token ID or product name to search"
                   value={name}
                   onChange={e => {
                     setName(e.target.value)
                   }}
                   onKeyDown={handleKeyDown}
-                  style={{
-                    color: 'white',
-                    width: '90%',
-                    border: '1px solid #fff',
-                    padding: '0 12px',
-                    borderRadius: '5px'
-                  }}
+                  className="search-bar"
                   InputProps={{
                     style: {
-                      color: 'white',
                       borderRadius: '5px',
                       border: 'none',
                       padding: '5px 0px'

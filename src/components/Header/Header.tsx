@@ -139,7 +139,7 @@ const Header = () => {
               style={{ borderRadius: '5px' }}
               sx={{ p: '6px 25px!important' }}
               onClick={connectAccount}>
-              Connect
+              Connect Wallet
             </BootstrapBlueBtn>
           ) : (
             <Box sx={{ flexGrow: 0 }}>
