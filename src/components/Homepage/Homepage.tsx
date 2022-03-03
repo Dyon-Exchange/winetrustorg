@@ -49,8 +49,8 @@ const Homepage = () => {
               justifyContent: 'center'
             }}>
             <Box className={classes.homeTopBlock}>
-              <Typography variant="h2" className="top-heading">
-                The most secure way to own & store fine wine & spirits.
+              <Typography variant="h1" className="top-heading">
+                The Most Secure way to Own & Store Fine Wine & Spirits.
               </Typography>
               <BootstrapBlueBtn
                 variant="contained"
@@ -107,7 +107,7 @@ const Homepage = () => {
           </Box>
         </Container>
       </div>
-      <div id="wt-revolution" className="wt-revolution">
+      <Container className={classes.revolutionContainer}>
         <div className="wt-revolution-img">
           <img src="/images/homepage/revolution.png" alt="wt-revolution-img"></img>
         </div>
@@ -130,7 +130,7 @@ const Homepage = () => {
             </li>
           </ul>
         </div>
-      </div>
+      </Container>
 
       <Box sx={{ background: '#f9fcff' }}>
         <Container sx={{ p: '100px 0' }}>
@@ -145,10 +145,7 @@ const Homepage = () => {
               over what they own.
             </p>
           </Box>
-          <Grid
-            container
-            spacing={4}
-            sx={{ p: '70px 0', justifyContent: 'center', maxWidth: '1100px' }}>
+          <Grid container spacing={4} sx={{ p: '70px 0', justifyContent: 'center' }}>
             {wtProblemsConst.map((item: any) => (
               <Grid item xs={12} sm={6} md={4} key={item.id}>
                 <Card className="card-shadow border-radius-22" sx={{ minHeight: '250px' }}>
