@@ -20,7 +20,8 @@ const assetListingStyle = makeStyles({
     },
     '& .view-btn': {
       color: '#fff',
-      borderRadius: '0px'
+      cursor: 'pointer',
+      padding: '16px 36px 15px'
     }
   },
   resultFoundDiv: {

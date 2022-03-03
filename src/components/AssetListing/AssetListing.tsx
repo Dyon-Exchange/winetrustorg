@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Container from '@mui/material/Container'
 import { Box } from '@mui/material'
-import { GridColDef, GridRowParams, GridValueGetterParams } from '@mui/x-data-grid'
+import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
 import StyledDataGrid from '../atoms/tables/StyledDataGrid'
 import { useParams } from 'react-router'
 import axios from 'axios'
@@ -40,8 +40,7 @@ const AssetListing = () => {
       headerClassName: 'super-app-theme--header',
       headerAlign: 'center',
       headerName: 'Asset ID',
-      minWidth: 100,
-      flex: 1,
+      minWidth: 200,
       cellClassName: 'blue-text'
     },
     {
@@ -49,7 +48,7 @@ const AssetListing = () => {
       headerClassName: 'super-app-theme--header',
       headerAlign: 'center',
       headerName: 'Warehouse Name',
-      minWidth: 250
+      minWidth: 280
     },
     {
       field: 'owner',
@@ -63,7 +62,7 @@ const AssetListing = () => {
       headerClassName: 'super-app-theme--header',
       headerAlign: 'center',
       flex: 1,
-      minWidth: 10,
+      minWidth: 80,
       align: 'center',
       renderCell: (param: GridValueGetterParams) => (
         <BootstrapBlueBtn onClick={() => handleOnClick(param)} className="view-btn">
@@ -83,7 +82,7 @@ const AssetListing = () => {
           assetImg: '/images/assetImg.jpeg',
           assetName: prod.product.longName,
           assetId: prod._id,
-          location: prod.warehouseLocationNo,
+          location: prod.preAdvice.arrivalWarehouse.name,
           owner: ownerName
         })
       })
@@ -106,7 +105,6 @@ const AssetListing = () => {
           columns={assetsTableColumns}
           rows={rowdata}
           className={classes.root}
-          onRowClick={(params: GridRowParams) => handleOnClick(params)}
         />
       </Container>
     </div>

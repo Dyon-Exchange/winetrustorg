@@ -57,7 +57,6 @@ const Homepage = () => {
                 disableRipple
                 size="small"
                 endIcon={<Avatar src={'/images/general/arrow-right-white.svg'} />}
-                className="learn-more-btn"
                 onClick={() => {
                   navigate(RoutesPath.SECURITY)
                 }}>

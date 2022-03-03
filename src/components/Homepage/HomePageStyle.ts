@@ -14,14 +14,6 @@ const homePageStyles = makeStyles(theme => {
         marginLeft: 'auto',
         marginRight: 'auto'
       },
-
-      '& .learn-more-btn': {
-        borderRadius: '5px',
-        fontFamily: 'Gilroy',
-        fontWeight: '700',
-        fontSize: '1rem',
-        padding: '0.5rem 1.5rem'
-      },
       '& .search-heading': {
         color: '#fff',
         float: 'left',

@@ -13,7 +13,8 @@ const StyledDataGrid = styled(DataGrid)({
   },
   '& .MuiDataGrid-cell': {
     'font-size': '13px',
-    display: 'block'
+    display: 'block',
+    borderBottom: 'none'
   },
   '& .MuiDataGrid-iconButtonContainer, .MuiDataGrid-menuIcon': {
     display: 'none'
