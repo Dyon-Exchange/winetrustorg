@@ -22,7 +22,7 @@ import BootstrapBlueBtn from '../atoms/buttons/BootStrapBlueBtn'
 import './Header.css'
 
 const Header = () => {
-  const { walletConnected, connectAccount } = React.useContext(WalletContext)
+  const { walletConnected, connectAccount, loggedIn, login } = React.useContext(WalletContext)
   const navigate = useNavigate()
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
@@ -42,6 +42,14 @@ const Header = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
+  }
+
+  const handleGotoProfile = async () => {
+    if (!loggedIn) {
+      await login()
+    }
+
+    navigate(RoutesPath.PROFILESETTING)
   }
 
   return (
@@ -171,7 +179,7 @@ const Header = () => {
                 }}
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}>
-                <MenuItem key={123} onClick={() => navigate(RoutesPath.PROFILESETTING)}>
+                <MenuItem key={123} onClick={handleGotoProfile}>
                   <Typography textAlign="center">Profile</Typography>
                 </MenuItem>
               </Menu>
