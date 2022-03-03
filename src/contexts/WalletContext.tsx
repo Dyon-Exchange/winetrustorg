@@ -1,11 +1,15 @@
 import detectEthereumProvider from '@metamask/detect-provider'
 import { providers } from 'ethers'
-import React, { createContext, useCallback, useEffect, useState } from 'react'
+import React, { createContext, useCallback, useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
+import Web3 from 'web3';
 
 import { SUPPORTED_NETWORKS } from '../constants'
 import { UserDetails, NetworkDetails, IWalletContext } from '../interfaces'
 import { convertWeiToNumber } from '../helpers/ethers/convertValue'
+import { AuthDetails } from 'interfaces/AuthDetails'
+import useLocalStorage from 'hooks/localStorage/useLocalStorage'
+import { authRequest, createUserRequest, searchUsersRequest, UserData } from 'api/auth/auhtentication'
 
 const INITIAL_WALLET_CONTEXT = {
   userDetails: undefined,
@@ -13,15 +17,22 @@ const INITIAL_WALLET_CONTEXT = {
   initialising: true,
   isMetaMaskInstalled: undefined,
   walletConnected: false,
-  connectAccount: async () => {},
+  connectAccount: async () => { },
   userRoles: undefined,
   networkDetails: undefined,
-  wineTrustTokenAPI: undefined
+  wineTrustTokenAPI: undefined,
+  loggedIn: false,
+  login: async () => { },
+  signup: async () => { },
+  logout: () => { },
+  authDetails: undefined,
 }
 
 export const WalletContext = createContext<IWalletContext>(INITIAL_WALLET_CONTEXT)
 
 export const WalletContextProvider = ({ children }: { children: ReactNode }) => {
+  const authStorageKey = "auth";
+
   // loading state for initialising the context
   const [initialising, setInitialising] = useState(true)
 
@@ -30,14 +41,24 @@ export const WalletContextProvider = ({ children }: { children: ReactNode }) => 
 
   const [networkDetails, setNetworkDetails] = useState<NetworkDetails>()
 
+  const [authDetails, setAuthDetails] = useLocalStorage<
+    AuthDetails | undefined
+  >(authStorageKey, undefined);
+
   const isMetaMaskInstalled = window.ethereum?.isMetaMask
 
-  const walletConnected = userDetails !== undefined && provider !== undefined && !initialising
+  const walletConnected = userDetails !== undefined && provider !== undefined && !initialising;
+
+  const loggedIn = useMemo(() => {
+    if (!authDetails?.accessToken) return false;
+    return true;
+  }, [authDetails?.accessToken]);
 
   const clearConnectedAccount = useCallback(() => {
     setProvider(undefined)
     setUserDetails(undefined)
-  }, [setProvider, setUserDetails])
+    setAuthDetails(undefined)
+  }, [setProvider, setUserDetails, setAuthDetails])
 
   // will setup wallet context to the currently selected metamask account
   const connectAccount = useCallback(async () => {
@@ -62,7 +83,7 @@ export const WalletContextProvider = ({ children }: { children: ReactNode }) => 
 
   // automatically connect metamask account if one is already connected
   useEffect(() => {
-    ;(async () => {
+    (async () => {
       try {
         const webProvider = (await detectEthereumProvider({
           mustBeMetaMask: true
@@ -113,7 +134,7 @@ export const WalletContextProvider = ({ children }: { children: ReactNode }) => 
     }
 
     // Grab the initial chain the user is connected to
-    ;(async () => {
+    (async () => {
       const chainId = await (window.ethereum as any).request({
         method: 'eth_chainId'
       })
@@ -130,6 +151,44 @@ export const WalletContextProvider = ({ children }: { children: ReactNode }) => 
     }
   }, [clearConnectedAccount, connectAccount])
 
+  const login = useCallback(async () => {
+    if (!userDetails) {
+      return;
+    }
+
+    let user;
+    const users = await searchUsersRequest(userDetails.address);
+    if (users.length > 0) {
+      user = users[0];
+    } else {
+      user = await createUserRequest(userDetails.address);
+    }
+
+    const signature = await handleSignMessage(user);
+
+    const { token } = await authRequest(userDetails.address, signature);
+    setAuthDetails({ accessToken: token, address: userDetails.address });
+  }, [setAuthDetails, userDetails]);
+
+  const handleSignMessage = ({ ethAddress, nonce }: UserData) => {
+    const web3 = new Web3(Web3.givenProvider);
+
+    return new Promise<string>((resolve, reject) =>
+      web3.eth.personal.sign(
+        web3.utils.fromUtf8(`I am signing my one-time nonce: ${nonce}`),
+        ethAddress,
+        "test password!",
+        (err, signature) => {
+          if (err) return reject(err);
+          return resolve(signature);
+        }
+      )
+    );
+  };
+
+  const signup = useCallback(async () => { }, []);
+  const logout = useCallback(() => { }, []);
+
   return (
     <WalletContext.Provider
       value={{
@@ -139,7 +198,12 @@ export const WalletContextProvider = ({ children }: { children: ReactNode }) => 
         isMetaMaskInstalled,
         walletConnected,
         connectAccount,
-        networkDetails
+        networkDetails,
+        loggedIn,
+        login,
+        signup,
+        logout,
+        authDetails,
       }}>
       {children}
     </WalletContext.Provider>
