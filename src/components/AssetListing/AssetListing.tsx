@@ -71,7 +71,7 @@ const AssetListing = () => {
         rowData.push({
           id: prod._id,
           assetImg: '/images/assetImg.jpeg',
-          assetName: prod.product.simpleName,
+          assetName: prod.product.longName,
           assetId: prod._id,
           location: prod.warehouseLocationNo,
           owner: ownerName
