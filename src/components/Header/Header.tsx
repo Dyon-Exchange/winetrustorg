@@ -20,11 +20,12 @@ import { WalletContext } from '../../contexts/WalletContext'
 import BootstrapBlueBtn from '../atoms/buttons/BootStrapBlueBtn'
 
 import './Header.css'
+import headerStyles from './HeaderStyle'
 
 const Header = () => {
   const { walletConnected, connectAccount, loggedIn, login } = React.useContext(WalletContext)
   const navigate = useNavigate()
-
+  const classes = headerStyles()
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
 
@@ -53,12 +54,7 @@ const Header = () => {
   }
 
   return (
-    <AppBar
-      position="static"
-      style={{
-        backgroundColor: 'transparent',
-        backgroundPosition: 'center'
-      }}>
+    <AppBar position="static" className={classes.appBar}>
       <Container
         style={{
           backgroundColor: '#002954',
@@ -67,18 +63,112 @@ const Header = () => {
           width: '100%',
           maxWidth: '100%'
         }}>
-        <Toolbar disableGutters style={{ maxWidth: '88%', margin: 'auto', zIndex: '9999' }}>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
+        <Toolbar disableGutters style={{ margin: 'auto', zIndex: '9999' }}>
+          <Typography variant="h6" noWrap component="div" sx={{ mr: 2, display: 'flex' }}>
             <Link to={RoutesPath.HOMEPAGE}>
               <img src="/logo/logo.png" alt="Wine Trust logo" className="logo-img" />
             </Link>
           </Typography>
+          <Box className="menu-items">
+            {HeaderMenu.map(menu => (
+              <Button
+                onClick={() => navigate(menu.url)}
+                key={menu.menuName}
+                className="menu-items-btn">
+                {menu.menuName}
+              </Button>
+            ))}
+            {!walletConnected ? (
+              <BootstrapBlueBtn
+                variant="contained"
+                disableRipple
+                size="medium"
+                onClick={connectAccount}>
+                Connect Wallet
+              </BootstrapBlueBtn>
+            ) : (
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      alt="Unnamed"
+                      src="/static/images/avatar/2.jpg"
+                      sx={{
+                        background: 'linear-gradient(rgb(0, 41, 84) 0%, rgba(0, 41, 84, 0) 100%)',
+                        border: '1px solid white',
+                        borderRadius: '50%'
+                      }}
+                    />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}>
+                  <MenuItem key={123} onClick={handleGotoProfile}>
+                    <Typography textAlign="center">Profile</Typography>
+                  </MenuItem>
+                </Menu>
+              </Box>
+            )}
+          </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box className="mobile-menu">
+            {!walletConnected ? (
+              <BootstrapBlueBtn
+                variant="contained"
+                disableRipple
+                size="medium"
+                onClick={connectAccount}>
+                Connect Wallet
+              </BootstrapBlueBtn>
+            ) : (
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      alt="Unnamed"
+                      src="/static/images/avatar/2.jpg"
+                      sx={{
+                        background: 'linear-gradient(rgb(0, 41, 84) 0%, rgba(0, 41, 84, 0) 100%)',
+                        border: '1px solid white',
+                        borderRadius: '50%'
+                      }}
+                    />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}>
+                  <MenuItem key={123} onClick={handleGotoProfile}>
+                    <Typography textAlign="center">Profile</Typography>
+                  </MenuItem>
+                </Menu>
+              </Box>
+            )}
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -115,74 +205,6 @@ const Header = () => {
               ))}
             </Menu>
           </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <img src="/logo/logo.png" alt="Wine Trust logo" className="logo-img" />
-          </Typography>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: 'none', md: 'flex' },
-              justifyContent: { md: 'flex-end' },
-              paddingRight: { md: '30px' }
-            }}>
-            {HeaderMenu.map(menu => (
-              <Button
-                onClick={() => navigate(menu.url)}
-                key={menu.menuName}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-                style={{ color: 'white', paddingRight: '30px', textTransform: 'capitalize' }}>
-                {menu.menuName}
-              </Button>
-            ))}
-          </Box>
-          {!walletConnected ? (
-            <BootstrapBlueBtn
-              variant="contained"
-              disableRipple
-              size="medium"
-              onClick={connectAccount}>
-              Connect Wallet
-            </BootstrapBlueBtn>
-          ) : (
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar
-                    alt="Unnamed"
-                    src="/static/images/avatar/2.jpg"
-                    sx={{
-                      background: 'linear-gradient(rgb(0, 41, 84) 0%, rgba(0, 41, 84, 0) 100%)',
-                      border: '1px solid white',
-                      borderRadius: '50%'
-                    }}
-                  />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right'
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right'
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}>
-                <MenuItem key={123} onClick={handleGotoProfile}>
-                  <Typography textAlign="center">Profile</Typography>
-                </MenuItem>
-              </Menu>
-            </Box>
-          )}
         </Toolbar>
       </Container>
     </AppBar>

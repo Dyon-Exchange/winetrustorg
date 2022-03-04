@@ -10,7 +10,12 @@ const BootstrapBlueBtn = styled(Button)({
   borderRadius: '10px',
   fontSize: '14px',
   fontWeight: 600,
-  lineHeight: '16.7px'
+  lineHeight: '16.7px',
+  '@media (max-width:600px)': {
+    padding: '10px 18px 10px 18px',
+    fontSize: '12px',
+    lineHeight: '14.32px'
+  }
 })
 
 export default BootstrapBlueBtn
