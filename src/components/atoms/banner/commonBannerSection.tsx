@@ -34,7 +34,7 @@ const BannerSection: React.FC<Props> = ({ children }) => {
               justifyContent: 'center'
             }}>
             <Box sx={{ width: '58%' }}>
-              <Typography variant="h2" sx={{ mb: '1.5rem', fontSize: '4.1rem', color: '#fff' }}>
+              <Typography variant="h1" sx={{ mb: '1.5rem', color: '#fff' }}>
                 {children.title}
               </Typography>
               {children.description ? (

@@ -14,6 +14,14 @@ const assetListingStyle = makeStyles({
     },
     '& .MuiDataGrid-columnHeaderTitleContainer': {
       justifyContent: 'normal!important'
+    },
+    '& .MuiButton-root:hover': {
+      backgroundColor: '#1565c0'
+    },
+    '& .view-btn': {
+      color: '#fff',
+      cursor: 'pointer',
+      padding: '16px 36px 15px'
     }
   },
   resultFoundDiv: {
@@ -24,6 +32,11 @@ const assetListingStyle = makeStyles({
     '& span': {
       marginLeft: '10px'
     }
+  },
+  wrapText: {
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden'
   }
 })
 

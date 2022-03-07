@@ -144,8 +144,6 @@ const Header = () => {
               variant="contained"
               disableRipple
               size="medium"
-              style={{ borderRadius: '5px' }}
-              sx={{ p: '6px 25px!important' }}
               onClick={connectAccount}>
               Connect Wallet
             </BootstrapBlueBtn>
