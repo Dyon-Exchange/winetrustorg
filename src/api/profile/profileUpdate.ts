@@ -11,18 +11,11 @@ export interface AuthData {
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_URL ?? 'http://localhost:3030/'
 
-export const searchUsersRequest = async (address: string): Promise<[UserData]> => {
-  const { data } = await axios.get(`/users/search?address=${address}`)
+/* export const updateProfileRequest = async (address: string): Promise<[UserData]> => {
+  const { data } = await axios.patch(`/users/profile`)
   return data
 }
-
-export const createUserRequest = async (address: string): Promise<UserData> => {
-  const { data } = await axios.post('/users', {
-    address
-  })
-  return data
-}
-
+ */
 export const authRequest = async (address: string, signature: string): Promise<AuthData> => {
   const { data } = await axios.post('/users/auth', {
     address,
