@@ -6,7 +6,9 @@ const homePageStyles = makeStyles(theme => {
       width: '60%',
       textAlign: 'center',
       margin: '0 auto',
-
+      [theme.breakpoints.between('xs', 500)]: {
+        width: '100%'
+      },
       '& .top-heading': {
         marginBottom: '1.5rem',
         color: '#fff',
@@ -22,7 +24,7 @@ const homePageStyles = makeStyles(theme => {
 
       '& .search-bar': {
         background: '#fff',
-        width: '100%',
+        width: '94%',
         border: '1px solid #fff',
         padding: '0 12px',
         borderRadius: '5px'

@@ -21,25 +21,29 @@ import BootstrapBlueBtn from 'components/atoms/buttons/BootStrapBlueBtn'
 
 import './Header.css'
 import headerStyles from './HeaderStyle'
+import SideDrawer from 'components/SideDrawer/SideDrawer'
 
 const Header = () => {
   const { walletConnected, connectAccount, loggedIn, login } = React.useContext(WalletContext)
   const navigate = useNavigate()
 
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
+  const [anchorElNav, setAnchorElNav] = React.useState(false)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget)
+  const handleOpenNavMenu = () => {
+    setAnchorElNav(true)
   }
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget)
   }
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null)
+  const handleCloseNavMenu = (val: any) => {
+    setAnchorElNav(val)
   }
+  // const handleCloseNavMenu = () => {
+  //   setAnchorElNav(null)
+  // }
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
@@ -179,32 +183,7 @@ const Header = () => {
               color="inherit">
               <img src="/images/general/menu.svg" />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left'
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left'
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-                zIndex: '9999'
-              }}>
-              {HeaderMenu.map(menu => (
-                <MenuItem key={menu.menuName}>
-                  <Typography textAlign="center" color="white">
-                    <Link to={menu.url}>{menu.menuName}</Link>
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            <SideDrawer sendDataToParent={handleCloseNavMenu}>{anchorElNav}</SideDrawer>
           </Box>
         </Toolbar>
       </Container>
