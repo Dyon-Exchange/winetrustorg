@@ -50,7 +50,7 @@ const Homepage = () => {
             }}>
             <Box className={classes.homeTopBlock}>
               <Typography variant="h1" className="top-heading">
-                The Most Secure way to Own & Store Fine Wine & Spirits.
+                The most secure way to own and store fine wine and spirits.
               </Typography>
 
               <BootstrapBlueBtn

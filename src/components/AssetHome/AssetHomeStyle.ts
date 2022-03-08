@@ -29,7 +29,8 @@ const customStyles = makeStyles(theme => {
         fontSize: '18px'
       },
       '& .heading': {
-        fontWeight: 500
+        fontWeight: 500,
+        width: '234px'
       }
     },
     assetDesc: {
