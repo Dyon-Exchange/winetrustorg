@@ -8,12 +8,14 @@ import axios from 'axios'
 import assetListingStyle from './AssetListingStyle'
 import { useNavigate } from 'react-router-dom'
 import BootstrapBlueBtn from 'components/atoms/buttons/BootStrapBlueBtn'
+import { LoaderContext } from 'contexts/LoaderContext'
 
 const AssetListing = () => {
   let [rowdata, setrowdata] = useState([])
   const params = useParams()
   const navigate = useNavigate()
   const classes = assetListingStyle()
+  const { setLoading } = React.useContext(LoaderContext)
 
   useEffect(() => {
     fetchAssets(params)
@@ -73,8 +75,9 @@ const AssetListing = () => {
     }
   ]
   function fetchAssets(params: any) {
-    let queryStr = `${process.env.REACT_APP_PRODUCT_SEARCH_ENDPOINT}?query=${params.product}`
-    axios.get(queryStr).then((result: any) => {
+    axios.defaults.baseURL = process.env.REACT_APP_BASE_URL ?? 'http://localhost:3030/'
+    setLoading(true)
+    axios.get(`/assets/search?query=${params.product}`).then((result: any) => {
       const rowData: any = []
       result.data.forEach((prod: any) => {
         let ownerName = prod.preAdvice.owner.ethAddress
@@ -88,6 +91,7 @@ const AssetListing = () => {
         })
       })
       setrowdata(rowData)
+      setLoading(false)
     })
   }
 

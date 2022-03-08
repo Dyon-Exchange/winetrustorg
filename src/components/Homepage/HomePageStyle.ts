@@ -39,7 +39,10 @@ const homePageStyles = makeStyles(theme => {
       },
       [theme.breakpoints.up('md')]: {
         display: 'flex!important',
-        paddingLeft: '78px!important'
+        paddingLeft: '78px!important',
+        '& .wt-revolution-desc': {
+          marginLeft: '70px'
+        }
       },
       [theme.breakpoints.between('xs', 'md')]: {
         '& .wt-revolution-desc': {
@@ -52,6 +55,11 @@ const homePageStyles = makeStyles(theme => {
       [theme.breakpoints.between('xs', 'sm')]: {
         '& .wt-revolution-img img': {
           width: '90%'
+        }
+      },
+      [theme.breakpoints.between('sm', 960)]: {
+        '& .wt-revolution-img img': {
+          width: '60%'
         }
       }
     }

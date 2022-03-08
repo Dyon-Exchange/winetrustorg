@@ -7,6 +7,7 @@ import 'react-multi-carousel/lib/styles.css'
 import StyledCarousel from './../atoms/carousel/StyledCarousel'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import { LoaderContext } from 'contexts/LoaderContext'
 // import { useParams } from 'react-router'
 // import axios from 'axios'
 
@@ -15,6 +16,8 @@ const AssetHome = () => {
   const params = useParams()
   const [assetData, setAsset] = useState<any>({})
   const [assetImages, setImageSlider] = useState<any>([])
+  const { setLoading } = React.useContext(LoaderContext)
+
   let sliderImageKeyArr = [
     'marketingImage1',
     'marketingImage2',
@@ -43,7 +46,9 @@ const AssetHome = () => {
     fetchAssetDetail(params)
   }, [])
   const fetchAssetDetail = (params: any) => {
-    let queryStr = `${process.env.REACT_APP_PRODUCT_DETAIL_ENDPOINT}${params.assetId}`
+    axios.defaults.baseURL = process.env.REACT_APP_BASE_URL ?? 'http://localhost:3030/'
+    let queryStr = `/assets/${params.assetId}`
+    setLoading(true)
     axios.get(queryStr).then((result: any) => {
       setAsset(result.data)
       let product = result.data.product
@@ -56,15 +61,16 @@ const AssetHome = () => {
         }
       })
       setImageSlider(items)
+      setLoading(false)
     })
   }
 
   return (
     <div>
       <Container sx={{ mt: '14%', pb: '10%' }}>
-        <Box className={classes.resultFoundDiv}>
+        {/* <Box className={classes.resultFoundDiv}>
           <b>Result Found:</b> <span>{assetData?.product?.simpleName}</span>
-        </Box>
+        </Box> */}
         <Box className={clsx(classes.flex, classes.sectionPadding)}>
           <img
             src={`${process.env.REACT_APP_PINATA}${assetData?.product?.image}`}
