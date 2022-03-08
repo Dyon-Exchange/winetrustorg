@@ -52,6 +52,7 @@ const Homepage = () => {
               <Typography variant="h1" className="top-heading">
                 The Most Secure way to Own & Store Fine Wine & Spirits.
               </Typography>
+
               <BootstrapBlueBtn
                 variant="contained"
                 disableRipple

@@ -1,28 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '@mui/material/Container'
 import { Box } from '@mui/material'
 import customStyles from './AssetHomeStyle'
 import clsx from 'clsx'
 import 'react-multi-carousel/lib/styles.css'
 import StyledCarousel from './../atoms/carousel/StyledCarousel'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
 // import { useParams } from 'react-router'
 // import axios from 'axios'
 
 const AssetHome = () => {
   const classes = customStyles()
-  const items = [
-    {
-      image: '/images/asset1.png'
-    },
-    {
-      image: '/images/asset2.png'
-    },
-    {
-      image: '/images/asset3.png'
-    },
-    {
-      image: '/images/asset2.png'
-    }
+  const params = useParams()
+  const [assetData, setAsset] = useState<any>({})
+  const [assetImages, setImageSlider] = useState<any>([])
+  let sliderImageKeyArr = [
+    'marketingImage1',
+    'marketingImage2',
+    'marketingImage3',
+    'marketingImage4'
   ]
   const responsive = {
     superLargeDesktop: {
@@ -42,63 +39,77 @@ const AssetHome = () => {
       items: 1
     }
   }
+  useEffect(() => {
+    fetchAssetDetail(params)
+  }, [])
+  const fetchAssetDetail = (params: any) => {
+    let queryStr = `${process.env.REACT_APP_PRODUCT_DETAIL_ENDPOINT}${params.assetId}`
+    axios.get(queryStr).then((result: any) => {
+      setAsset(result.data)
+      let product = result.data.product
+      let items: any = []
+      sliderImageKeyArr.forEach(key => {
+        if (product[key]) {
+          items.push({
+            image: `${process.env.REACT_APP_PINATA}${product[key]}`
+          })
+        }
+      })
+      setImageSlider(items)
+    })
+  }
+
   return (
     <div>
-      <Box sx={{ background: '#e2e8f0', p: '12px 0' }}>
-        {/* <Container>
-          <b>Result Found:</b> <span style={{ marginLeft: '10px' }}>{params.product}</span>
-        </Container> */}
-      </Box>
-      <Container sx={{ marginTop: '9rem' }}>
+      <Container sx={{ mt: '14%', pb: '10%' }}>
+        <Box className={classes.resultFoundDiv}>
+          <b>Result Found:</b> <span>{assetData?.product?.simpleName}</span>
+        </Box>
         <Box className={clsx(classes.flex, classes.sectionPadding)}>
           <img
-            src="/images/assetImg.jpeg"
+            src={`${process.env.REACT_APP_PINATA}${assetData?.product?.image}`}
             alt="asset home label"
             width="40%"
-            className="img-fit-content"
+            height="345px"
           />
           <Box className={classes.assetDetailBox}>
-            <h2 className="text-align-center mr-t-0">Chateau Lafite Rothschild 2010 (6*75cl)</h2>
+            <h2 className="text-align-center mr-t-0">{assetData?.product?.longName}</h2>
             <Box className={classes.spaceBetWeenFlex}>
               <p className="heading">Producer</p>
               <p>Chateau Lafite Rothschild</p>
             </Box>
             <Box className={classes.spaceBetWeenFlex}>
               <p className="heading">Year</p>
-              <p>2010</p>
+              <p>{assetData?.product?.year}</p>
             </Box>
             <Box className={classes.spaceBetWeenFlex}>
               <p className="heading">Pack Size</p>
-              <p>6*75cl</p>
+              <p>{assetData?.product?.packSize}</p>
             </Box>
             <Box className={classes.spaceBetWeenFlex}>
               <p className="heading">Region</p>
-              <p>Bordeaux</p>
+              <p>{assetData?.product?.region}</p>
             </Box>
             <Box className={classes.spaceBetWeenFlex}>
               <p className="heading">Sub Region</p>
-              <p>Paulliac</p>
+              <p>{assetData?.product?.subRegion}</p>
             </Box>
             <Box className={classes.spaceBetWeenFlex}>
               <p className="heading">Sub Sub Region</p>
-              <p>Paulliac</p>
+              <p>{assetData?.product?.subSubRegion}</p>
             </Box>
           </Box>
         </Box>
         <Box className={clsx(classes.sectionBorder, classes.flex, classes.sectionPadding)}>
-          <img
-            src="/images/wine.png"
-            alt="asset home label"
-            width="40%"
-            className="img-fit-content"
-          />
+          <div style={{ width: '40%' }} className={classes.bottleImgOuter}>
+            <img
+              src={`${process.env.REACT_APP_PINATA}${assetData?.product?.bottleImage}`}
+              alt="asset home label"
+            />
+          </div>
+
           <Box className={classes.assetDetailBox}>
-            <Box className={classes.assetDesc}>
-              Chateau Lafite Rothschild 2010 is one of the greatest ever wines from this Paulliac,
-              Bordeaux First Growth Estate. Made in vintage which is universally acknowledged as one
-              of the best in modern times, this wine will drink well untill 2080. This is a core
-              holding in any serious fine wine collection.
-            </Box>
+            <Box className={classes.assetDesc}>{assetData?.product?.description}</Box>
             <Box className={classes.spaceBetWeenFlex}>
               <p className="heading">Producer</p>
               <p>Chateau Lafite Rothschild</p>
@@ -117,7 +128,7 @@ const AssetHome = () => {
             </Box>
             <Box className={classes.spaceBetWeenFlex}>
               <p className="heading">Warehouse location</p>
-              <p>London City Bond, Tibury, UNITED KINGDOM</p>
+              <p>{assetData?.preAdvice?.arrivalWarehouse.name}</p>
             </Box>
             <Box className={classes.spaceBetWeenFlex}>
               <p className="heading">Date entered warehouse</p>
@@ -125,29 +136,33 @@ const AssetHome = () => {
             </Box>
             <Box className={classes.spaceBetWeenFlex}>
               <p className="heading">Warehouse ID number</p>
-              <p>265498755</p>
+              <p>{assetData?.warehouseLocationNo}</p>
             </Box>
           </Box>
         </Box>
-        <Box
-          className={clsx(
-            classes.sectionBorder,
-            classes.sectionPadding,
-            classes.sectionBottomMargin
-          )}>
-          <h2 className="mr-t-0">Asset Images (photos of the exact asset):</h2>
-          <Box>
-            <StyledCarousel
-              responsive={responsive}
-              autoPlay={false}
-              arrows={window.innerWidth >= 768 ? true : false}
-              renderButtonGroupOutside={true}>
-              {items.map((item: any) => (
-                <img src={item.image} className={classes.carouselImg} />
-              ))}
-            </StyledCarousel>
+        {assetImages.length > 0 ? (
+          <Box
+            className={clsx(
+              classes.sectionBorder,
+              classes.sectionPadding,
+              classes.sectionBottomMargin
+            )}>
+            <h2 className="mr-t-0">Asset Images (photos of the exact asset):</h2>
+            <Box>
+              <StyledCarousel
+                responsive={responsive}
+                autoPlay={false}
+                arrows={window.innerWidth >= 768 ? true : false}
+                renderButtonGroupOutside={true}>
+                {assetImages.map((item: any) => (
+                  <img src={item.image} className={classes.carouselImg} height="400px" />
+                ))}
+              </StyledCarousel>
+            </Box>
           </Box>
-        </Box>
+        ) : (
+          ''
+        )}
       </Container>
     </div>
   )

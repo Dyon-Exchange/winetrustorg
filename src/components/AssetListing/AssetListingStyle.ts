@@ -2,6 +2,12 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const assetListingStyle = makeStyles({
   root: {
+    '&.MuiDataGrid-root': {
+      border: 'none',
+      '& .MuiDataGrid-columnHeader--moving': {
+        backgroundColor: 'unset'
+      }
+    },
     '& .MuiDataGrid-row': {
       border: '1px solid rgba(224, 224, 224, 1)',
       marginTop: '8px',

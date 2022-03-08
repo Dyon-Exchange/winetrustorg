@@ -34,16 +34,6 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.wt-revolution-img {
-  margin: auto;
-  padding: 0 15px;
-}
-
-.wt-revolution-desc {
-  margin: auto;
-  padding: 0 15px;
-}
-
 .wt-revolution-desc li {
   padding-left: 26px;
   background: url('/public/images/general/check.svg') no-repeat;
