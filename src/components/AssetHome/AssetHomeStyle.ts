@@ -52,8 +52,7 @@ const customStyles = makeStyles(theme => {
       textAlign: 'center',
       height: '552px',
       '& img': {
-        height: '100%',
-        width: '100%'
+        height: '100%'
       }
     }
   }

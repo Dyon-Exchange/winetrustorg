@@ -112,10 +112,11 @@ const AssetHome = () => {
           </Box>
         </Box>
         <Box className={clsx(classes.sectionBorder, classes.flex, classes.sectionPadding)}>
-          <div style={{ width: '40%' }} className={classes.bottleImgOuter}>
+          <div className={classes.bottleImgOuter}>
             <img
               src={`${process.env.REACT_APP_PINATA}${assetData?.product?.bottleImage}`}
-              alt="asset home label"
+              alt="asset home bottle img"
+              onError={({ currentTarget }) => setFallbackImg(currentTarget, '/images/wine.png')}
             />
           </div>
 
