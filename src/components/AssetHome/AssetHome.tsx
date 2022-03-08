@@ -65,15 +65,20 @@ const AssetHome = () => {
     })
   }
 
+  const setFallbackImg = (currentTarget: any, img: string) => {
+    currentTarget.onerror = null // prevents looping
+    currentTarget.src = img
+  }
   return (
     <div>
-      <Container sx={{ mt: '14%', pb: '10%' }}>
+      <Container sx={{ mt: '9rem', pb: '5rem' }}>
         {/* <Box className={classes.resultFoundDiv}>
           <b>Result Found:</b> <span>{assetData?.product?.simpleName}</span>
         </Box> */}
         <Box className={clsx(classes.flex, classes.sectionPadding)}>
           <img
             src={`${process.env.REACT_APP_PINATA}${assetData?.product?.image}`}
+            onError={({ currentTarget }) => setFallbackImg(currentTarget, '/images/assetImg.jpeg')}
             alt="asset home label"
             width="40%"
             height="345px"
@@ -147,12 +152,7 @@ const AssetHome = () => {
           </Box>
         </Box>
         {assetImages.length > 0 ? (
-          <Box
-            className={clsx(
-              classes.sectionBorder,
-              classes.sectionPadding,
-              classes.sectionBottomMargin
-            )}>
+          <Box className={clsx(classes.sectionBorder, classes.sectionPadding)}>
             <h2 className="mr-t-0">Asset Images (photos of the exact asset):</h2>
             <Box>
               <StyledCarousel

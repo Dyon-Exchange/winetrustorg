@@ -10,11 +10,8 @@ const customStyles = makeStyles(theme => {
     sectionMargin: {
       marginTop: '4rem'
     },
-    sectionBottomMargin: {
-      marginBottom: '4rem'
-    },
     sectionPadding: {
-      padding: '2rem 0'
+      padding: '3rem 0'
     },
     spaceBetWeenFlex: {
       display: 'flex',
@@ -57,15 +54,6 @@ const customStyles = makeStyles(theme => {
       '& img': {
         height: '100%',
         width: '100%'
-      }
-    },
-    resultFoundDiv: {
-      background: '#e2e8f0',
-      padding: '12px 18px',
-      marginBottom: '30px',
-
-      '& span': {
-        marginLeft: '10px'
       }
     }
   }
