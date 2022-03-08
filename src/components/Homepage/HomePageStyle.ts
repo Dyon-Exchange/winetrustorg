@@ -34,12 +34,25 @@ const homePageStyles = makeStyles(theme => {
     },
 
     revolutionContainer: {
-      [theme.breakpoints.up('md')]: {
-        display: 'flex'
-      },
       '& .wt-revolution-desc': {
-        alignSelf: 'center',
-        paddingLeft: '78px'
+        alignSelf: 'center'
+      },
+      [theme.breakpoints.up('md')]: {
+        display: 'flex!important',
+        paddingLeft: '78px!important'
+      },
+      [theme.breakpoints.between('xs', 'md')]: {
+        '& .wt-revolution-desc': {
+          marginTop: '40px'
+        },
+        '& .section-title, .wt-revolution-img': {
+          textAlign: 'center'
+        }
+      },
+      [theme.breakpoints.between('xs', 'sm')]: {
+        '& .wt-revolution-img img': {
+          width: '90%'
+        }
       }
     }
   }

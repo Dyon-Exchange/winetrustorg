@@ -1,16 +1,27 @@
 import { createTheme } from '@mui/material/styles'
 
-const materialTheme = createTheme({
+const theme = createTheme({
   typography: {
     fontFamily: `Gilroy`,
     fontSize: 14,
     fontWeightLight: 300,
     fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    h1: {
-      fontWeight: 400,
-      fontSize: '4.1rem'
-    }
+    fontWeightMedium: 500
   }
 })
-export default materialTheme
+
+theme.typography.h1 = {
+  fontWeight: 400,
+  lineHeight: 1.16,
+  [theme.breakpoints.up('md')]: {
+    fontSize: '4.1rem'
+  },
+  [theme.breakpoints.between('sm', 'md')]: {
+    fontSize: '3.1rem'
+  },
+  [theme.breakpoints.between('xs', 'sm')]: {
+    fontSize: '30px'
+  }
+}
+
+export default theme

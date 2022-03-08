@@ -59,11 +59,12 @@ const AssetListing = () => {
     },
     {
       field: '',
-      headerClassName: 'super-app-theme--header',
       headerAlign: 'center',
       flex: 1,
       minWidth: 80,
       align: 'center',
+      sortable: false,
+      disableColumnMenu: true,
       renderCell: (param: GridValueGetterParams) => (
         <BootstrapBlueBtn onClick={() => handleOnClick(param)} className="view-btn">
           VIEW
@@ -72,14 +73,14 @@ const AssetListing = () => {
     }
   ]
   function fetchAssets(params: any) {
-    let queryStr = `${process.env.REACT_APP_PRODUCT_SEARCH_ENDPOINT}${params.product}`
+    let queryStr = `${process.env.REACT_APP_PRODUCT_SEARCH_ENDPOINT}?query=${params.product}`
     axios.get(queryStr).then((result: any) => {
       const rowData: any = []
       result.data.forEach((prod: any) => {
-        let ownerName = prod.preAdvice.owner.firstName + ' ' + prod.preAdvice.owner.lastName
+        let ownerName = prod.preAdvice.owner.ethAddress
         rowData.push({
           id: prod._id,
-          assetImg: '/images/assetImg.jpeg',
+          assetImg: `${process.env.REACT_APP_PINATA}${prod.product.labelImage}`,
           assetName: prod.product.longName,
           assetId: prod._id,
           location: prod.preAdvice.arrivalWarehouse.name,
