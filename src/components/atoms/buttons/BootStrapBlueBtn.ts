@@ -1,5 +1,5 @@
 import { styled } from '@material-ui/styles'
-import { Button } from '@mui/material'
+import Button from '@material-ui/core/Button'
 
 const BootstrapBlueBtn = styled(Button)({
   textTransform: 'none',
@@ -11,6 +11,9 @@ const BootstrapBlueBtn = styled(Button)({
   fontSize: '14px',
   fontWeight: 600,
   lineHeight: '16.7px',
+  '& span': {
+    color: '#fff'
+  },
   '@media (max-width:600px)': {
     padding: '10px 18px 10px 18px',
     fontSize: '12px',

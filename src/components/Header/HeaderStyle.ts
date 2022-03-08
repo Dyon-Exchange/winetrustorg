@@ -34,9 +34,7 @@ const headerStyles = makeStyles(theme => {
           display: 'none'
         },
         '& .mobile-menu': {
-          flexGrow: 1,
-          display: 'flex',
-          justifyContent: 'flex-end'
+          marginLeft: 'auto'
         }
       }
     }

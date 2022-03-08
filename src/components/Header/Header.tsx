@@ -10,14 +10,14 @@ import Menu from '@mui/material/Menu'
 import Container from '@mui/material/Container'
 
 import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
+import Button from '@material-ui/core/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 
 import { HeaderMenu, RoutesPath } from '../../constants'
 
 import { WalletContext } from '../../contexts/WalletContext'
-import BootstrapBlueBtn from '../atoms/buttons/BootStrapBlueBtn'
+import BootstrapBlueBtn from 'components/atoms/buttons/BootStrapBlueBtn'
 
 import './Header.css'
 import headerStyles from './HeaderStyle'
@@ -25,7 +25,7 @@ import headerStyles from './HeaderStyle'
 const Header = () => {
   const { walletConnected, connectAccount, loggedIn, login } = React.useContext(WalletContext)
   const navigate = useNavigate()
-  const classes = headerStyles()
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
 
@@ -52,7 +52,7 @@ const Header = () => {
 
     navigate(RoutesPath.PROFILESETTING)
   }
-
+  const classes = headerStyles()
   return (
     <AppBar position="static" className={classes.appBar}>
       <Container
@@ -78,11 +78,12 @@ const Header = () => {
                 {menu.menuName}
               </Button>
             ))}
+
             {!walletConnected ? (
               <BootstrapBlueBtn
                 variant="contained"
                 disableRipple
-                size="medium"
+                size="small"
                 onClick={connectAccount}>
                 Connect Wallet
               </BootstrapBlueBtn>
@@ -129,7 +130,7 @@ const Header = () => {
               <BootstrapBlueBtn
                 variant="contained"
                 disableRipple
-                size="medium"
+                size="small"
                 onClick={connectAccount}>
                 Connect Wallet
               </BootstrapBlueBtn>

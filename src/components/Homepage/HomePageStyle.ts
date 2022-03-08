@@ -38,8 +38,8 @@ const homePageStyles = makeStyles(theme => {
         alignSelf: 'center'
       },
       [theme.breakpoints.up('md')]: {
-        display: 'flex',
-        paddingLeft: '78px'
+        display: 'flex!important',
+        paddingLeft: '78px!important'
       },
       [theme.breakpoints.between('xs', 'md')]: {
         '& .wt-revolution-desc': {

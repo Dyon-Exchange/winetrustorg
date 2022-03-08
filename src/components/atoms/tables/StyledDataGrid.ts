@@ -6,14 +6,14 @@ const StyledDataGrid = styled(DataGrid)({
   border: 'none',
   minHeight: '225px',
   height: 'calc(100vh - 300px)',
-  lineHeight: '51px',
+  lineHeight: '51px!important',
 
   '& .MuiDataGrid-columnHeaders': {
     background: '#e2e8f0'
   },
   '& .MuiDataGrid-cell': {
     'font-size': '13px',
-    display: 'block',
+    display: 'block!important',
     borderBottom: 'none'
   },
   '& .MuiDataGrid-iconButtonContainer, .MuiDataGrid-menuIcon': {
@@ -25,6 +25,9 @@ const StyledDataGrid = styled(DataGrid)({
     },
   '& .MuiDataGrid-columnSeparator': {
     visibility: 'hidden'
+  },
+  '& .MuiDataGrid-footerContainer': {
+    marginTop: '-12px'
   }
 })
 

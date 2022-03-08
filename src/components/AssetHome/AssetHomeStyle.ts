@@ -19,12 +19,14 @@ const customStyles = makeStyles(theme => {
     spaceBetWeenFlex: {
       display: 'flex',
       justifyContent: 'space-between',
-      lineHeight: 0.8
+      '& p': {
+        margin: '0.8em 0'
+      }
     },
     assetDetailBox: {
       [theme.breakpoints.up('md')]: {
         width: '50%',
-        marginLeft: theme.spacing(5)
+        marginLeft: theme.spacing(9)
       },
       '& p': {
         fontSize: '18px'
@@ -47,6 +49,24 @@ const customStyles = makeStyles(theme => {
         width: '100%'
       },
       width: '92%'
+    },
+    bottleImgOuter: {
+      width: '40%',
+      textAlign: 'center',
+      height: '552px',
+      '& img': {
+        height: '100%',
+        width: '100%'
+      }
+    },
+    resultFoundDiv: {
+      background: '#e2e8f0',
+      padding: '12px 18px',
+      marginBottom: '30px',
+
+      '& span': {
+        marginLeft: '10px'
+      }
     }
   }
 })
