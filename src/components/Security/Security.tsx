@@ -64,7 +64,7 @@ const SecurityPage = () => {
             </p>
           </Box>
         </Box>
-        <img src="/images/security/features/protect.png" />
+        <img src="/images/security/features/protect.png" width="100%" />
       </Container>
       <Box sx={{ background: '#212529' }}>
         <Container sx={{ p: '100px 0' }}>
@@ -136,11 +136,16 @@ const SecurityPage = () => {
             </ul>
           </Box>
         </Box>
-        <img src="/images/security/nft.png" />
+        <img src="/images/security/nft.png" width="100%" />
       </Container>
       <Box sx={{ background: '#f9fcff' }}>
         <Container sx={{ p: '100px 0', pl: '0!important', pr: '0!important' }}>
-          <Box sx={{ display: { xs: 'block', md: 'flex' } }}>
+          WineTrust will also operate a fine wine & spirits digital asset exchange. This means that
+          all assets in WineTrust can be offered for sale (in fractional amounts). This opens up a
+          new world of liquidity, trading, and new entrants into the world of fine wine and spirits.
+          We believe that tokenization represents the future of completely secure fine wine &
+          spirits ownership and trading.
+          {/* <Box sx={{ display: { xs: 'block', md: 'flex' } }}>
             <img src="/images/security/dyon-graph.png" />
             <Box sx={{ alignSelf: 'center' }}>
               <Typography variant="h2" sx={{ fontSize: '2.2rem', fontWeight: '700', mb: '1.5rem' }}>
@@ -170,7 +175,7 @@ const SecurityPage = () => {
                 </a>
               </Box>
             </Box>
-          </Box>
+          </Box> */}
         </Container>
       </Box>
       <Container sx={{ display: { xs: 'block', md: 'flex' } }}>
@@ -198,9 +203,10 @@ const SecurityPage = () => {
             </p>
             <p>
               All wine stored in WineTrust is automatically tokenized and can be bought and sold on
-              dedicated exchanges in ‘fractional’ amounts. On the Dyon exchange, for instance, you
-              can purchase a fraction of a case of the legendary Château Pétrus 1989 for as little
-              as US$10.
+              the WineTrust exchange in ‘fractional’ amounts. On the WineTrust exchange, for
+              instance, you will be able to purchase a fraction of a case of the legendary{' '}
+              <strong>Château Pétrus 1989 </strong>
+              for as little as US$10.
             </p>
             <p>
               Fractionalised buying and selling means that fine wine & spirits lovers can build
@@ -213,16 +219,8 @@ const SecurityPage = () => {
               participate in the excellent financial performance of the world’s best fine wines,
               whiskies etc.
             </p>
-            <a
-              href="https://www.dyon.cc"
-              target="_blank"
-              className="btn btn-blue dyon-exchange-btn border-radius-8">
-              See Dyon Exchange
-              <span className="arrow-right-white"></span>
-            </a>
           </Box>
         </Box>
-        <img src="/images/security/dyon-wp.png" className="img-fit-content border-radius-22" />
       </Container>
     </div>
   )

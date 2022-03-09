@@ -64,6 +64,10 @@ const homePageStyles = makeStyles(theme => {
           width: '60%'
         }
       }
+    },
+    gridContiner: {
+      paddingTop: '100px',
+      paddingBottom: '100px'
     }
   }
 })

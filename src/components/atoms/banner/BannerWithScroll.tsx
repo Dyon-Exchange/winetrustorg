@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from '@mui/material'
 import React from 'react'
-
+import bannerStyles from './bannerStyle'
 interface Props {
   children: {
     title: string
@@ -10,6 +10,7 @@ interface Props {
 }
 
 const BannerWithScroll: React.FC<Props> = ({ children }) => {
+  const classes = bannerStyles()
   return (
     <div className="banner-section">
       <Container
@@ -24,7 +25,7 @@ const BannerWithScroll: React.FC<Props> = ({ children }) => {
             minHeight: '100vh',
             justifyContent: 'center'
           }}>
-          <Box sx={{ width: '58%' }}>
+          <Box className={classes.bannerContent}>
             <Typography variant="h1" sx={{ mb: '1.5rem', color: '#fff' }}>
               {children.title}
             </Typography>

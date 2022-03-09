@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from '@mui/material/Container'
 import './ProfileSetting.css'
-import { Box, FormControl, TextField, Tooltip } from '@mui/material'
+import { Avatar, Box, FormControl, TextField, Tooltip } from '@mui/material'
 import BootStrapBlueBtn from './../atoms/buttons/BootStrapBlueBtn'
 import { WalletContext } from 'contexts/WalletContext'
 import { LoaderContext } from 'contexts/LoaderContext'
@@ -11,6 +11,7 @@ import 'react-intl-tel-input/dist/main.css'
 
 import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles'
+import EditIcon from '@mui/icons-material/Edit'
 
 const ProfileSetting = () => {
   const { authDetails, userDetails } = React.useContext(WalletContext)
@@ -56,12 +57,24 @@ const ProfileSetting = () => {
           <div className="profile-backdrop card-shadow">
             <div className="profile-outer">
               <label htmlFor="contained-button-file">
-                <img
-                  className="profile-pic"
-                  src="/images/profileSetting/dummy-profile.png"
-                  alt="WineTrust Profile"
-                />
-                <Box className="profile-pic profile-img-overlay"></Box>
+                <div id="profile-img">
+                  <img
+                    className="profile-pic"
+                    src="/images/profileSetting/dummy-profile.png"
+                    alt="WineTrust Profile"
+                  />
+                  <Avatar
+                    className="profile-pic profile-img-overlay"
+                    sx={{
+                      height: '150px',
+                      width: '150px',
+                      position: 'absolute',
+                      background: 'rgb(0,0,0,0.2)'
+                    }}>
+                    <EditIcon />
+                  </Avatar>
+                </div>
+
                 <Input accept="image/*" id="contained-button-file" type="file" />
               </label>
               <h2 className="profile-name">Unnamed</h2>

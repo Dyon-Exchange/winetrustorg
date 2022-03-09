@@ -55,7 +55,7 @@ const SideDrawer: React.FC<Props> = ({ children, sendDataToParent }) => {
       <Divider />
       <List>
         {HeaderMenu.map(menu => (
-          <NavLink to={menu.url}>
+          <NavLink to={menu.url} onClick={handleDrawerClose}>
             <ListItem button key={menu.menuName}>
               <ListItemText primary={menu.menuName} />
             </ListItem>

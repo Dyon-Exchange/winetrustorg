@@ -50,7 +50,7 @@ const Homepage = () => {
             }}>
             <Box className={classes.homeTopBlock}>
               <Typography variant="h1" className="top-heading">
-                The most secure way to own and store fine wine and spirits.
+                The most secure way to own and store Fine Wine & Spirits
               </Typography>
 
               <BootstrapBlueBtn
@@ -133,7 +133,7 @@ const Homepage = () => {
       </Container>
 
       <Box sx={{ background: '#f9fcff' }}>
-        <Container sx={{ p: '100px 0' }}>
+        <Container className={classes.gridContiner}>
           <Box sx={{ width: '76%', textAlign: 'center', margin: 'auto' }}>
             <h2 className="section-title text-align-center">
               WineTrust addresses the most important problems facing fine wine & spirits owners

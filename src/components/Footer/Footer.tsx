@@ -1,4 +1,4 @@
-import { Box, Container } from '@mui/material'
+import { Box, Container, Grid } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { RoutesPath } from '../../constants'
@@ -7,7 +7,7 @@ import './Footer.css'
 const Footer = () => {
   return (
     <div className="footer-container">
-      <Container sx={{ p: '50px 0' }}>
+      <Container sx={{ pt: '50px', pb: '50px' }}>
         <Box
           sx={{
             display: { xs: 'block', md: 'flex' },
@@ -30,21 +30,30 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div id="wine-trust-info" className="footer-links">
-            <div className="footer-title">Winetrust</div>
-            <Link to={RoutesPath.HOMEPAGE}>Home</Link>
-            <Link to={RoutesPath.ABOUT}>About</Link>
-            <Link to={RoutesPath.CONTACTUS}>Contact Us</Link>
-            <a href="#id">FAQs</a>
-          </div>
-          <div id="technology-info" className="footer-links">
-            <div className="footer-title">Technology</div>
-            <Link to={RoutesPath.TECHNOLOGY}>Technology</Link>
-          </div>
-          <div id="alliance-info" className="footer-links">
-            <div className="footer-title">Alliance</div>
-            <Link to={RoutesPath.WAREHOUSEPARTNER}>Warehouse Partners</Link>
-          </div>
+
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={6} md={4}>
+              <div id="wine-trust-info" className="footer-links">
+                <div className="footer-title">Winetrust</div>
+                <Link to={RoutesPath.HOMEPAGE}>Home</Link>
+                <Link to={RoutesPath.ABOUT}>About</Link>
+                <Link to={RoutesPath.CONTACTUS}>Contact Us</Link>
+                <a href="#id">FAQs</a>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <div id="technology-info" className="footer-links">
+                <div className="footer-title">Technology</div>
+                <Link to={RoutesPath.TECHNOLOGY}>Technology</Link>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <div id="alliance-info" className="footer-links">
+                <div className="footer-title">Alliance</div>
+                <Link to={RoutesPath.WAREHOUSEPARTNER}>Warehouse Partners</Link>
+              </div>
+            </Grid>
+          </Grid>
         </Box>
       </Container>
       <div className="footer-bottom">

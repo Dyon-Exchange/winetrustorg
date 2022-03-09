@@ -34,6 +34,7 @@
 .footer-links .footer-title {
   text-transform: uppercase;
   letter-spacing: 5px;
+  color: #a1b0be;
 }
 
 .ft-logo {
@@ -48,6 +49,7 @@
 
 .ft-desc {
   max-width: 215px;
+  width: 215px;
 }
 
 .footer-bottom {
@@ -71,6 +73,11 @@
 .tnc-policy {
   display: flex;
   column-gap: 20px;
+}
+
+.logo-desc {
+  margin-right: 200px;
+  margin-bottom: 40px;
 }
 
 @media only screen and (max-width: 750px) {

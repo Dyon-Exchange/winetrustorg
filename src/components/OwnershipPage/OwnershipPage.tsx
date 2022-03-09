@@ -39,7 +39,7 @@ const OwnershipPage = () => {
       </Container>
 
       <Box sx={{ background: '#f9fcff' }}>
-        <Container sx={{ p: '100px 0' }}>
+        <Container sx={{ pt: '100px', pb: '100px' }}>
           <Typography
             variant="h2"
             sx={{ fontSize: '2.25rem', fontWeight: '700', textAlign: 'center', mb: '2rem' }}>

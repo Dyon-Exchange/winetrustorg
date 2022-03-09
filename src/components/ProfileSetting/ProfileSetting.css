@@ -29,11 +29,12 @@
   position: absolute;
   bottom: 0;
   transform: translate(50%, 50%);
+  display: flex;
 }
 
 .profile-name {
   float: right;
-  transform: translate(24%, 212%);
+  transform: translate(24%, 65%);
   font-weight: 500;
 }
 
@@ -43,6 +44,7 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.54);
   color: white;
+  display: none !important;
 }
 
 .profile-intl-tel-input {
@@ -69,4 +71,8 @@
 
 .intl-tel-input .flag-container .arrow {
   margin-left: 10px !important;
+}
+
+#profile-img:hover .profile-img-overlay {
+  display: flex !important;
 }
