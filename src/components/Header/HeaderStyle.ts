@@ -34,7 +34,13 @@ const headerStyles = makeStyles(theme => {
           display: 'none'
         },
         '& .mobile-menu': {
-          marginLeft: 'auto'
+          marginLeft: 'auto',
+          display: 'flex'
+        }
+      },
+      [theme.breakpoints.between('xs', 600)]: {
+        '& .connect-wallet-btn': {
+          display: 'none'
         }
       }
     }

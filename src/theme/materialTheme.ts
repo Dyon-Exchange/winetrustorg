@@ -24,4 +24,21 @@ theme.typography.h1 = {
   }
 }
 
+theme.typography.h2 = {
+  fontWeight: 700,
+
+  [theme.breakpoints.up('md')]: {
+    fontSize: '2.25rem',
+    lineHeight: '52px'
+  },
+  [theme.breakpoints.between('sm', 'md')]: {
+    fontSize: '2rem',
+    lineHeight: '52px'
+  },
+  [theme.breakpoints.between('xs', 'sm')]: {
+    fontSize: '24px',
+    lineHeight: '38px'
+  }
+}
+
 export default theme

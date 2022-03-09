@@ -1,4 +1,4 @@
-import { Drawer } from '@mui/material'
+import { Box, Drawer } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 import { styled, useTheme } from '@mui/material/styles'
 import IconButton from '@mui/material/IconButton'
@@ -11,6 +11,7 @@ import ListItemText from '@mui/material/ListItemText'
 import { HeaderMenu } from '../../constants'
 import { NavLink } from 'react-router-dom'
 import sideDrawerStyles from './SideDrawerStyle'
+import ConnectWallet from 'components/ConnectWallet'
 
 interface Props {
   children: boolean
@@ -51,6 +52,9 @@ const SideDrawer: React.FC<Props> = ({ children, sendDataToParent }) => {
         <IconButton onClick={handleDrawerClose}>
           {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </IconButton>
+        <Box className="connect-wallet-btn">
+          <ConnectWallet />
+        </Box>
       </DrawerHeader>
       <Divider />
       <List>
