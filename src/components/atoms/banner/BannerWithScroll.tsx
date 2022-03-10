@@ -16,13 +16,14 @@ const BannerWithScroll: React.FC<Props> = ({ children }) => {
       <Container
         style={{
           position: 'relative',
-          zIndex: '0'
+          zIndex: '0',
+          minHeight: '100vh'
         }}>
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            minHeight: '100vh',
+            paddingTop: '180px',
             justifyContent: 'center'
           }}>
           <Box className={classes.bannerContent}>
@@ -32,16 +33,16 @@ const BannerWithScroll: React.FC<Props> = ({ children }) => {
             <Typography component="p" className="banner-desc">
               {children.description}
             </Typography>
-            <a
-              href="#story"
-              className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
-              <p className="mb-2 text-white text-uppercase">
-                <small>Scroll Down</small>
-              </p>
-              <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
-            </a>
           </Box>
         </Box>
+        <a
+          href="#story"
+          className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
+          <p className="mb-2 text-white text-uppercase">
+            <small>Scroll Down</small>
+          </p>
+          <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
+        </a>
       </Container>
       <div className="banner-div">
         <img className="banner-img" src={children.image} alt="WineTrust Network" />

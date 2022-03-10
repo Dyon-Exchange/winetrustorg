@@ -6,7 +6,7 @@ const homePageStyles = makeStyles(theme => {
       width: '60%',
       textAlign: 'center',
       margin: '0 auto',
-      [theme.breakpoints.between('xs', 500)]: {
+      [theme.breakpoints.between('xs', 700)]: {
         width: '100%'
       },
       '& .top-heading': {

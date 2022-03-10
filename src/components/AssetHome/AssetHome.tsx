@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Container from '@mui/material/Container'
 import { Box } from '@mui/material'
 import customStyles from './AssetHomeStyle'
-import clsx from 'clsx'
 import 'react-multi-carousel/lib/styles.css'
 import StyledCarousel from './../atoms/carousel/StyledCarousel'
 import axios from 'axios'
@@ -70,49 +69,50 @@ const AssetHome = () => {
     currentTarget.src = img
   }
   return (
-    <div>
-      <Container sx={{ mt: '9rem', pb: '5rem' }}>
-        {/* <Box className={classes.resultFoundDiv}>
-          <b>Result Found:</b> <span>{assetData?.product?.simpleName}</span>
-        </Box> */}
-        <Box className={clsx(classes.flex, classes.sectionPadding)}>
-          <img
-            src={`${process.env.REACT_APP_PINATA}${assetData?.product?.image}`}
-            onError={({ currentTarget }) => setFallbackImg(currentTarget, '/images/assetImg.jpeg')}
-            alt="asset home label"
-            width="40%"
-            height="345px"
-          />
-          <Box className={classes.assetDetailBox}>
+    <div className={classes.root}>
+      <Container className="asset-container">
+        <Box className="flex section-padding">
+          <div className="img-outer">
+            <img
+              src={`${process.env.REACT_APP_PINATA}${assetData?.product?.image}`}
+              onError={({ currentTarget }) =>
+                setFallbackImg(currentTarget, '/images/assetImg.jpeg')
+              }
+              alt="asset home label"
+              height="345px"
+              width="100%"
+            />
+          </div>
+          <Box className="asset-spec-wrapper">
             <h2 className="text-align-center mr-t-0">{assetData?.product?.longName}</h2>
-            <Box className={classes.spaceBetWeenFlex}>
-              <p className="heading">Producer</p>
+            <Box>
+              <p>Producer</p>
               <p>Chateau Lafite Rothschild</p>
             </Box>
-            <Box className={classes.spaceBetWeenFlex}>
-              <p className="heading">Year</p>
+            <Box>
+              <p>Year</p>
               <p>{assetData?.product?.year}</p>
             </Box>
-            <Box className={classes.spaceBetWeenFlex}>
-              <p className="heading">Pack Size</p>
+            <Box>
+              <p>Pack Size</p>
               <p>{assetData?.product?.packSize}</p>
             </Box>
-            <Box className={classes.spaceBetWeenFlex}>
-              <p className="heading">Region</p>
+            <Box>
+              <p>Region</p>
               <p>{assetData?.product?.region}</p>
             </Box>
-            <Box className={classes.spaceBetWeenFlex}>
-              <p className="heading">Sub Region</p>
+            <Box>
+              <p>Sub Region</p>
               <p>{assetData?.product?.subRegion}</p>
             </Box>
-            <Box className={classes.spaceBetWeenFlex}>
-              <p className="heading">Sub Sub Region</p>
+            <Box>
+              <p>Sub Sub Region</p>
               <p>{assetData?.product?.subSubRegion}</p>
             </Box>
           </Box>
         </Box>
-        <Box className={clsx(classes.sectionBorder, classes.flex, classes.sectionPadding)}>
-          <div className={classes.bottleImgOuter}>
+        <Box className="section-border flex section-padding">
+          <div className="img-outer">
             <img
               src={`${process.env.REACT_APP_PINATA}${assetData?.product?.bottleImage}`}
               alt="asset home bottle img"
@@ -120,40 +120,40 @@ const AssetHome = () => {
             />
           </div>
 
-          <Box className={classes.assetDetailBox}>
-            <Box className={classes.assetDesc}>{assetData?.product?.description}</Box>
-            <Box className={classes.spaceBetWeenFlex}>
-              <p className="heading">Producer</p>
+          <Box className="asset-spec-wrapper">
+            <Box className="asset-desc">{assetData?.product?.description}</Box>
+            <Box>
+              <p>Producer</p>
               <p>Chateau Lafite Rothschild</p>
             </Box>
-            <Box className={classes.spaceBetWeenFlex}>
-              <p className="heading">Token ID</p>
+            <Box>
+              <p>Token ID</p>
               <p>2010</p>
             </Box>
-            <Box className={classes.spaceBetWeenFlex}>
-              <p className="heading">Custodian</p>
+            <Box>
+              <p>Custodian</p>
               <p>WineTrust</p>
             </Box>
-            <Box className={classes.spaceBetWeenFlex}>
-              <p className="heading">Date minted</p>
+            <Box>
+              <p>Date minted</p>
               <p>15 January 2022</p>
             </Box>
-            <Box className={classes.spaceBetWeenFlex}>
-              <p className="heading">Warehouse location</p>
+            <Box>
+              <p>Warehouse location</p>
               <p>{assetData?.preAdvice?.arrivalWarehouse.name}</p>
             </Box>
-            <Box className={classes.spaceBetWeenFlex}>
-              <p className="heading">Date entered warehouse</p>
+            <Box>
+              <p>Date entered warehouse</p>
               <p>12 November 2021</p>
             </Box>
-            <Box className={classes.spaceBetWeenFlex}>
-              <p className="heading">Warehouse ID number</p>
+            <Box>
+              <p>Warehouse ID number</p>
               <p>{assetData?.warehouseLocationNo}</p>
             </Box>
           </Box>
         </Box>
         {assetImages.length > 0 ? (
-          <Box className={clsx(classes.sectionBorder, classes.sectionPadding)}>
+          <Box className="section-border section-padding">
             <h2 className="mr-t-0">Asset Images (photos of the exact asset):</h2>
             <Box>
               <StyledCarousel
@@ -162,7 +162,7 @@ const AssetHome = () => {
                 arrows={window.innerWidth >= 768 ? true : false}
                 renderButtonGroupOutside={true}>
                 {assetImages.map((item: any) => (
-                  <img src={item.image} className={classes.carouselImg} height="400px" />
+                  <img src={item.image} className="carousel-img" height="400px" />
                 ))}
               </StyledCarousel>
             </Box>

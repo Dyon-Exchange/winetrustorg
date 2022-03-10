@@ -105,6 +105,7 @@ const AssetListing = () => {
           <b>Search Results for:</b> <span>{params.product}</span>
         </Box>
         <StyledDataGrid
+          rowHeight={64}
           disableSelectionOnClick
           disableColumnSelector
           columns={assetsTableColumns}
