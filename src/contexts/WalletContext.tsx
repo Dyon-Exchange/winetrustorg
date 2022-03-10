@@ -5,18 +5,23 @@ import type { ReactNode } from 'react'
 import Web3 from 'web3'
 
 import { SUPPORTED_NETWORKS } from '../constants'
-import { UserDetails, NetworkDetails, IWalletContext } from '../interfaces'
+import {
+  IUserDetails,
+  NetworkDetails,
+  IWalletContext,
+  ILoggedInDetails,
+  IUserData
+} from '../interfaces'
+import axios from 'axios'
 import { convertWeiToNumber } from '../helpers/ethers/convertValue'
 import { AuthDetails } from 'interfaces/AuthDetails'
 import useLocalStorage from 'hooks/localStorage/useLocalStorage'
-import {
-  authRequest,
-  createUserRequest,
-  searchUsersRequest,
-  UserData
-} from 'api/auth/auhtentication'
+import { authRequest, createUserRequest, searchUsersRequest } from 'api/auth/auhtentication'
 
 const INITIAL_WALLET_CONTEXT = {
+  loggedInDetails: undefined,
+  setCurrentUserInfo: () => {},
+  currentUserInfo: {},
   userDetails: undefined,
   provider: undefined,
   initialising: true,
@@ -36,12 +41,13 @@ const INITIAL_WALLET_CONTEXT = {
 export const WalletContext = createContext<IWalletContext>(INITIAL_WALLET_CONTEXT)
 
 export const WalletContextProvider = ({ children }: { children: ReactNode }) => {
-  const authStorageKey = 'auth'
+  const authStorageKey = 'wt-auth'
+  const wtLoggedInUserInfo = 'wt-logged-inuser-info'
 
   // loading state for initialising the context
   const [initialising, setInitialising] = useState(true)
 
-  const [userDetails, setUserDetails] = useState<UserDetails | undefined>()
+  const [userDetails, setUserDetails] = useState<IUserDetails | undefined>()
   const [provider, setProvider] = useState<providers.JsonRpcSigner | undefined>()
 
   const [networkDetails, setNetworkDetails] = useState<NetworkDetails>()
@@ -51,20 +57,41 @@ export const WalletContextProvider = ({ children }: { children: ReactNode }) => 
     undefined
   )
 
-  const isMetaMaskInstalled = window.ethereum?.isMetaMask
+  const [loggedInDetails, setLoggedInDetails] = useLocalStorage<ILoggedInDetails>(
+    wtLoggedInUserInfo,
+    {}
+  )
 
+  const setCurrentUserInfo = useCallback(
+    (data: ILoggedInDetails) => {
+      setLoggedInDetails(data)
+    },
+    [setLoggedInDetails]
+  )
+
+  const currentUserInfo = useMemo(() => {
+    return loggedInDetails
+  }, [loggedInDetails])
+
+  const isMetaMaskInstalled = window.ethereum?.isMetaMask
   const walletConnected = userDetails !== undefined && provider !== undefined && !initialising
 
   const loggedIn = useMemo(() => {
-    if (!authDetails?.accessToken) return false
+    if (!authDetails?.accessToken) {
+      delete axios.defaults.headers.common['Authorization']
+      return false
+    }
+    //setting authorize token to header in axios
+    axios.defaults.headers.common['Authorization'] = `Bearer ${authDetails?.accessToken}`
     return true
   }, [authDetails?.accessToken])
 
   const clearConnectedAccount = useCallback(() => {
     setProvider(undefined)
     setUserDetails(undefined)
+    setLoggedInDetails(undefined)
     setAuthDetails(undefined)
-  }, [setProvider, setUserDetails, setAuthDetails])
+  }, [setProvider, setUserDetails, setAuthDetails, setLoggedInDetails])
 
   // will setup wallet context to the currently selected metamask account
   const connectAccount = useCallback(async () => {
@@ -172,11 +199,12 @@ export const WalletContextProvider = ({ children }: { children: ReactNode }) => 
 
     const signature = await handleSignMessage(user)
 
-    const { token } = await authRequest(userDetails.address, signature)
+    const { token, user: userInfo } = await authRequest(userDetails.address, signature)
     setAuthDetails({ accessToken: token, address: userDetails.address })
-  }, [setAuthDetails, userDetails])
+    setLoggedInDetails({ user: userInfo })
+  }, [setAuthDetails, userDetails, setLoggedInDetails])
 
-  const handleSignMessage = ({ ethAddress, nonce }: UserData) => {
+  const handleSignMessage = ({ ethAddress, nonce }: IUserData) => {
     const web3 = new Web3(Web3.givenProvider)
 
     return new Promise<string>((resolve, reject) =>
@@ -198,6 +226,9 @@ export const WalletContextProvider = ({ children }: { children: ReactNode }) => 
   return (
     <WalletContext.Provider
       value={{
+        loggedInDetails,
+        setCurrentUserInfo,
+        currentUserInfo,
         userDetails,
         provider,
         initialising,
