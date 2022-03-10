@@ -4,9 +4,9 @@ import { DataGrid } from '@mui/x-data-grid'
 // min height and max height takes into account the top bar
 const StyledDataGrid = styled(DataGrid)({
   border: 'none',
-  minHeight: '225px',
-  height: 'calc(100vh - 300px)',
-  lineHeight: '51px!important',
+  minHeight: '300px',
+  height: 'calc(100vh - 200px)',
+  lineHeight: '62px!important',
 
   '& .MuiDataGrid-columnHeaders': {
     background: '#e2e8f0'

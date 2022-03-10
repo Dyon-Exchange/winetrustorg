@@ -1,7 +1,6 @@
 import React from 'react'
 import Container from '@mui/material/Container'
 import { Box, Typography } from '@mui/material'
-import './TechnologyPage.css'
 import BannerWithScroll from 'components/atoms/banner/BannerWithScroll'
 import technologyStyles from './TechnologyStyle'
 

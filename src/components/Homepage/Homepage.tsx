@@ -39,13 +39,14 @@ const Homepage = () => {
         <Container
           style={{
             position: 'relative',
-            zIndex: '0'
+            zIndex: '0',
+            minHeight: '100vh'
           }}>
           <Box
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              minHeight: '100vh',
+              paddingTop: '150px',
               justifyContent: 'center'
             }}>
             <Box className={classes.homeTopBlock}>
@@ -63,7 +64,7 @@ const Homepage = () => {
                 }}>
                 Learn More
               </BootstrapBlueBtn>
-              <Box sx={{ marginTop: '6%' }}>
+              <Box sx={{ marginTop: '34px' }}>
                 <Box className="search-heading">Find a Token or Product:</Box>
                 <TextField
                   id="outlined-start-adornment"
@@ -94,17 +95,16 @@ const Homepage = () => {
                   }}
                 />
               </Box>
-
-              <a
-                href="#story"
-                className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
-                <p className="mb-2 text-white text-uppercase">
-                  <small>Scroll Down</small>
-                </p>
-                <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
-              </a>
             </Box>
           </Box>
+          <a
+            href="#story"
+            className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
+            <p className="mb-2 text-white text-uppercase">
+              <small>Scroll Down</small>
+            </p>
+            <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
+          </a>
         </Container>
       </div>
       <Container className={classes.revolutionContainer}>
