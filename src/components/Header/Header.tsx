@@ -1,68 +1,37 @@
 import * as React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
-import Menu from '@mui/material/Menu'
 import Container from '@mui/material/Container'
-
-import Avatar from '@mui/material/Avatar'
 import Button from '@material-ui/core/Button'
-import Tooltip from '@mui/material/Tooltip'
-import MenuItem from '@mui/material/MenuItem'
-
 import { HeaderMenu, RoutesPath } from '../../constants'
-
-import { WalletContext } from '../../contexts/WalletContext'
-import BootstrapBlueBtn from 'components/atoms/buttons/BootStrapBlueBtn'
-
 import './Header.css'
 import headerStyles from './HeaderStyle'
 import SideDrawer from 'components/SideDrawer/SideDrawer'
+import ConnectWallet from 'components/ConnectWallet'
 
 const Header = () => {
-  const { walletConnected, connectAccount, loggedIn, login } = React.useContext(WalletContext)
   const navigate = useNavigate()
 
   const [anchorElNav, setAnchorElNav] = React.useState(false)
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
 
   const handleOpenNavMenu = () => {
     setAnchorElNav(true)
   }
 
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget)
-  }
-
   const handleCloseNavMenu = (val: any) => {
     setAnchorElNav(val)
   }
-  // const handleCloseNavMenu = () => {
-  //   setAnchorElNav(null)
-  // }
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
-  }
-
-  const handleGotoProfile = async () => {
-    if (!loggedIn) {
-      await login()
-    }
-
-    navigate(RoutesPath.PROFILESETTING)
-  }
   const classes = headerStyles()
   return (
     <AppBar position="static" className={classes.appBar}>
       <Container
         style={{
           backgroundColor: '#002954',
-
           position: 'absolute',
           width: '100%',
           maxWidth: '100%'
@@ -82,98 +51,13 @@ const Header = () => {
                 {menu.menuName}
               </Button>
             ))}
-
-            {!walletConnected ? (
-              <BootstrapBlueBtn
-                variant="contained"
-                disableRipple
-                size="small"
-                onClick={connectAccount}>
-                Connect Wallet
-              </BootstrapBlueBtn>
-            ) : (
-              <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt="Unnamed"
-                      src="/static/images/avatar/2.jpg"
-                      sx={{
-                        background: 'linear-gradient(rgb(0, 41, 84) 0%, rgba(0, 41, 84, 0) 100%)',
-                        border: '1px solid white',
-                        borderRadius: '50%'
-                      }}
-                    />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}>
-                  <MenuItem key={123} onClick={handleGotoProfile}>
-                    <Typography textAlign="center">Profile</Typography>
-                  </MenuItem>
-                </Menu>
-              </Box>
-            )}
+            <ConnectWallet />
           </Box>
 
           <Box className="mobile-menu">
-            {!walletConnected ? (
-              <BootstrapBlueBtn
-                variant="contained"
-                disableRipple
-                size="small"
-                onClick={connectAccount}>
-                Connect Wallet
-              </BootstrapBlueBtn>
-            ) : (
-              <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt="Unnamed"
-                      src="/static/images/avatar/2.jpg"
-                      sx={{
-                        background: 'linear-gradient(rgb(0, 41, 84) 0%, rgba(0, 41, 84, 0) 100%)',
-                        border: '1px solid white',
-                        borderRadius: '50%'
-                      }}
-                    />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}>
-                  <MenuItem key={123} onClick={handleGotoProfile}>
-                    <Typography textAlign="center">Profile</Typography>
-                  </MenuItem>
-                </Menu>
-              </Box>
-            )}
+            <Box className="connect-wallet-btn">
+              <ConnectWallet />
+            </Box>
             <IconButton
               size="large"
               aria-label="account of current user"

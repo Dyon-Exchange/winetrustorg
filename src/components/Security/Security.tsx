@@ -5,6 +5,7 @@ import { Box, Card, CardContent, Grid, Typography } from '@mui/material'
 import { securityConst } from './SecurityConst'
 import { ledgerConst } from './LedgerConst'
 import BannerWithScroll from 'components/atoms/banner/BannerWithScroll'
+import securityStyles from './SecurityStyle'
 
 const bannerConst = {
   title: 'Security',
@@ -14,22 +15,19 @@ const bannerConst = {
 }
 
 const SecurityPage = () => {
+  const classes = securityStyles()
   return (
-    <div>
+    <div className={classes.root}>
       <BannerWithScroll>{bannerConst}</BannerWithScroll>
       <Box sx={{ background: '#f9fcff' }}>
-        <Container sx={{ p: '100px 0' }}>
-          <Typography
-            variant="h2"
-            sx={{ fontSize: '2.25rem', fontWeight: '700', textAlign: 'center', mb: '2rem' }}>
+        <Container className="container-padding">
+          <Typography variant="h2" sx={{ textAlign: 'center' }}>
             WineTrust provides a six point
           </Typography>
-          <Typography
-            variant="h2"
-            sx={{ fontSize: '2.25rem', fontWeight: '700', textAlign: 'center', mb: '2rem' }}>
+          <Typography variant="h2" sx={{ textAlign: 'center' }}>
             Security Guarantee
           </Typography>
-          <Grid container spacing={4} sx={{ pb: '70px' }}>
+          <Grid container spacing={4} sx={{ mt: '10px' }}>
             {securityConst.map((item: any) => (
               <Grid item xs={12} sm={6} md={4}>
                 <Card className="card">
@@ -43,9 +41,9 @@ const SecurityPage = () => {
           </Grid>
         </Container>
       </Box>
-      <Container sx={{ display: { xs: 'block', md: 'flex' } }}>
-        <Box sx={{ alignSelf: 'center', pr: '2rem' }}>
-          <h2 className="section-title">Public blockchain ledger gives immutable security</h2>
+      <Container className="section-container">
+        <Box className="section-outer-box">
+          <Typography variant="h2">Public blockchain ledger gives immutable security</Typography>
           <Box sx={{ mb: '3rem' }}>
             <p>
               Every unit of inventory stored in WineTrust is automatically registered on an
@@ -67,14 +65,11 @@ const SecurityPage = () => {
         <img src="/images/security/features/protect.png" width="100%" />
       </Container>
       <Box sx={{ background: '#212529' }}>
-        <Container sx={{ p: '100px 0' }}>
+        <Container className="container-padding">
           <Typography
             variant="h2"
             sx={{
-              fontSize: '2.25rem',
-              fontWeight: '700',
               textAlign: 'center',
-              mb: '2rem',
               color: '#fff'
             }}>
             WineTrust is more than just ‘storage’
@@ -86,7 +81,7 @@ const SecurityPage = () => {
             <br />
             verifiable externally.
           </p>
-          <Grid container spacing={4} sx={{ pb: '70px', justifyContent: 'center' }}>
+          <Grid container spacing={4} sx={{ justifyContent: 'center' }}>
             {ledgerConst.map((item: any) => (
               <Grid item xs={12} sm={6} md={4}>
                 <Card
@@ -108,9 +103,9 @@ const SecurityPage = () => {
           </Grid>
         </Container>
       </Box>
-      <Container sx={{ display: { xs: 'block', md: 'flex' } }} className="section-padding">
-        <Box sx={{ alignSelf: 'center', pr: '2rem' }}>
-          <h2 className="section-title">A gateway to NFTs </h2>
+      <Container className="section-container">
+        <Box className="section-outer-box">
+          <Typography variant="h2">A gateway to NFTs </Typography>
           <Box sx={{ mb: '3rem' }}>
             <p>
               Every case secured in WineTrust is automatically tokenized as an digital asset on an
@@ -139,51 +134,20 @@ const SecurityPage = () => {
         <img src="/images/security/nft.png" width="100%" />
       </Container>
       <Box sx={{ background: '#f9fcff' }}>
-        <Container sx={{ p: '100px 0', pl: '0!important', pr: '0!important' }}>
+        <Container className="container-padding">
           WineTrust will also operate a fine wine & spirits digital asset exchange. This means that
           all assets in WineTrust can be offered for sale (in fractional amounts). This opens up a
           new world of liquidity, trading, and new entrants into the world of fine wine and spirits.
           We believe that tokenization represents the future of completely secure fine wine &
           spirits ownership and trading.
-          {/* <Box sx={{ display: { xs: 'block', md: 'flex' } }}>
-            <img src="/images/security/dyon-graph.png" />
-            <Box sx={{ alignSelf: 'center' }}>
-              <Typography variant="h2" sx={{ fontSize: '2.2rem', fontWeight: '700', mb: '1.5rem' }}>
-                The Dyon Exchange
-              </Typography>
-              <Box sx={{ mb: '3rem', lineHeight: '2' }}>
-                <p>
-                  WineTrust has partnered with Dyon – the world’s leading fine wine & spirits
-                  digital asset exchange. This means that all assets in WineTrust can be offered for
-                  sale (in fractional amounts) on Dyon.
-                </p>
-                <p>
-                  This opens up a new world of liquidity, trading, and new entrants into the world
-                  of fine wine and spirits. Anything you purchase on the Dyon exchange can also be
-                  automatically stored in your WineTrust account.
-                </p>
-                <p>
-                  We believe that tokenization represents the future of completely secure fine wine
-                  & spirits ownership and trading.
-                </p>
-                <a
-                  href="https://www.dyon.cc"
-                  target="_blank"
-                  className="btn btn-blue dyon-exchange-btn border-radius-8">
-                  See Dyon Exchange
-                  <span className="arrow-right-white"></span>
-                </a>
-              </Box>
-            </Box>
-          </Box> */}
         </Container>
       </Box>
-      <Container sx={{ display: { xs: 'block', md: 'flex' } }}>
-        <Box sx={{ alignSelf: 'center', pr: '2rem' }}>
-          <h2 className="section-title">
+      <Container className="container-padding">
+        <Box>
+          <Typography variant="h2" sx={{ textAlign: 'center' }}>
             Tokenization can transform trading of fine wine & spirits
-          </h2>
-          <Box sx={{ mb: '3rem', lineHeight: '2', pr: '4rem' }}>
+          </Typography>
+          <Box sx={{ lineHeight: '2' }}>
             <p>
               Buying and selling fine wine & spirits has historically been laborious, expensive, and
               illiquid.

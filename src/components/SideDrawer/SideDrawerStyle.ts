@@ -28,6 +28,11 @@ const sideDrawerStyles = makeStyles(theme => {
             fontSize: '18px'
           }
         }
+      },
+      [theme.breakpoints.up(600)]: {
+        '& .connect-wallet-btn': {
+          display: 'none'
+        }
       }
     }
   }
