@@ -134,6 +134,30 @@
   margin: 0 5px;
 }
 
+.blue-text {
+  color: #1483f8;
+}
+
+.story-desc li {
+  padding-left: 26px;
+  background: url('/public/images/general/check.svg') no-repeat;
+  background-position: 0 5px;
+  line-height: 2em;
+  align-items: flex-start;
+  color: #304151;
+  margin-bottom: 1em;
+  list-style: none;
+  font-weight: 500;
+}
+
+.story-desc {
+  list-style: none;
+  padding-left: 0;
+  font-size: 0.875em;
+  color: #304151;
+  line-height: 1.8;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

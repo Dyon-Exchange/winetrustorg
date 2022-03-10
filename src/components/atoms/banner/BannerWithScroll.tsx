@@ -29,7 +29,7 @@ const BannerWithScroll: React.FC<Props> = ({ children }) => {
             <Typography variant="h1" sx={{ mb: '1.5rem', color: '#fff' }}>
               {children.title}
             </Typography>
-            <Typography component="div" sx={{ mb: '1.5rem', fontSize: '1.5rem', color: '#c9d4df' }}>
+            <Typography component="p" className="banner-desc">
               {children.description}
             </Typography>
             <a

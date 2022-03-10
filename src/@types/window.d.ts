@@ -4,3 +4,4 @@ declare interface Window {
 }
 declare function customMarker(Datamap: any): any
 declare module 'react-multi-carousel'
+declare module 'react-toastify'

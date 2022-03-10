@@ -47,6 +47,9 @@
 .wt-revolution-desc ul {
   list-style: none;
   padding-left: 0;
+  font-size: 0.875em;
+  color: #304151;
+  line-height: 1.8;
 }
 
 ::-webkit-input-placeholder {

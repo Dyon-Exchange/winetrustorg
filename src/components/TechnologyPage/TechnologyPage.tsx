@@ -1,8 +1,9 @@
 import React from 'react'
 import Container from '@mui/material/Container'
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import './TechnologyPage.css'
 import BannerWithScroll from 'components/atoms/banner/BannerWithScroll'
+import technologyStyles from './TechnologyStyle'
 
 const bannerConst = {
   title: 'Technology',
@@ -12,15 +13,18 @@ const bannerConst = {
 }
 
 const TechnologyPage = () => {
+  const classes = technologyStyles()
   return (
-    <div>
+    <div className={classes.root}>
       <BannerWithScroll>{bannerConst}</BannerWithScroll>
-      <Container className="section-padding">
-        <Box sx={{ display: { xs: 'block', md: 'flex' } }}>
-          <img src="/images/technologyPage/ownership-story-1.png" />
-          <Box sx={{ pl: '3rem' }}>
-            <h2 className="section-title">Blockchain ledger brings huge benefits</h2>
-            <Box sx={{ mb: '3rem' }}>
+      <Container className="container-padding">
+        <Box className="section-outer-wrapper">
+          <div className="section-img">
+            <img src="/images/technologyPage/ownership-story-1.png" />
+          </div>
+          <Box className="section-box right-section">
+            <Typography variant="h2">Blockchain ledger brings huge benefits</Typography>
+            <Box>
               <p>
                 Using a public Blockchain ledger brings huge benefits to opaque and inefficient
                 asset classes like fine wine & spirits. A blockchain ledger improves trust and
@@ -32,10 +36,10 @@ const TechnologyPage = () => {
           </Box>
         </Box>
       </Container>
-      <Box sx={{ background: '#f9fcff' }} className="section-padding">
-        <Container sx={{ display: { xs: 'block', md: 'flex' } }}>
-          <Box sx={{ alignSelf: 'center', pr: '2rem' }}>
-            <h2 className="section-title">Tokenized fine wine & spirits</h2>
+      <Box sx={{ background: '#f9fcff' }} className="container-padding">
+        <Container className="section-outer-wrapper">
+          <Box className="section-box left-section">
+            <Typography variant="h2">Tokenized fine wine & spirits</Typography>
             <Box sx={{ mb: '3rem' }}>
               <p>
                 All assets stored within WineTrust are tokenized as ERC-1155 tokens (via on the
@@ -69,7 +73,9 @@ const TechnologyPage = () => {
               </ul>
             </Box>
           </Box>
-          <img src="/images/technologyPage/ownership-story-2.png" />
+          <div className="section-img">
+            <img src="/images/technologyPage/ownership-story-2.png" />
+          </div>
         </Container>
       </Box>
 
