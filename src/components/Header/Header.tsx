@@ -65,7 +65,7 @@ const Header = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit">
-              <img src="/images/general/menu.svg" />
+              <img src="/images/general/menu.svg" alt="WineTrust" />
             </IconButton>
             <SideDrawer sendDataToParent={handleCloseNavMenu}>{anchorElNav}</SideDrawer>
           </Box>
