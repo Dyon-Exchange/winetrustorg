@@ -1,4 +1,4 @@
-export interface IUserDetails {
+export interface UserDetails {
   address: string
   balance: number
 }
