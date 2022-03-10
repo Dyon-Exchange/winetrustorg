@@ -1,18 +1,17 @@
 import { makeStyles } from '@material-ui/core/styles'
 
-const securityStyles = makeStyles(theme => {
+const ownershipStyles = makeStyles(theme => {
   return {
     root: {
       '& .container-padding': {
-        paddingTop: '100px',
-        paddingBottom: '100px'
+        paddingTop: '80px',
+        paddingBottom: '80px'
       },
-      '& .section-container': {
-        paddingTop: '50px',
-        '& .section-outer-box': {
+      '& .section-outer-wrapper': {
+        '& .section-box': {
           alignSelf: 'center',
           [theme.breakpoints.up('md')]: {
-            paddingRight: '2rem'
+            paddingLeft: '3rem'
           },
           [theme.breakpoints.between('xs', 'sm')]: {
             '& h2': {
@@ -21,13 +20,27 @@ const securityStyles = makeStyles(theme => {
           }
         },
         [theme.breakpoints.up('md')]: {
-          display: 'flex',
-          '& img': {
-            width: '50%'
+          display: 'flex'
+        },
+        [theme.breakpoints.between('xs', 'sm')]: {
+          '& .wt-ownership-img img': {
+            width: '90%'
+          }
+        },
+        [theme.breakpoints.between('sm', 960)]: {
+          '& .wt-ownership-img img': {
+            width: '60%'
+          }
+        },
+        [theme.breakpoints.between('xs', 'md')]: {
+          '& .wt-ownership-img ': {
+            textAlign: 'center',
+            marginBottom: '70px'
           }
         }
       },
       '& .grid-container': {
+        paddingBottom: '70px',
         '& .card': {
           borderRadius: '22px',
           minHeight: '338px',
@@ -51,4 +64,4 @@ const securityStyles = makeStyles(theme => {
   }
 })
 
-export default securityStyles
+export default ownershipStyles

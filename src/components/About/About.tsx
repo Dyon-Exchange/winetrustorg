@@ -2,6 +2,7 @@ import React from 'react'
 import Container from '@mui/material/Container'
 import { Box } from '@mui/material'
 import BannerWithScroll from 'components/atoms/banner/BannerWithScroll'
+import aboutStyles from './AboutStyle'
 // import { foundersConst1 } from './FounderConst1'
 // import { foundersConst2 } from './FounderConst2'
 
@@ -14,11 +15,12 @@ const bannerConst = {
 }
 
 const About = () => {
+  const classes = aboutStyles()
   return (
-    <div>
+    <div className={classes.root}>
       <BannerWithScroll>{bannerConst}</BannerWithScroll>
-      <Container className="section-padding">
-        <Box sx={{ width: '52%' }}>
+      <Container className="container-padding">
+        <Box className="section-outer">
           <p>
             Today, the WineTrust ecosystem encompasses many of the world’s highest quality fine wine
             & spirits storage facilities.

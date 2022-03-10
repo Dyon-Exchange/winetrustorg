@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import Container from '@mui/material/Container'
-import './NetworkPage.css'
 import { Box, Typography } from '@mui/material'
 import Datamap from 'datamaps'
 import BannerWithScroll from 'components/atoms/banner/BannerWithScroll'
+import networkStyles from './NetworkStyle'
 
 const bannerConst = {
   title: 'Network',
@@ -13,6 +13,8 @@ const bannerConst = {
 }
 
 const NetworkPage = () => {
+  const classes = networkStyles()
+
   useEffect(() => {
     var dataMap = new Datamap({
       element: document.getElementById('dataMap'),
@@ -115,24 +117,23 @@ const NetworkPage = () => {
   return (
     <div>
       <BannerWithScroll>{bannerConst}</BannerWithScroll>
-      <Container sx={{ textAlign: 'center', p: '100px 0' }}>
-        <div className="section-header text-center">
-          <Typography variant="h2" sx={{ fontSize: '2.2rem', fontWeight: '700', mb: '1.5rem' }}>
+      <Container className={classes.container}>
+        <Box className="text-center">
+          <Typography variant="h2" sx={{ mb: '1.5rem' }}>
             Our network compasses:
           </Typography>
-          <Box sx={{ mb: '3rem' }}>
+          <Box className="datamap-text" sx={{ pb: '3rem' }}>
             Retailers and merchants are also joining WineTrust and allowing their <br /> clients to
             enjoy the benefits of the WineTrust protocol
           </Box>
-          <Box sx={{ m: '3rem 0', p: '3rem 0' }}>
+          <Box>
             <div id="dataMap"></div>
-            <div>
+            <Typography variant="h5" className="datamap-text semi-bold">
               In the future, we expect WineTrust to become the dominant storage solution for all
-              top-quality <br />
-              fine wines and spirits across the world.
-            </div>
+              top-quality fine wines and spirits across the world.
+            </Typography>
           </Box>
-        </div>
+        </Box>
       </Container>
     </div>
   )

@@ -1,6 +1,5 @@
 import React from 'react'
 import Container from '@mui/material/Container'
-import './Security.css'
 import { Box, Card, CardContent, Grid, Typography } from '@mui/material'
 import { securityConst } from './SecurityConst'
 import { ledgerConst } from './LedgerConst'
@@ -27,13 +26,13 @@ const SecurityPage = () => {
           <Typography variant="h2" sx={{ textAlign: 'center' }}>
             Security Guarantee
           </Typography>
-          <Grid container spacing={4} sx={{ mt: '10px' }}>
+          <Grid container spacing={4} sx={{ mt: '10px' }} className="grid-container">
             {securityConst.map((item: any) => (
               <Grid item xs={12} sm={6} md={4}>
                 <Card className="card">
-                  <CardContent sx={{ p: '1.5rem 3rem' }}>
+                  <CardContent className="card-content">
                     <img src={item.icon} />
-                    <p className="story-desc">{item.desc}</p>
+                    <p className="card-desc">{item.desc}</p>
                   </CardContent>
                 </Card>
               </Grid>
@@ -81,7 +80,7 @@ const SecurityPage = () => {
             <br />
             verifiable externally.
           </p>
-          <Grid container spacing={4} sx={{ justifyContent: 'center' }}>
+          <Grid container spacing={4} sx={{ justifyContent: 'center' }} className="grid-container">
             {ledgerConst.map((item: any) => (
               <Grid item xs={12} sm={6} md={4}>
                 <Card
@@ -92,9 +91,9 @@ const SecurityPage = () => {
                     backgroundSize: 'cover',
                     backgroundColor: '#000'
                   }}>
-                  <CardContent sx={{ p: '1.5rem 3rem' }}>
+                  <CardContent className="card-content">
                     <img src={item.icon} />
-                    <p className="story-title white-color">{item.title}</p>
+                    <p className="card-title white-color">{item.title}</p>
                     <p className="white-color">{item.desc}</p>
                   </CardContent>
                 </Card>

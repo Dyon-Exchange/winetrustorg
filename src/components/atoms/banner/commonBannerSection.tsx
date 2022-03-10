@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from '@mui/material'
 import React from 'react'
-
+import bannerStyles from './bannerStyle'
 // const useStyles = makeStyles(theme => ({
 //   hidden: {
 //     display: '-webkit-box',
@@ -18,6 +18,7 @@ interface Props {
   }
 }
 const BannerSection: React.FC<Props> = ({ children }) => {
+  const classes = bannerStyles()
   return (
     <div className="banner-section small-banner">
       <div className="banner-gradient">
@@ -33,14 +34,12 @@ const BannerSection: React.FC<Props> = ({ children }) => {
               minHeight: '585px',
               justifyContent: 'center'
             }}>
-            <Box sx={{ width: '58%' }}>
+            <Box className={classes.bannerContent}>
               <Typography variant="h1" sx={{ mb: '1.5rem', color: '#fff' }}>
                 {children.title}
               </Typography>
               {children.description ? (
-                <Typography
-                  component="div"
-                  sx={{ mb: '1.5rem', fontSize: '1.5rem', color: '#c9d4df' }}>
+                <Typography component="p" className="banner-desc">
                   {children.description}
                 </Typography>
               ) : (
