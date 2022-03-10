@@ -28,14 +28,16 @@
 .profile-outer {
   position: absolute;
   bottom: 0;
-  transform: translate(50%, 50%);
+  bottom: -28%;
+  left: 10%;
   display: flex;
 }
 
 .profile-name {
   float: right;
-  transform: translate(24%, 65%);
   font-weight: 500;
+  align-self: flex-end;
+  margin-left: 20px;
 }
 
 .profile-img-overlay {
