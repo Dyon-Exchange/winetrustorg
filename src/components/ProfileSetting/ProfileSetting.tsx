@@ -18,8 +18,10 @@ import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles'
 import EditIcon from '@mui/icons-material/Edit'
 import { profileUpdateRequest, profileImageUpdateRequest } from 'api/profile/profileUpdate'
+import profileStyles from './ProfileStyle'
 
 const ProfileSetting = () => {
+  const classes = profileStyles()
   const { authDetails, loggedIn, login, currentUserInfo, setCurrentUserInfo } =
     React.useContext(WalletContext)
   const { setLoading } = React.useContext(LoaderContext)
@@ -32,9 +34,9 @@ const ProfileSetting = () => {
     authDetails
   )
 
-  const [currentProfileImage, setCurrentProfileImage] = React.useState<FormData | undefined>(
-    undefined
-  )
+  const [currentProfileImage, setCurrentProfileImage] = React.useState<FormData | undefined>()
+
+  const [imageUrl, setImageUrl] = React.useState<string>()
 
   useEffect(() => {
     setUpdatedUserDetails(currentUserInfo)
@@ -133,6 +135,7 @@ const ProfileSetting = () => {
       }
       formData.append('profile-image', files[0])
       setCurrentProfileImage(formData)
+      setImageUrl(URL.createObjectURL(files[0]))
     }
   }
 
@@ -189,52 +192,62 @@ const ProfileSetting = () => {
   }
 
   return (
-    <div>
-      <Container>
+    <div className={classes.root}>
+      <Container className="profile-container">
         <ToastContainer />
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            minHeight: '66vh',
-            justifyContent: 'center',
-            mt: '50px'
-          }}>
+        <Box className="profile-bg-outer">
           <h2>Profile Setting</h2>
           <div className="profile-backdrop card-shadow">
             <div className="profile-outer">
-              <label htmlFor="contained-button-file">
-                <div id="profile-img">
-                  <img
-                    className="profile-pic"
-                    src={
-                      currentUserInfo?.user?.profileImage ??
-                      '/images/profileSetting/dummy-profile.png'
-                    }
-                    alt="WineTrust Profile"
-                    onError={({ currentTarget }) => {
-                      currentTarget.onerror = null
-                      currentTarget.src = '/images/profileSetting/dummy-profile.png'
-                    }}
+              <label htmlFor="contained-button-file" className="mobile-profile">
+                <div>
+                  <div id="profile-img">
+                    {!imageUrl && !currentProfileImage && (
+                      <img
+                        className="profile-pic"
+                        src={
+                          currentUserInfo?.user?.profileImage ??
+                          '/images/profileSetting/dummy-profile.png'
+                        }
+                        alt="WineTrust Profile"
+                        onError={({ currentTarget }) => {
+                          currentTarget.onerror = null
+                          currentTarget.src = '/images/profileSetting/dummy-profile.png'
+                        }}
+                      />
+                    )}
+                    {imageUrl && currentProfileImage && (
+                      <img
+                        className="profile-pic"
+                        src={imageUrl}
+                        alt="Selected profile img"
+                        onError={({ currentTarget }) => {
+                          currentTarget.onerror = null
+                          currentTarget.src = '/images/profileSetting/dummy-profile.png'
+                        }}
+                      />
+                    )}
+                    <Avatar
+                      className="profile-pic profile-img-overlay"
+                      sx={{
+                        height: '150px',
+                        width: '150px',
+                        position: 'absolute',
+                        background: 'rgb(0,0,0,0.2)'
+                      }}>
+                      <EditIcon />
+                    </Avatar>
+                  </div>
+                  <Input
+                    accept="image/*"
+                    id="contained-button-file"
+                    type="file"
+                    onChange={selectProfileImage}
                   />
-                  <Avatar
-                    className="profile-pic profile-img-overlay"
-                    sx={{
-                      height: '150px',
-                      width: '150px',
-                      position: 'absolute',
-                      background: 'rgb(0,0,0,0.2)'
-                    }}>
-                    <EditIcon />
-                  </Avatar>
                 </div>
-
-                <Input
-                  accept="image/*"
-                  id="contained-button-file"
-                  type="file"
-                  onChange={selectProfileImage}
-                />
+                <label htmlFor="contained-button-file" className="mobile-profile-edit">
+                  <EditIcon />
+                </label>
               </label>
               <h2 className="profile-name">
                 {currentUserInfo?.user?.firstName
@@ -244,7 +257,7 @@ const ProfileSetting = () => {
             </div>
           </div>
         </Box>
-        <FormControl sx={{ width: '40%', pb: '150px', pl: '7rem', mt: '50px' }}>
+        <FormControl className="profile-form">
           <Stack spacing={4}>
             <TextField
               id="firstname"
