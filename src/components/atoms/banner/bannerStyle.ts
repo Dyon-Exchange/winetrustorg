@@ -8,6 +8,9 @@ const bannerStyles = makeStyles(theme => {
         marginBottom: '1.5rem',
         color: '#c9d4df'
       },
+      '& .scroll-down': {
+        bottom: '50px'
+      },
       [theme.breakpoints.between('xs', 600)]: {
         width: '100%'
       },
