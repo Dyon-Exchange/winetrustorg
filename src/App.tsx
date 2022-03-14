@@ -24,7 +24,7 @@ import PageNotFound from 'components/PageNotFound/PageNotFound'
 import { WalletContextProvider } from 'contexts/WalletContext'
 import { LoaderContextProvider } from 'contexts/LoaderContext'
 import PrivacyPolicyPage from 'components/PrivacyPolicy/PrivacyPolicy'
-import TermsAndConditions from 'components/Terms&Conditions/Terms&Conditions'
+import TermsAndConditions from 'components/TermsAndConditions/TermsAndConditions'
 import Faqs from 'components/FAQ/Faq'
 
 const App = () => {
