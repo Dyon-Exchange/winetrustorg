@@ -28,6 +28,9 @@ const assetListingStyle = makeStyles({
       color: '#fff',
       cursor: 'pointer',
       padding: '16px 36px 15px'
+    },
+    '& .MuiDataGrid-cell:last-child': {
+      textOverflow: 'unset'
     }
   },
   resultFoundDiv: {
