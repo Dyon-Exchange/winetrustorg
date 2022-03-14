@@ -18,7 +18,6 @@ import { officesConst } from './OfficesConst'
 import { contactForConst } from './ContactForConst'
 import BootstrapBlueBtn from 'components/atoms/buttons/BootStrapBlueBtn'
 import contactUsStyles from './ContactUsStyle'
-import clsx from 'clsx'
 
 const ContactUs = () => {
   const classes = contactUsStyles()
@@ -29,62 +28,65 @@ const ContactUs = () => {
     description: ''
   }
   return (
-    <div>
+    <div className={classes.root}>
       <BannerSection>{bannerConst}</BannerSection>
       <Container>
         <Box>
-          <Grid container spacing={4} className={classes.officesGrid}>
+          <Grid container spacing={4} className="offices-grid">
             {officesConst.map((item: any) => (
               <Grid item xs={12} sm={6} md={4}>
-                <Card className={classes.cardShadow}>
+                <Card className="card-shadow">
                   <CardContent>
                     <img src={item.icon} alt={item.icon} />
-                    <p className={classes.fontWeight600}>{item.office}</p>
+                    <p className="semi-bold">{item.office}</p>
                     <Box>{item.location}</Box>
                   </CardContent>
                 </Card>
               </Grid>
             ))}
           </Grid>
-          <Grid container className={clsx(classes.contactForGrid, classes.cardShadow)}>
+          <Grid container className="contact-for-grid card-shadow">
             {contactForConst.map((item: any, index) => (
-              <Grid item xs className={classes.spaceBetWeenFlex}>
+              <Grid item xs={12} sm={12} md={4} className="space-bt-flex grid-item">
                 <Box className="grid-item-box">
-                  <img src={item.icon} />
-                  <Box sx={{ pl: '20px' }}>
-                    <Box className={classes.fontWeight600}>{item.feature}</Box>
+                  <img src={item.icon} alt={item.icon} />
+                  <Box sx={{ p: '0 20px' }}>
+                    <Box className="semi-bold">{item.feature}</Box>
                     <div>{item.contactAt}</div>
                   </Box>
                 </Box>
                 {index < contactForConst.length - 1 ? (
-                  <Divider orientation="vertical" flexItem></Divider>
+                  <div className="divider-outer">
+                    <Divider orientation="vertical" flexItem className="web-divider"></Divider>
+                    <Divider orientation="horizontal" flexItem className="mobile-divider"></Divider>
+                  </div>
                 ) : (
                   ''
                 )}
               </Grid>
             ))}
           </Grid>
-          <Box className={clsx(classes.contactFormOuter, classes.cardShadow)}>
+          <Box className="contact-form-outer card-shadow">
             <h2 className="text-align-center">We Want to Hear from You</h2>
-            <FormControl className="contactForm">
-              <Box className={classes.spaceBetWeenFlex}>
-                <Box className="fieldWrapper">
+            <FormControl className="contact-form">
+              <Box className="space-bt-flex">
+                <Box className="field-wrapper">
                   <FormLabel htmlFor="first-name" id="first-name">
                     First Name*
                   </FormLabel>
                   <TextField id="firstName" variant="outlined" size="small" />
                 </Box>
-                <Box className="fieldWrapper">
+                <Box className="field-wrapper">
                   <FormLabel htmlFor="last-name">Last Name*</FormLabel>
                   <TextField id="lastName" variant="outlined" size="small" />
                 </Box>
               </Box>
-              <Box className={classes.spaceBetWeenFlex}>
-                <Box className="fieldWrapper">
+              <Box className="space-bt-flex">
+                <Box className="field-wrapper">
                   <FormLabel htmlFor="email-address">Email Address*</FormLabel>
                   <TextField id="emailAddress" variant="outlined" size="small" />
                 </Box>
-                <Box className="fieldWrapper">
+                <Box className="field-wrapper">
                   <FormLabel htmlFor="phone-no">Phone Number</FormLabel>
                   <TextField id="phoneNumber" variant="outlined" size="small" />
                 </Box>
