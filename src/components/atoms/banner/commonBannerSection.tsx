@@ -34,17 +34,19 @@ const BannerSection: React.FC<Props> = ({ children }) => {
               minHeight: '585px',
               justifyContent: 'center'
             }}>
-            <Box className={classes.bannerContent}>
+            <Box>
               <Typography variant="h1" sx={{ mb: '1.5rem', color: '#fff' }}>
                 {children.title}
               </Typography>
-              {children.description ? (
-                <Typography component="p" className="banner-desc">
-                  {children.description}
-                </Typography>
-              ) : (
-                ''
-              )}
+              <Box className={classes.bannerContent}>
+                {children.description ? (
+                  <Typography component="p" className="banner-desc">
+                    {children.description}
+                  </Typography>
+                ) : (
+                  ''
+                )}
+              </Box>
             </Box>
           </Box>
         </Container>

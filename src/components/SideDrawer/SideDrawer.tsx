@@ -50,14 +50,14 @@ const SideDrawer: React.FC<Props> = ({ children, sendDataToParent }) => {
       onBackdropClick={() => handleDrawerClose()}>
       <DrawerHeader>
         <IconButton onClick={handleDrawerClose}>
-          {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          Back {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </IconButton>
-        <Box className="connect-wallet-btn">
-          <ConnectWallet />
-        </Box>
       </DrawerHeader>
       <Divider />
       <List>
+        <Box className="connect-wallet-btn">
+          <ConnectWallet />
+        </Box>
         {HeaderMenu.map(menu => (
           <NavLink to={menu.url} onClick={handleDrawerClose}>
             <ListItem button key={menu.menuName}>

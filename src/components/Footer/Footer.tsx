@@ -38,7 +38,7 @@ const Footer = () => {
                 <Link to={RoutesPath.HOMEPAGE}>Home</Link>
                 <Link to={RoutesPath.ABOUT}>About</Link>
                 <Link to={RoutesPath.CONTACTUS}>Contact Us</Link>
-                <a href="#id">FAQs</a>
+                <Link to={RoutesPath.FAQS}>FAQs</Link>
               </div>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
@@ -61,8 +61,8 @@ const Footer = () => {
           Copyright© 2022. <span className="blue-text"> WineTrust </span> All rights reserved.
         </div>
         <div className="tnc-policy">
-          <div>Terms and Conditions</div>
-          <div>Privacy Policy Page</div>
+          <Link to={RoutesPath.TERMSANDCONDITIONS}>Terms and Conditions</Link>
+          <Link to={RoutesPath.PRIVACYPOLICY}>Privacy Policy Page</Link>
         </div>
       </div>
     </div>

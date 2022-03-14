@@ -16,7 +16,7 @@ const WarehousePartner = () => {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              minHeight: '80vh',
+              minHeight: '100vh',
               justifyContent: 'center'
             }}>
             <Box sx={{ width: '58%' }}>
@@ -40,7 +40,7 @@ const WarehousePartner = () => {
         </div>
       </div>
       <Container>
-        <Grid container spacing={4} sx={{ m: '70px 0' }}>
+        <Grid container spacing={4} sx={{ p: '70px 0' }}>
           {warehousePartnerConst.map((item: any) => (
             <Grid item xs={12} sm={6} md={4} sx={{ maxHeight: '80%' }}>
               <Card className="card-shadow">

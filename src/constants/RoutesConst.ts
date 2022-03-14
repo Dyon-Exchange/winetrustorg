@@ -11,5 +11,8 @@ export const RoutesPath = {
   ASSETLISTING: '/search/:product',
   ASSETHOME: '/asset-home/:assetId',
   WALLETHOME: '/wallet-home',
-  CONTACTUS: '/contact-us'
+  CONTACTUS: '/contact-us',
+  PRIVACYPOLICY: '/privacy-policy',
+  TERMSANDCONDITIONS: '/terms-and-conditions',
+  FAQS: '/faqs'
 }

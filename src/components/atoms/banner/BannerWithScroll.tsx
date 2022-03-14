@@ -25,21 +25,23 @@ const BannerWithScroll: React.FC<Props> = ({ children }) => {
             justifyContent: 'center',
             minHeight: '100vh'
           }}>
-          <Box className={classes.bannerContent}>
+          <Box>
             <Typography variant="h1" sx={{ mb: '1.5rem', color: '#fff' }}>
               {children.title}
             </Typography>
-            <Typography component="p" className="banner-desc">
-              {children.description}
-            </Typography>
-            <a
-              href="#story"
-              className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
-              <p className="mb-2 text-white text-uppercase">
-                <small>Scroll Down</small>
-              </p>
-              <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
-            </a>
+            <Box className={classes.bannerContent}>
+              <Typography component="p" className="banner-desc">
+                {children.description}
+              </Typography>
+              <a
+                href="#story"
+                className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
+                <p className="mb-2 text-white text-uppercase">
+                  <small>Scroll Down</small>
+                </p>
+                <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
+              </a>
+            </Box>
           </Box>
         </Box>
       </Container>

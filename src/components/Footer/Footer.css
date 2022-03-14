@@ -75,6 +75,11 @@
   column-gap: 20px;
 }
 
+.tnc-policy a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .logo-desc {
   margin-right: 200px;
   margin-bottom: 40px;

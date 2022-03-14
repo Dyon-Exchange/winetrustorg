@@ -23,6 +23,9 @@ import ContactUs from 'components/ContactUs/ContactUs'
 import PageNotFound from 'components/PageNotFound/PageNotFound'
 import { WalletContextProvider } from 'contexts/WalletContext'
 import { LoaderContextProvider } from 'contexts/LoaderContext'
+import PrivacyPolicyPage from 'components/PrivacyPolicy/PrivacyPolicy'
+import TermsAndConditions from 'components/Terms&Conditions/Terms&Conditions'
+import Faqs from 'components/FAQ/Faq'
 
 const App = () => {
   return (
@@ -133,6 +136,30 @@ const App = () => {
                 element={
                   <Fragment>
                     <ContactUs />
+                  </Fragment>
+                }
+              />
+              <Route
+                path={constants.RoutesPath.PRIVACYPOLICY}
+                element={
+                  <Fragment>
+                    <PrivacyPolicyPage />
+                  </Fragment>
+                }
+              />
+              <Route
+                path={constants.RoutesPath.TERMSANDCONDITIONS}
+                element={
+                  <Fragment>
+                    <TermsAndConditions />
+                  </Fragment>
+                }
+              />
+              <Route
+                path={constants.RoutesPath.FAQS}
+                element={
+                  <Fragment>
+                    <Faqs />
                   </Fragment>
                 }
               />
