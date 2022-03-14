@@ -20,7 +20,7 @@ const OwnershipPage = () => {
       <Container className="container-padding">
         <Box className="section-outer-wrapper">
           <div className="wt-ownership-img">
-            <img src="/images/ownershipPage/story.png" />
+            <img src="/images/ownershipPage/story.png" alt="ownership story1" />
           </div>
           <Box className="section-box">
             <Typography variant="h2" sx={{ mb: '1.5rem' }}>
@@ -51,7 +51,7 @@ const OwnershipPage = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Card className="card">
                   <CardContent className="card-content">
-                    <img src={item.icon} />
+                    <img src={item.icon} alt={item.icon} />
                     <p className="card-title">{item.title}</p>
                     <p className="card-desc">{item.desc}</p>
                   </CardContent>
@@ -61,7 +61,7 @@ const OwnershipPage = () => {
           </Grid>
           <Box className="section-outer-wrapper">
             <div className="wt-ownership-img">
-              <img src="/images/ownershipPage/story-2.png" />
+              <img src="/images/ownershipPage/story-2.png" alt="ownership story2" />
             </div>
             <Box className="section-box">
               <p>

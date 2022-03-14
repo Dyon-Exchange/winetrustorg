@@ -34,7 +34,7 @@ const SideDrawer: React.FC<Props> = ({ children, sendDataToParent }) => {
 
   useEffect(() => {
     setOpen(children)
-  })
+  }, [children])
 
   const handleDrawerClose = () => {
     setOpen(false)

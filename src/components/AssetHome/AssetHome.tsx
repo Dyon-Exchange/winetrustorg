@@ -42,9 +42,9 @@ const AssetHome = () => {
     }
   }
   useEffect(() => {
-    fetchAssetDetail(params)
+    fetchAssetDetail()
   }, [])
-  const fetchAssetDetail = (params: any) => {
+  const fetchAssetDetail = () => {
     axios.defaults.baseURL = process.env.REACT_APP_BASE_URL ?? 'http://localhost:3030/'
     let queryStr = `/assets/${params.assetId}`
     setLoading(true)
@@ -162,7 +162,7 @@ const AssetHome = () => {
                 arrows={window.innerWidth >= 768 ? true : false}
                 renderButtonGroupOutside={true}>
                 {assetImages.map((item: any) => (
-                  <img src={item.image} className="carousel-img" height="400px" />
+                  <img src={item.image} alt={item.image} className="carousel-img" height="400px" />
                 ))}
               </StyledCarousel>
             </Box>

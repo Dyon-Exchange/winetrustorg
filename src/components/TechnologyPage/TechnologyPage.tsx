@@ -19,7 +19,7 @@ const TechnologyPage = () => {
       <Container className="container-padding">
         <Box className="section-outer-wrapper">
           <div className="section-img">
-            <img src="/images/technologyPage/ownership-story-1.png" />
+            <img src="/images/technologyPage/ownership-story-1.png" alt="technology story1" />
           </div>
           <Box className="section-box right-section">
             <Typography variant="h2">Blockchain ledger brings huge benefits</Typography>
@@ -73,7 +73,7 @@ const TechnologyPage = () => {
             </Box>
           </Box>
           <div className="section-img">
-            <img src="/images/technologyPage/ownership-story-2.png" />
+            <img src="/images/technologyPage/ownership-story-2.png" alt="technology story2" />
           </div>
         </Container>
       </Box>

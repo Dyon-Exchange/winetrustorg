@@ -25,7 +25,7 @@ const Footer = () => {
               WineTrust is the most secure way to own and store fine wine & spirts today.
             </div>
             <div style={{ marginTop: '18px' }} className="social-icon-margin">
-              <a href="https://twitter.com/winetrustorg" target="_blank">
+              <a href="https://twitter.com/winetrustorg" target="_blank" rel="noreferrer">
                 <img src="/images/general/twitter_black.svg" alt="wine-trust twitter-logo" />
               </a>
             </div>

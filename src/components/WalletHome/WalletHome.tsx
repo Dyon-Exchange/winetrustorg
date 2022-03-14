@@ -81,7 +81,7 @@ const WalletHome = () => {
 
   useEffect(() => {
     fetchAssets(params)
-  }, [])
+  }, [params])
 
   function fetchAssets(params: any) {
     let rowCounter = 1
@@ -114,7 +114,7 @@ const WalletHome = () => {
         </Container>
       </Box>
       <Container sx={{ pt: '4%', pb: '10%' }}>
-          <h3>My Assets</h3>
+        <h3>My Assets</h3>
         <StyledDataGrid
           disableSelectionOnClick
           disableColumnSelector

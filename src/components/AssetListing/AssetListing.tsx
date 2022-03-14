@@ -18,7 +18,7 @@ const AssetListing = () => {
   const { setLoading } = React.useContext(LoaderContext)
 
   useEffect(() => {
-    fetchAssets(params)
+    fetchAssets()
   }, [])
 
   const assetsTableColumns: GridColDef[] = [
@@ -74,7 +74,7 @@ const AssetListing = () => {
       )
     }
   ]
-  function fetchAssets(params: any) {
+  function fetchAssets() {
     axios.defaults.baseURL = process.env.REACT_APP_BASE_URL ?? 'http://localhost:3030/'
     setLoading(true)
     axios.get(`/assets/search?query=${params.product}`).then((result: any) => {

@@ -31,7 +31,7 @@ const SecurityPage = () => {
               <Grid item xs={12} sm={6} md={4}>
                 <Card className="card">
                   <CardContent className="card-content">
-                    <img src={item.icon} />
+                    <img src={item.icon} alt={item.icon} />
                     <p className="card-desc">{item.desc}</p>
                   </CardContent>
                 </Card>
@@ -61,7 +61,7 @@ const SecurityPage = () => {
             </p>
           </Box>
         </Box>
-        <img src="/images/security/features/protect.png" width="100%" />
+        <img src="/images/security/features/protect.png" width="100%" alt="security protect" />
       </Container>
       <Box sx={{ background: '#212529' }}>
         <Container className="container-padding">
@@ -92,7 +92,7 @@ const SecurityPage = () => {
                     backgroundColor: '#000'
                   }}>
                   <CardContent className="card-content">
-                    <img src={item.icon} />
+                    <img src={item.icon} alt={item.icon} />
                     <p className="card-title white-color">{item.title}</p>
                     <p className="white-color">{item.desc}</p>
                   </CardContent>
@@ -130,7 +130,7 @@ const SecurityPage = () => {
             </ul>
           </Box>
         </Box>
-        <img src="/images/security/nft.png" width="100%" />
+        <img src="/images/security/nft.png" width="100%" alt="security nft" />
       </Container>
       <Box sx={{ background: '#f9fcff' }}>
         <Container className="container-padding">

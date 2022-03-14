@@ -19,7 +19,7 @@ const MerchantPartner = () => {
             <Grid item xs={12} sm={6} md={4} sx={{ maxHeight: '80%' }}>
               <Card className="card-shadow">
                 <CardContent sx={{ textAlign: 'center' }}>
-                  <img src={item.icon} />
+                  <img src={item.icon} alt={item.icon} />
                   <p>{item.text}</p>
                 </CardContent>
               </Card>
