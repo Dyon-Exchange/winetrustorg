@@ -73,15 +73,19 @@ const AssetHome = () => {
       <Container className="asset-container">
         <Box className="flex section-padding">
           <div className="img-outer">
-            <img
-              src={`${process.env.REACT_APP_PINATA}${assetData?.product?.image}`}
-              onError={({ currentTarget }) =>
-                setFallbackImg(currentTarget, '/images/assetImg.jpeg')
-              }
-              alt="asset home label"
-              height="345px"
-              width="100%"
-            />
+            {assetData?.product?.image ? (
+              <img
+                src={`${process.env.REACT_APP_PINATA}${assetData?.product?.image}`}
+                onError={({ currentTarget }) =>
+                  setFallbackImg(currentTarget, '/images/assetImg.jpeg')
+                }
+                alt="asset home label"
+                height="345px"
+                width="100%"
+              />
+            ) : (
+              <img src="/images/assetImg.jpeg" alt="asset home label" height="345px" width="100%" />
+            )}
           </div>
           <Box className="asset-spec-wrapper">
             <h2 className="text-align-center mr-t-0">{assetData?.product?.longName}</h2>
@@ -113,11 +117,15 @@ const AssetHome = () => {
         </Box>
         <Box className="section-border flex section-padding">
           <div className="img-outer">
-            <img
-              src={`${process.env.REACT_APP_PINATA}${assetData?.product?.bottleImage}`}
-              alt="asset home bottle img"
-              onError={({ currentTarget }) => setFallbackImg(currentTarget, '/images/wine.png')}
-            />
+            {assetData?.product?.bottleImage ? (
+              <img
+                src={`${process.env.REACT_APP_PINATA}${assetData?.product?.bottleImage}`}
+                alt="asset home bottle img"
+                onError={({ currentTarget }) => setFallbackImg(currentTarget, '/images/wine.png')}
+              />
+            ) : (
+              <img src="/images/wine.png" alt="asset home bottle img" />
+            )}
           </div>
 
           <Box className="asset-spec-wrapper">
