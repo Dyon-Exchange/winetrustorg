@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Container from '@mui/material/Container'
-import { Box } from '@mui/material'
-import { GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
-import StyledDataGrid from '../atoms/tables/StyledDataGrid'
+import { Box, Grid } from '@mui/material'
 import { useParams } from 'react-router'
 import axios from 'axios'
 import assetListingStyle from './AssetListingStyle'
@@ -21,59 +19,6 @@ const AssetListing = () => {
     fetchAssets()
   }, [])
 
-  const assetsTableColumns: GridColDef[] = [
-    {
-      field: 'asset',
-      headerClassName: 'super-app-theme--header',
-      headerAlign: 'center',
-      headerName: 'Asset',
-      minWidth: 300,
-      renderCell: params => {
-        return (
-          <div className={classes.wrapText}>
-            <img src={params.row.assetImg} alt="Asset Img" className="asset-img" />
-            {params.row.assetName}
-          </div>
-        )
-      }
-    },
-    {
-      field: 'assetId',
-      headerClassName: 'super-app-theme--header',
-      headerAlign: 'center',
-      headerName: 'Asset ID',
-      minWidth: 200,
-      cellClassName: 'blue-text'
-    },
-    {
-      field: 'location',
-      headerClassName: 'super-app-theme--header',
-      headerAlign: 'center',
-      headerName: 'Warehouse Name',
-      minWidth: 280
-    },
-    {
-      field: 'owner',
-      headerClassName: 'super-app-theme--header',
-      headerAlign: 'center',
-      headerName: 'Owner',
-      minWidth: 250
-    },
-    {
-      field: '',
-      headerAlign: 'center',
-      flex: 1,
-      minWidth: 80,
-      align: 'center',
-      sortable: false,
-      disableColumnMenu: true,
-      renderCell: (param: GridValueGetterParams) => (
-        <BootstrapBlueBtn onClick={() => handleOnClick(param)} className="view-btn">
-          VIEW
-        </BootstrapBlueBtn>
-      )
-    }
-  ]
   function fetchAssets() {
     axios.defaults.baseURL = process.env.REACT_APP_BASE_URL ?? 'http://localhost:3030/'
     setLoading(true)
@@ -95,23 +40,59 @@ const AssetListing = () => {
     })
   }
 
-  function handleOnClick(params: any) {
-    navigate(`/asset-home/${params.row.assetId}`)
+  function handleOnClick(param: any) {
+    navigate(`/asset-home/${param}`)
   }
   return (
-    <div>
-      <Container sx={{ mt: '14%', pb: '10%' }}>
-        <Box className={classes.resultFoundDiv}>
+    <div className={classes.root}>
+      <Container className="container">
+        <Box className="result-found-div">
           <b>Search Results for:</b> <span>{params.product}</span>
         </Box>
-        <StyledDataGrid
-          rowHeight={64}
-          disableSelectionOnClick
-          disableColumnSelector
-          columns={assetsTableColumns}
-          rows={rowdata}
-          className={classes.root}
-        />
+        <Grid container className="grid-container web-header cell-heading ">
+          <Grid item xs={12} sm={6} lg={3.1}>
+            <Box>Asset</Box>
+          </Grid>
+          <Grid item xs={12} sm={6} lg={2.3}>
+            <Box>Asset ID</Box>
+          </Grid>
+          <Grid item xs={12} sm={6} lg={3.1}>
+            <Box>Warehouse Name</Box>
+          </Grid>
+          <Grid item xs={12} sm={6} lg={2.5}>
+            <Box>Owner</Box>
+          </Grid>
+          <Grid item xs={12} sm={6} lg={1}></Grid>
+        </Grid>
+
+        {rowdata.map((item: any) => (
+          <Grid container className="grid-container">
+            <Grid item xs={12} sm={6} lg={3} key={item.id}>
+              <Box className="cell-heading mobile-header">Asset</Box>
+              <Box sx={{ display: 'flex' }}>
+                <img src={item.assetImg} alt="Asset Img" className="asset-img" />
+                <div className="asset-data">{item.assetName}</div>
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={6} lg={2.3} key={item.id}>
+              <Box className="cell-heading mobile-header">Asset ID</Box>
+              <div className="asset-data">{item.assetId}</div>
+            </Grid>
+            <Grid item xs={12} sm={6} lg={3} key={item.id}>
+              <Box className="cell-heading mobile-header">Warehouse Name</Box>
+              <div className="asset-data">{item.location}</div>
+            </Grid>
+            <Grid item xs={12} sm={6} lg={2.5} key={item.id}>
+              <Box className="cell-heading mobile-header">Owner</Box>
+              <div className="asset-data">{item.owner}</div>
+            </Grid>
+            <Grid item xs={12} sm={6} lg={1} key={item.id}>
+              <BootstrapBlueBtn onClick={() => handleOnClick(item.assetId)} className="view-btn">
+                VIEW
+              </BootstrapBlueBtn>
+            </Grid>
+          </Grid>
+        ))}
       </Container>
     </div>
   )

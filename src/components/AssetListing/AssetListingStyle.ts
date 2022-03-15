@@ -1,51 +1,78 @@
 import { makeStyles } from '@material-ui/core/styles'
 
-const assetListingStyle = makeStyles({
-  root: {
-    '&.MuiDataGrid-root': {
-      border: 'none',
-      '& .MuiDataGrid-columnHeader--moving': {
-        backgroundColor: 'unset'
-      }
-    },
-    '& .MuiDataGrid-row': {
-      border: '1px solid rgba(224, 224, 224, 1)',
-      marginTop: '8px',
-      borderRadius: '6px',
-      width: 'calc(100% - 6px)'
-    },
-    '& .MuiDataGrid-columnHeaders': {
-      width: 'calc(100% - 1px)',
-      borderRadius: '6px'
-    },
-    '& .MuiDataGrid-columnHeaderTitleContainer': {
-      justifyContent: 'normal!important'
-    },
-    '& .MuiButton-root:hover': {
-      backgroundColor: '#1565c0'
-    },
-    '& .view-btn': {
-      color: '#fff',
-      cursor: 'pointer',
-      padding: '16px 36px 15px'
-    },
-    '& .MuiDataGrid-cell:last-child': {
-      textOverflow: 'unset'
-    }
-  },
-  resultFoundDiv: {
-    background: '#e2e8f0',
-    padding: '12px 18px',
-    marginBottom: '30px',
+const assetListingStyle = makeStyles(theme => {
+  return {
+    root: {
+      '& .container': {
+        paddingTop: '150px',
+        paddingBottom: '100px'
+      },
+      '& .MuiButton-root:hover': {
+        backgroundColor: '#1565c0'
+      },
+      '& .view-btn': {
+        color: '#fff',
+        cursor: 'pointer',
+        padding: '16px 30px 15px',
+        margin: '10px',
+        marginTop: 0
+      },
+      '& .grid-container': {
+        marginBottom: '30px',
+        border: '1px solid rgba(224, 224, 224, 1)',
+        borderRadius: '6px'
+      },
+      '& .asset-data': {
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        fontSize: '13px',
+        lineHeight: '38px',
+        padding: '14px'
+      },
+      '& .asset-data:last-child': {
+        textOverflow: 'unset'
+      },
+      '& .cell-heading': {
+        background: '#e2e8f0',
+        padding: '14px',
+        fontWeight: 500
+      },
 
-    '& span': {
-      marginLeft: '10px'
+      '& .MuiGrid-root>.MuiGrid-item': {
+        paddingLeft: 0
+      },
+      '& .web-header': {
+        display: 'none'
+      },
+      '& .result-found-div': {
+        background: '#e2e8f0',
+        padding: '12px 18px',
+        marginBottom: '30px',
+
+        '& span': {
+          marginLeft: '10px'
+        }
+      },
+      [theme.breakpoints.up(1200)]: {
+        '& .grid-container': {
+          marginBottom: '10px'
+        },
+        '& .mobile-header': {
+          display: 'none'
+        },
+        '& .web-header': {
+          display: 'flex',
+          justifyContent: 'space-between'
+        },
+        '& .view-btn': {
+          marginTop: '10px'
+        },
+        '& .container': {
+          paddingTop: '200px'
+        }
+      }
     }
-  },
-  wrapText: {
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden'
   }
 })
 

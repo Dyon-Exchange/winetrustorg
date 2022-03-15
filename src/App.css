@@ -132,6 +132,7 @@
   height: 22px;
   vertical-align: middle;
   margin: 0 5px;
+  align-self: center;
 }
 
 .blue-text {
