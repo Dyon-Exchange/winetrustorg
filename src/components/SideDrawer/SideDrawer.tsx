@@ -55,7 +55,7 @@ const SideDrawer: React.FC<Props> = ({ children, sendDataToParent }) => {
       </DrawerHeader>
       <Divider />
       <List>
-        <Box className="connect-wallet-btn">
+        <Box className="connect-wallet-btn" onClick={handleDrawerClose}>
           <ConnectWallet />
         </Box>
         {HeaderMenu.map(menu => (

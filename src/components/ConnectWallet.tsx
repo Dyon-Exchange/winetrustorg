@@ -7,8 +7,26 @@ import Typography from '@mui/material/Typography'
 import MenuItem from '@mui/material/MenuItem'
 import { RoutesPath } from '../constants'
 import { useNavigate } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
+
+const customStyles = makeStyles({
+  root: {
+    '& .logged-in-btn': {
+      width: 'auto!important',
+      '& .profile-text': {
+        marginRight: '10px',
+        letterSpacing: 'initial',
+        fontSize: '18px',
+        color: '#212925',
+        fontWeight: 400,
+        fontFamily: 'Gilroy'
+      }
+    }
+  }
+})
 
 const ConnectWallet = () => {
+  const classes = customStyles()
   const { walletConnected, connectAccount, loggedIn, login } = React.useContext(WalletContext)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
   const navigate = useNavigate()
@@ -28,8 +46,9 @@ const ConnectWallet = () => {
 
     navigate(RoutesPath.PROFILESETTING)
   }
+
   return (
-    <div>
+    <div className={classes.root}>
       {!walletConnected ? (
         <BootstrapBlueBtn variant="contained" disableRipple size="small" onClick={connectAccount}>
           Connect Wallet
@@ -37,7 +56,14 @@ const ConnectWallet = () => {
       ) : (
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            <IconButton
+              onClick={window.innerWidth > 900 ? handleOpenUserMenu : handleGotoProfile}
+              sx={{ p: 0 }}
+              className="logged-in-btn">
+              <Box sx={{ display: { xs: 'block', sm: 'none' } }} className="profile-text">
+                Profile
+              </Box>
+
               <Avatar
                 alt="Unnamed"
                 src="/static/images/avatar/2.jpg"
