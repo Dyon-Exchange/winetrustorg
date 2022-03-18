@@ -26,9 +26,21 @@ const customStyles = makeStyles({
 
 const ConnectWallet = () => {
   const classes = customStyles()
-  const { walletConnected, connectAccount, loggedIn, login } = React.useContext(WalletContext)
+  const { walletConnected, connectAccount, loggedIn, login, currentUserInfo } =
+    React.useContext(WalletContext)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
+  const [initials, setInitials] = React.useState<string>()
   const navigate = useNavigate()
+
+  React.useEffect(() => {
+    const userFirstName = currentUserInfo?.user?.firstName
+    const userLastName = currentUserInfo?.user?.lastName
+    let userInitials = userFirstName ? userFirstName.charAt(0) : ''
+    userInitials = userInitials + (userLastName ? userLastName.charAt(0) : '')
+    userInitials = userInitials ? userInitials : 'U'
+    console.log(userInitials)
+    setInitials(userInitials)
+  }, [currentUserInfo])
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget)
@@ -42,7 +54,7 @@ const ConnectWallet = () => {
     if (!loggedIn) {
       await login()
     }
-
+    handleCloseUserMenu()
     navigate(RoutesPath.PROFILESETTING)
   }
 
@@ -65,30 +77,31 @@ const ConnectWallet = () => {
 
               <Avatar
                 alt="Unnamed"
-                src="/static/images/avatar/2.jpg"
+                src={currentUserInfo?.user?.profileImage}
                 sx={{
                   background: 'linear-gradient(rgb(0, 41, 84) 0%, rgba(0, 41, 84, 0) 100%)',
                   border: '1px solid white',
                   borderRadius: '50%'
-                }}
-              />
+                }}>
+                {initials}
+              </Avatar>
             </IconButton>
           </Tooltip>
           <Menu
-            sx={{ mt: '45px', zIndex: '9999' }}
+            sx={{ mt: '45px', zIndex: '9999', position: 'absolute' }}
             id="menu-appbar"
             anchorEl={anchorElUser}
             anchorOrigin={{
               vertical: 'top',
               horizontal: 'right'
             }}
-            keepMounted
             transformOrigin={{
               vertical: 'top',
               horizontal: 'right'
             }}
             open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}>
+            onClose={handleCloseUserMenu}
+            disableScrollLock>
             <MenuList sx={{ padding: 0 }}>
               <MenuItem key={123} onClick={handleGotoProfile}>
                 Profile

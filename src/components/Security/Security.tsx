@@ -134,7 +134,9 @@ const SecurityPage = () => {
       </Container>
       <Box sx={{ background: '#f9fcff' }}>
         <Container className="container-padding">
-          <Typography variant="h2">WineTrust Exchange </Typography>
+          <Typography variant="h2" sx={{ textAlign: 'center' }}>
+            WineTrust Exchange
+          </Typography>
           <p>
             WineTrust will also operate a fine wine & spirits digital asset exchange. This means
             that all assets in WineTrust can be offered for sale (in fractional amounts). This opens

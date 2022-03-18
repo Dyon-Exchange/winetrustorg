@@ -37,7 +37,6 @@ const ProfileSetting = () => {
   const [currentProfileImage, setCurrentProfileImage] = React.useState<FormData | undefined>()
 
   const [imageUrl, setImageUrl] = React.useState<string>()
-
   useEffect(() => {
     setUpdatedUserDetails(currentUserInfo)
   }, [currentUserInfo])
@@ -300,7 +299,7 @@ const ProfileSetting = () => {
             />
             <IntlTelInput
               defaultCountry={updatedUserDetails?.user?.phoneNumber?.countryCode ?? 'gb'}
-              value={updatedUserDetails?.user?.phoneNumber?.phoneNumber}
+              value={updatedUserDetails?.user?.phoneNumber?.phoneNumber ?? ''}
               onPhoneNumberChange={onIntlChange}
               onPhoneNumberBlur={onIntlBlur}
               inputClassName="profile-intl-tel-input"
