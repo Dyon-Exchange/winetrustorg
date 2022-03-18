@@ -63,7 +63,15 @@ const profileStyles = makeStyles(theme => {
       },
       '& .mobile-profile-edit': {
         display: 'block',
-        alignSelf: 'flex-end'
+        alignSelf: 'center',
+        marginLeft: '10px'
+      },
+      '& .add-photo-outer': {
+        display: 'contents',
+        fontSize: '16px',
+        '& span': {
+          marginRight: '6px'
+        }
       },
       [theme.breakpoints.up('md')]: {
         '& .profile-form': {

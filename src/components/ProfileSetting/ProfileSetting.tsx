@@ -16,7 +16,7 @@ import 'react-intl-tel-input/dist/main.css'
 
 import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles'
-import EditIcon from '@mui/icons-material/Edit'
+import CameraAltIcon from '@mui/icons-material/CameraAlt'
 import { profileUpdateRequest, profileImageUpdateRequest } from 'api/profile/profileUpdate'
 import profileStyles from './ProfileStyle'
 
@@ -235,7 +235,10 @@ const ProfileSetting = () => {
                         position: 'absolute',
                         background: 'rgb(0,0,0,0.2)'
                       }}>
-                      <EditIcon />
+                      <div className="add-photo-outer">
+                        <span>Add Photo </span>
+                        <CameraAltIcon />
+                      </div>
                     </Avatar>
                   </div>
                   <Input
@@ -246,7 +249,7 @@ const ProfileSetting = () => {
                   />
                 </div>
                 <label htmlFor="contained-button-file" className="mobile-profile-edit">
-                  <EditIcon />
+                  <CameraAltIcon />
                 </label>
               </label>
               <h2 className="profile-name">

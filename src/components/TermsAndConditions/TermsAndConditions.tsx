@@ -76,7 +76,7 @@ const TermsAndConditions = () => {
                 </li>
                 <li>
                   <strong>Company</strong> (referred to as either “the Company”, “We”, “Us” or “Our”
-                  in this Agreement) refers to Wine Trust, 1 Cupertino, CA 95014.
+                  in this Agreement) refers to WineTrust.
                 </li>
                 <li>
                   <strong>Device</strong> means any device that can access the Service such as a
@@ -96,9 +96,9 @@ const TermsAndConditions = () => {
                   may be displayed, included or made available by the Service.
                 </li>
                 <li>
-                  <strong>Website</strong> refers to Wine Trust, accessible from{' '}
-                  <a rel="noreferrer noopener" href="https://winetrust.com" target="_blank">
-                    https://winetrust.com
+                  <strong>Website</strong> refers to WineTrust, accessible from{' '}
+                  <a rel="noreferrer noopener" href="https://winetrust.org" target="_blank">
+                    www.winetrust.org
                   </a>
                 </li>
                 <li>

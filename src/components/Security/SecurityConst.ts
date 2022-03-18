@@ -1,7 +1,7 @@
 export const securityConst = [
   {
     icon: '/images/security/guarantee/warehouse.svg',
-    desc: 'our storage warehouses must pass an 18-point quality check. Optimal storage conditions are guaranteed.'
+    desc: 'Our storage warehouses must pass an 18-point quality check. Optimal storage conditions are guaranteed.'
   },
   {
     icon: 'images/security/guarantee/wt-bond.svg',

@@ -1,9 +1,8 @@
-import { Avatar, Box, IconButton, Tooltip } from '@mui/material'
+import { Avatar, Box, IconButton, MenuList, Tooltip } from '@mui/material'
 import * as React from 'react'
 import { WalletContext } from '../contexts/WalletContext'
 import BootstrapBlueBtn from './atoms/buttons/BootStrapBlueBtn'
 import Menu from '@mui/material/Menu'
-import Typography from '@mui/material/Typography'
 import MenuItem from '@mui/material/MenuItem'
 import { RoutesPath } from '../constants'
 import { useNavigate } from 'react-router-dom'
@@ -76,7 +75,7 @@ const ConnectWallet = () => {
             </IconButton>
           </Tooltip>
           <Menu
-            sx={{ mt: '45px' }}
+            sx={{ mt: '45px', zIndex: '9999' }}
             id="menu-appbar"
             anchorEl={anchorElUser}
             anchorOrigin={{
@@ -90,9 +89,11 @@ const ConnectWallet = () => {
             }}
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}>
-            <MenuItem key={123} onClick={handleGotoProfile}>
-              <Typography textAlign="center">Profile</Typography>
-            </MenuItem>
+            <MenuList sx={{ padding: 0 }}>
+              <MenuItem key={123} onClick={handleGotoProfile}>
+                Profile
+              </MenuItem>
+            </MenuList>
           </Menu>
         </Box>
       )}

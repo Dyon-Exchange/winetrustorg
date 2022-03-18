@@ -1,11 +1,13 @@
 import React from 'react'
 import Container from '@mui/material/Container'
-import { Box, Card, CardContent, Grid, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { warehousePartnerConst } from './WarehousePartnerConst'
+import warehousePartnerStyles from './WarehousePartnerStyle'
 
 const WarehousePartner = () => {
+  const classes = warehousePartnerStyles()
   return (
-    <div>
+    <div className={classes.root}>
       <div className="banner-section small-banner">
         <Container
           style={{
@@ -39,19 +41,19 @@ const WarehousePartner = () => {
           />
         </div>
       </div>
-      <Container>
-        <Grid container spacing={4} sx={{ p: '70px 0' }}>
-          {warehousePartnerConst.map((item: any) => (
-            <Grid item xs={12} sm={6} md={4} sx={{ maxHeight: '80%' }}>
-              <Card className="card-shadow">
-                <CardContent sx={{ textAlign: 'center' }}>
-                  <img src={item.icon} alt={item.icon} />
-                  <p>{item.text}</p>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+      <Container className="container">
+        {warehousePartnerConst.map((item: any) => (
+          <div className="partners-outer">
+            <h2 className="mobile-title">{item.title}</h2>
+            <div className="partners-img">
+              <img src={item.image} width="100%" />
+            </div>
+            <div className="partners-desc">
+              <h2 className="web-title">{item.title}</h2>
+              <div className="compartment-desc-text">{item.description}</div>
+            </div>
+          </div>
+        ))}
       </Container>
     </div>
   )

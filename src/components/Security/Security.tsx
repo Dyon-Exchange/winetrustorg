@@ -134,11 +134,14 @@ const SecurityPage = () => {
       </Container>
       <Box sx={{ background: '#f9fcff' }}>
         <Container className="container-padding">
-          WineTrust will also operate a fine wine & spirits digital asset exchange. This means that
-          all assets in WineTrust can be offered for sale (in fractional amounts). This opens up a
-          new world of liquidity, trading, and new entrants into the world of fine wine and spirits.
-          We believe that tokenization represents the future of completely secure fine wine &
-          spirits ownership and trading.
+          <Typography variant="h2">WineTrust Exchange </Typography>
+          <p>
+            WineTrust will also operate a fine wine & spirits digital asset exchange. This means
+            that all assets in WineTrust can be offered for sale (in fractional amounts). This opens
+            up a new world of liquidity, trading, and new entrants into the world of fine wine and
+            spirits. We believe that tokenization represents the future of completely secure fine
+            wine & spirits ownership and trading.
+          </p>
         </Container>
       </Box>
       <Container className="container-padding">

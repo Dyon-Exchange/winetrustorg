@@ -3,7 +3,7 @@ export const ledgerConst = [
     icon: '/images/security/features/tokenisation.svg',
     bgImg: 'url("/images/security/features/storage/storage-bg-1.png")',
     title: 'Tokenization',
-    desc: 'All assets stored in WineTrust are tokenized as digitals assets. You can decide how much, or little, you use the benefits of tokenization to unlock value from your assets.'
+    desc: 'All assets stored in WineTrust are tokenized as digital assets (sometimes called ‘NFTs’).'
   },
   {
     icon: 'images/security/features/condn-report.svg',
@@ -15,13 +15,13 @@ export const ledgerConst = [
     icon: '/images/security/features/case-identifier.svg',
     bgImg: 'url("/images/security/features/storage/storage-bg-3.png")',
     title: 'Individual Case Identifiers',
-    desc: 'every case is individually numbered for additional security.'
+    desc: 'Every case is individually numbered for additional security.'
   },
   {
     icon: '/images/security/features/account-dashboard.svg',
     bgImg: 'url("/images/security/features/storage/storage-bg-4.png")',
     title: 'Account Management dashboard',
-    desc: 'your WineTrust dashboard provides full portfolio analysis with market valuation and many other metrics.'
+    desc: 'Your WineTrust dashboard provides full portfolio analysis with market valuation and many other metrics.'
   },
   {
     icon: '/images/security/features/insurance.svg',
