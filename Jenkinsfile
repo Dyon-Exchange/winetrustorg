@@ -9,11 +9,12 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                sh "sudo rm -rf /var/www/demo.winetrust.org"
 //                sh "sudo cp -r ${WORKSPACE}/build/ /var/www/demo.winetrust.org/"
+                sh "tar -zcvf ${WORKSPACE}/build.tar ${WORKSPACE}/build"
+                sh "scp -r ${WORKSPACE}/build.tar root@34.65.22.183:/var/www/demo.winetrust.org"
                 sh "ssh root@34.65.22.183 'rm -rf /var/www/demo.winetrust.org/build'"
-                sh "scp -r ${WORKSPACE}/build/ root@34.65.22.183:/var/www/demo.winetrust.org"
-                sh "ssh root@34.65.22.183 'cd /var/www/demo.winetrust.org; git pull origin arsalan_works;'"
+                sh "ssh root@34.65.22.183 'cd /var/www/demo.winetrust.org; ls -ltr; tar -xvf build.tar;'"
+                sh "ssh root@34.65.22.183 'cd /var/www/demo.winetrust.org; pwd; git pull origin arsalan_works;'"
             }
         }
     }
