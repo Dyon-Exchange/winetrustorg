@@ -4,8 +4,8 @@ pipeline {
         stage("Build") {
             steps {
                 //sh "rm -rf ${WORKSPACE}/build*"
-                sh "sudo npm install --legacy-peer-deps"
-                sh "sudo npm run build"
+                sh "npm install --legacy-peer-deps"
+                sh "npm run build"
             }
         }
         stage("Deploy") {
