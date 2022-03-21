@@ -3,14 +3,12 @@ pipeline {
      stages {
         stage("Build") {
             steps {
-                //sh "rm -rf ${WORKSPACE}/build*"
                 sh "npm install --legacy-peer-deps"
                 sh "npm run build"
             }
         }
         stage("Deploy") {
             steps {
-//                sh "sudo cp -r ${WORKSPACE}/build/ /var/www/demo.winetrust.org/"
                 sh "cd ${WORKSPACE}"
                 sh "tar -zcvf build.tar build"
                 sh "scp -r ${WORKSPACE}/build.tar root@34.65.22.183:/var/www/demo.winetrust.org"
