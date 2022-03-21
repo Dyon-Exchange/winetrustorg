@@ -13,6 +13,7 @@ pipeline {
 //                sh "sudo cp -r ${WORKSPACE}/build/ /var/www/demo.winetrust.org/"
                 sh "ssh root@34.65.22.183 'rm -rf /var/www/demo.winetrust.org/build'"
                 sh "scp -r ${WORKSPACE}/build/ root@34.65.22.183:/var/www/demo.winetrust.org"
+                sh "ssh root@34.65.22.183 'cd /var/www/demo.winetrust.org; git pull origin arsalan_works;'"
             }
         }
     }
