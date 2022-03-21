@@ -3,6 +3,7 @@ pipeline {
      stages {
         stage("Build") {
             steps {
+                sh "ls -ltr ${WORKSPACE}"
                 sh "npm install --legacy-peer-deps"
                 sh "CI=false npm run build"
             }
