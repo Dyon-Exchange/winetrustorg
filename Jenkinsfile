@@ -16,7 +16,6 @@ pipeline {
                 sh "ssh root@app.winetrust.org 'rm -rf /var/www/html/winetrust.org/build'"
                 sh "ssh root@app.winetrust.org 'cd /var/www/html/winetrust.org; ls -ltr; tar -xvf build.tar; sudo chown -R root:root /var/www/html/winetrust.org;'"
                 sh "ssh root@app.winetrust.org 'cd /var/www/html/winetrust.org; pwd; git pull origin main;'"
-                sh "ssh root@app.winetrust.org 'cp /var/www/tmp/env.js /var/www/html/winetrust.org/build/'"
             }
         }
     }
