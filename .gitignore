@@ -25,3 +25,7 @@ yarn-error.log*
 # env file due to .env
 public/env.js
 .env
+
+#Build artifects
+/build
+build.tar
