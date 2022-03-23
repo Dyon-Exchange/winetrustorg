@@ -4,8 +4,10 @@ pipeline {
         stage("Build") {
             steps {
                 sh "ls -ltr ${WORKSPACE}"
-                sh "npm install --legacy-peer-deps"
-                sh "CI=false npm run build"
+                //sh "npm install --legacy-peer-deps"
+                //sh "CI=false npm run build"
+                sh "npm install"
+                sh "npm run build"
             }
         }
         stage("Deploy") {
