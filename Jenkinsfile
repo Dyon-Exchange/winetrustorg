@@ -4,10 +4,10 @@ pipeline {
         stage("Build") {
             steps {
                 sh "ls -ltr ${WORKSPACE}"
-                //sh "npm install --legacy-peer-deps"
-                //sh "CI=false npm run build"
                 sh "npm install"
                 sh "CI=false npm run build"
+                //sh "yarn install"
+                //sh "yarn build"
             }
         }
         stage("Deploy") {
@@ -17,6 +17,7 @@ pipeline {
                 sh "scp -r ${WORKSPACE}/build.tar root@app.winetrust.org:/var/www/html/winetrust.org"
                 sh "ssh root@app.winetrust.org 'rm -rf /var/www/html/winetrust.org/build'"
                 sh "ssh root@app.winetrust.org 'cd /var/www/html/winetrust.org; ls -ltr; tar -xvf build.tar; sudo chown -R root:root /var/www/html/winetrust.org;'"
+                sh "ssh root@app.winetrust.org 'cp /var/www/tmp/env.js /var/www/html/winetrust.org/build/'"
                 sh "ssh root@app.winetrust.org 'cd /var/www/html/winetrust.org; pwd; git pull origin main;'"
             }
         }
