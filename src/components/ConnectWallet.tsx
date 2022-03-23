@@ -38,7 +38,6 @@ const ConnectWallet = () => {
     let userInitials = userFirstName ? userFirstName.charAt(0) : ''
     userInitials = userInitials + (userLastName ? userLastName.charAt(0) : '')
     userInitials = userInitials ? userInitials : 'U'
-    console.log(userInitials)
     setInitials(userInitials)
   }, [currentUserInfo])
 

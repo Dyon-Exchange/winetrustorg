@@ -45,3 +45,7 @@
   color: #304151;
   line-height: 1.8;
 }
+
+.banner-img {
+  background-image: url('/public/images/banners/home-banner.jpg');
+}

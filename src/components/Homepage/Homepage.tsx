@@ -34,7 +34,7 @@ const Homepage = () => {
     <div>
       <div className="banner-section">
         <div className="banner-div">
-          <img className="banner-img" src="/images/banners/home-banner.jpg" alt="Wine Trust Home" />
+          <div className="banner-img"></div>
         </div>
         <Container
           style={{

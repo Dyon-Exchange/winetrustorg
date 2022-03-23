@@ -14,7 +14,9 @@ const homePageStyles = makeStyles(theme => {
         color: '#fff',
         width: '100%',
         marginLeft: 'auto',
-        marginRight: 'auto'
+        marginRight: 'auto',
+        transitionDuration: '.4s',
+        transitionTimingFunction: 'ease'
       },
       '& .search-heading': {
         color: '#fff',
