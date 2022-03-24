@@ -62,7 +62,7 @@
   color: white;
 }
 
-.social-icon-margin img:not(:last-child) {
+.social-icon-margin a:not(:last-child) {
   margin-right: 9px;
 }
 

@@ -28,6 +28,9 @@ const Footer = () => {
               <a href="https://twitter.com/winetrustorg" target="_blank" rel="noreferrer">
                 <img src="/images/general/twitter_black.svg" alt="wine-trust twitter-logo" />
               </a>
+              <a href="https://medium.com/@winetrust" target="_blank" rel="noreferrer">
+                <img src="/images/general/medium-logo.svg" alt="wine-trust medium-logo" />
+              </a>
             </div>
           </div>
 
