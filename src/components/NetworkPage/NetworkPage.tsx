@@ -46,9 +46,10 @@ const NetworkPage = () => {
     dataMap.markers(
       [
         { name: 'London', radius: 0, latitude: 51.5073, longitude: -0.1276 },
-        { name: 'France', radius: 0, latitude: 46.6034, longitude: 1.8883 },
+        { name: 'France', radius: 0, latitude: 44.8378, longitude: 0.5792 },
         { name: 'Singapore', radius: 0, latitude: 1.3571, longitude: 103.8195 },
-        { name: 'HongKong', radius: 0, latitude: 22.2793, longitude: 114.1628 }
+        { name: 'HongKong', radius: 0, latitude: 22.2793, longitude: 114.1628 },
+        { name: 'USA', radius: 0, latitude: 37.7749, longitude: -122.4194 }
       ],
       {
         fillOpacity: 1,
@@ -69,7 +70,7 @@ const NetworkPage = () => {
           popupOnHover: true,
           icon: {
             url: '/images/general/location-london.png',
-            width: 200,
+            width: 180,
             height: 100
           }
         }
@@ -81,7 +82,7 @@ const NetworkPage = () => {
           popupOnHover: true,
           icon: {
             url: '/images/general/location-france.png',
-            width: 200,
+            width: 180,
             height: 100
           }
         }
@@ -93,7 +94,7 @@ const NetworkPage = () => {
           popupOnHover: true,
           icon: {
             url: '/images/general/location-china.png',
-            width: 200,
+            width: 180,
             height: 100
           }
         }
@@ -105,11 +106,20 @@ const NetworkPage = () => {
           popupOnHover: true,
           icon: {
             url: '/images/general/location-singapur.png',
-            width: 200,
+            width: 180,
             height: 100
           }
         }
       )
+      dataMap.markers([{ name: 'werUSA', radius: 0, latitude: 12.7749, longitude: -150.4194 }], {
+        fillOpacity: 1,
+        popupOnHover: true,
+        icon: {
+          url: '/images/general/location-usa.png',
+          width: 180,
+          height: 100
+        }
+      })
     } else {
       // window width is greater than 570px
     }
