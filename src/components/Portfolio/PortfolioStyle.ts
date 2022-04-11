@@ -72,6 +72,36 @@ const assetListingStyle = makeStyles(theme => {
           paddingTop: '200px'
         }
       }
+    },
+    portfolioProfile: {
+      '& .profile-outer': {
+        textAlign: 'center',
+        marginBottom: '30px',
+        '& .profile-img': {
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginBottom: '10px',
+          '& img': {
+            width: '150px',
+            height: '150px',
+            objectFit: 'cover',
+            borderRadius: '50%',
+            marginRight: '20px'
+          }
+        },
+        '& .address': {
+          wordWrap: 'break-word'
+        }
+      },
+      [theme.breakpoints.between('xs', 350)]: {
+        '& .profile-outer': {
+          textAlign: 'unset',
+          '& .profile-img': {
+            display: 'block!important'
+          }
+        }
+      }
     }
   }
 })

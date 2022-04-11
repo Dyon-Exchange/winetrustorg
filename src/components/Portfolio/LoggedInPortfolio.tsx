@@ -3,6 +3,7 @@ import { WalletContext } from 'contexts/WalletContext'
 import BootstrapBlueBtn from 'components/atoms/buttons/BootStrapBlueBtn'
 import { Box, Grid } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import PortfolioProfile from './PortfolioProfile'
 
 const getDataFromAttribute = (item: { attributes: any[] }, key: string) => {
   let keyData = '-'
@@ -31,6 +32,7 @@ export const LoggedInPortfolio = (data: any) => {
 
   return (
     <div>
+      <PortfolioProfile />
       <Grid container className="grid-container web-header cell-heading ">
         <Grid item xs={12} sm={6} lg={3.1}>
           <Box>Asset</Box>
