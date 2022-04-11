@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Container from '@mui/material/Container'
-// import { Box, Grid } from '@mui/material'
 import { useQuery } from '@apollo/client'
 import assetListingStyle from './PortfolioStyle'
-//import { useNavigate } from 'react-router-dom'
-//import BootstrapBlueBtn from 'components/atoms/buttons/BootStrapBlueBtn'
 import { LoaderContext } from 'contexts/LoaderContext'
 import { AccountPortfolioRequest, AccountPortfolioResponse } from 'interfaces'
 import { getPortfolioGqlQuery } from 'api/portfolio/portfolio'
@@ -32,12 +29,22 @@ const Portfolio = () => {
     { skip: !walletConnected }
   )
 
-  console.log('loading ' + loading)
-
   const getAllPortfolioData = async (portfolioResources: string[]) => {
     const portfolioRequests: Promise<any>[] = []
+    delete axios.defaults.headers.common['Authorization']
     portfolioResources.forEach(portfolioResource => {
-      portfolioRequests.push(axios.get(`https://ipfs.io/ipfs/${portfolioResource}`))
+      portfolioRequests.push(
+        axios.get(`https://ipfs.io/ipfs/${portfolioResource}`, {
+          transformRequest: [
+            (data, headers) => {
+              // due to typescript error in the axios file
+              // @ts-ignore: Unreachable code error
+              delete headers.common.Authorization
+              return data
+            }
+          ]
+        })
+      )
     })
     Promise.all(portfolioRequests).then(portfolioData => {
       const rowdata: any = []

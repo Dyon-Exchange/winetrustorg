@@ -1,4 +1,5 @@
 import React from 'react'
+import { WalletContext } from 'contexts/WalletContext'
 import BootstrapBlueBtn from 'components/atoms/buttons/BootStrapBlueBtn'
 import { Box, Grid } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
@@ -20,7 +21,13 @@ export const LoggedInPortfolio = (data: any) => {
     navigate(`/asset-home/${param}`)
   }
 
+  const { userDetails, loggedIn, loggedInDetails } = React.useContext(WalletContext)
   const rowdata = data.data
+
+  const owner =
+    loggedIn && loggedInDetails?.user?.firstName && loggedInDetails?.user?.lastName
+      ? loggedInDetails?.user?.firstName + ' ' + loggedInDetails?.user?.lastName
+      : userDetails?.address
 
   return (
     <div>
@@ -63,7 +70,7 @@ export const LoggedInPortfolio = (data: any) => {
           </Grid>
           <Grid item xs={12} sm={6} lg={2.5} key={item.id}>
             <Box className="cell-heading mobile-header">Owner</Box>
-            <div className="asset-data">{item.owner}</div>
+            <div className="asset-data">{owner}</div>
           </Grid>
           <Grid item xs={12} sm={6} lg={1} key={item.id}>
             <BootstrapBlueBtn
