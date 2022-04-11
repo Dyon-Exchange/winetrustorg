@@ -8,6 +8,7 @@ import { getPortfolioGqlQuery } from 'api/portfolio/portfolio'
 import axios from 'axios'
 import { WalletContext } from 'contexts/WalletContext'
 import { LoggedInPortfolio } from './LoggedInPortfolio'
+import PortfolioProfile from './PortfolioProfile'
 
 const Portfolio = () => {
   let [rowdata, setrowdata] = useState<undefined | []>(undefined)
@@ -17,11 +18,10 @@ const Portfolio = () => {
 
   console.log(userDetails)
 
-  const accountAddress = '0x146e82dd91e608a40ee56535dfdfb66f8291d9b8'
+  // const accountAddress = '0x146e82dd91e608a40ee56535dfdfb66f8291d9b8'
 
   const accountPortfolioGqlQuery = walletConnected
-    ? //? getPortfolioGqlQuery(userDetails!.address)
-      getPortfolioGqlQuery(accountAddress)
+    ? getPortfolioGqlQuery(userDetails!.address)
     : getPortfolioGqlQuery('')
 
   const { loading, error, data } = useQuery<AccountPortfolioResponse, AccountPortfolioRequest>(
@@ -79,12 +79,15 @@ const Portfolio = () => {
   return (
     <div className={classes.root}>
       <Container className="container">
+        <PortfolioProfile />
         {walletConnected && rowdata && rowdata.length > 0 ? (
           <LoggedInPortfolio data={rowdata}></LoggedInPortfolio>
         ) : walletConnected && rowdata && rowdata.length === 0 ? (
-          <div>You do not have any asset in your portfolio</div>
+          <div style={{ textAlign: 'center' }}>You do not have any asset in your portfolio</div>
         ) : !walletConnected ? (
-          <div> Please connect to your wallet to see your portfolio</div>
+          <div style={{ textAlign: 'center' }}>
+            Please connect to your wallet to see your portfolio
+          </div>
         ) : (
           ''
         )}

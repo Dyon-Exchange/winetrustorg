@@ -7,8 +7,9 @@ import StyledCarousel from './../atoms/carousel/StyledCarousel'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { LoaderContext } from 'contexts/LoaderContext'
-// import { useParams } from 'react-router'
-// import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const AssetHome = () => {
   const classes = customStyles()
@@ -16,6 +17,7 @@ const AssetHome = () => {
   const [assetData, setAsset] = useState<any>({})
   const [assetImages, setImageSlider] = useState<any>([])
   const { setLoading } = React.useContext(LoaderContext)
+  const navigate = useNavigate()
 
   let sliderImageKeyArr = [
     'marketingImage1',
@@ -49,6 +51,19 @@ const AssetHome = () => {
     let queryStr = `/assets/${params.assetId}`
     setLoading(true)
     axios.get(queryStr).then((result: any) => {
+      if (result.data === '') {
+        toast.error('Requested asset does not exists', {
+          position: toast.POSITION.TOP_RIGHT,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          progress: undefined
+        })
+        setTimeout(() => {
+          setLoading(false)
+          navigate(-1)
+        }, 1500)
+      }
       setAsset(result.data)
       let product = result.data.product
       let items: any = []
@@ -71,6 +86,7 @@ const AssetHome = () => {
   return (
     <div className={classes.root}>
       <Container className="asset-container">
+        <ToastContainer />
         <Box className="flex section-padding">
           <div className="img-outer">
             {assetData?.product?.image ? (
