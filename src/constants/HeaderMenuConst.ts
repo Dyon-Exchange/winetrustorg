@@ -6,6 +6,10 @@ export const HeaderMenu = [
     url: RoutesPath.HOMEPAGE
   },
   {
+    menuName: 'Portfolio',
+    url: RoutesPath.PORTFOLIO
+  },
+  {
     menuName: 'Security',
     url: RoutesPath.SECURITY
   },

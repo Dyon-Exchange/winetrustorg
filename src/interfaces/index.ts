@@ -1,6 +1,7 @@
 export * from './AuthData'
 export * from './AuthDetails'
 export * from './LoggedInDetails'
+export * from './Portfolio'
 export * from './UserData'
 export * from './UserDetails'
 export * from './NetworkDetails'

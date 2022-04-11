@@ -1,5 +1,6 @@
 export const RoutesPath = {
   HOMEPAGE: '/',
+  PORTFOLIO: '/portfolio',
   ABOUT: '/about',
   SECURITY: '/security',
   OWNERSHIP: '/ownership',
