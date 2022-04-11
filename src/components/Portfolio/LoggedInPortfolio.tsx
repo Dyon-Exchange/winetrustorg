@@ -126,7 +126,7 @@ export const LoggedInPortfolio = (data: any) => {
           </Grid>
           <Grid item xs={12} sm={6} lg={3} key={item.id}>
             <Box className="cell-heading mobile-header">Warehouse Name</Box>
-            <div className="asset-data">{getDataFromAttribute(item, 'Warehouse ID')}</div>
+            <div className="asset-data">{getDataFromAttribute(item, 'Warehouse Name')}</div>
           </Grid>
           <Grid item xs={12} sm={6} lg={2.5} key={item.id}>
             <Box className="cell-heading mobile-header">Owner</Box>
