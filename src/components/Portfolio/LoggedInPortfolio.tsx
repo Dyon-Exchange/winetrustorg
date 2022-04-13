@@ -4,10 +4,6 @@ import BootstrapBlueBtn from 'components/atoms/buttons/BootStrapBlueBtn'
 import { Box, Grid } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
-import Typography from '@mui/material/Typography'
-
 const getDataFromAttribute = (item: { attributes: any[] }, key: string) => {
   let keyData = '-'
   item.attributes.forEach((itemData: { trait_type: any; value: string }) => {
@@ -16,38 +12,6 @@ const getDataFromAttribute = (item: { attributes: any[] }, key: string) => {
     }
   })
   return keyData
-}
-
-interface TabPanelProps {
-  children?: React.ReactNode
-  index: number
-  value: number
-}
-
-const a11yProps = (index: number) => {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`
-  }
-}
-
-const TabPanel = (props: TabPanelProps) => {
-  const { children, value, index, ...other } = props
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}>
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  )
 }
 
 export const LoggedInPortfolio = (data: any) => {
@@ -65,32 +29,8 @@ export const LoggedInPortfolio = (data: any) => {
       ? loggedInDetails?.user?.firstName + ' ' + loggedInDetails?.user?.lastName
       : userDetails?.address
 
-  const [value, setValue] = React.useState(0)
-
-  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue)
-  }
-
   return (
     <div>
-      <Box sx={{ width: '100%' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Wine NFTs" {...a11yProps(0)} />
-            <Tab label="Coins/Tokens" {...a11yProps(1)} />
-            <Tab label="Other NFTs" {...a11yProps(2)} />
-          </Tabs>
-        </Box>
-        <TabPanel value={value} index={0}>
-          Wine NFTs
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          Coins/Tokens
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          Other NFTs
-        </TabPanel>
-      </Box>
       <Grid container className="grid-container web-header cell-heading ">
         <Grid item xs={12} sm={6} lg={3.1}>
           <Box>Asset</Box>
