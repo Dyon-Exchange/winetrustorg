@@ -196,7 +196,7 @@ const ProfileSetting = () => {
         <ToastContainer />
         <Box className="profile-bg-outer">
           <h2>Profile Setting</h2>
-          <div className="profile-backdrop card-shadow">
+          <Box className="profile-section">
             <div className="profile-outer">
               <label htmlFor="contained-button-file" className="mobile-profile">
                 <div>
@@ -257,81 +257,81 @@ const ProfileSetting = () => {
                   : 'Unnamed'}
               </h2>
             </div>
-          </div>
+            <FormControl className="profile-form">
+              <Stack spacing={4}>
+                <TextField
+                  id="firstname"
+                  name="firstName"
+                  label="First Name"
+                  inputProps={{ style: { padding: '13px 15px' } }}
+                  InputLabelProps={{
+                    style: { lineHeight: '1.2em' },
+                    shrink: updatedUserDetails?.user?.firstName ? true : false
+                  }}
+                  value={updatedUserDetails?.user?.firstName}
+                  onChange={handleChange}
+                />
+                <TextField
+                  id="lastname"
+                  name="lastName"
+                  label="Last Name"
+                  inputProps={{ style: { padding: '13px 15px' } }}
+                  InputLabelProps={{
+                    style: { lineHeight: '1.2em' },
+                    shrink: updatedUserDetails?.user?.lastName ? true : false
+                  }}
+                  value={updatedUserDetails?.user?.lastName}
+                  onChange={handleChange}
+                />
+                <TextField
+                  id="email-address"
+                  name="email"
+                  label="Email Address"
+                  inputProps={{ style: { padding: '13px 15px' } }}
+                  InputLabelProps={{
+                    style: { lineHeight: '1.2em' },
+                    shrink: updatedUserDetails?.user?.email ? true : false
+                  }}
+                  value={updatedUserDetails?.user?.email}
+                  onChange={handleChange}
+                />
+                <IntlTelInput
+                  defaultCountry={updatedUserDetails?.user?.phoneNumber?.countryCode ?? 'gb'}
+                  value={updatedUserDetails?.user?.phoneNumber?.phoneNumber ?? ''}
+                  onPhoneNumberChange={onIntlChange}
+                  onPhoneNumberBlur={onIntlBlur}
+                  inputClassName="profile-intl-tel-input"
+                />
+                <Tooltip title="Click to copy" followCursor>
+                  <TextField
+                    id="wallet-address"
+                    label="Wallet Address"
+                    value={updatedAuthDetails?.address}
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        updatedAuthDetails ? updatedAuthDetails.address ?? '' : ''
+                      )
+                    }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                    InputLabelProps={{
+                      shrink: true
+                    }}
+                    disabled={true}
+                  />
+                </Tooltip>
+                <BootStrapBlueBtn
+                  variant="contained"
+                  disableRipple
+                  size="large"
+                  onClick={saveProfileData}>
+                  Save
+                </BootStrapBlueBtn>
+              </Stack>
+            </FormControl>
+          </Box>
         </Box>
-        <FormControl className="profile-form">
-          <Stack spacing={4}>
-            <TextField
-              id="firstname"
-              name="firstName"
-              label="First Name"
-              inputProps={{ style: { padding: '13px 15px' } }}
-              InputLabelProps={{
-                style: { lineHeight: '1.2em' },
-                shrink: updatedUserDetails?.user?.firstName ? true : false
-              }}
-              value={updatedUserDetails?.user?.firstName}
-              onChange={handleChange}
-            />
-            <TextField
-              id="lastname"
-              name="lastName"
-              label="Last Name"
-              inputProps={{ style: { padding: '13px 15px' } }}
-              InputLabelProps={{
-                style: { lineHeight: '1.2em' },
-                shrink: updatedUserDetails?.user?.lastName ? true : false
-              }}
-              value={updatedUserDetails?.user?.lastName}
-              onChange={handleChange}
-            />
-            <TextField
-              id="email-address"
-              name="email"
-              label="Email Address"
-              inputProps={{ style: { padding: '13px 15px' } }}
-              InputLabelProps={{
-                style: { lineHeight: '1.2em' },
-                shrink: updatedUserDetails?.user?.email ? true : false
-              }}
-              value={updatedUserDetails?.user?.email}
-              onChange={handleChange}
-            />
-            <IntlTelInput
-              defaultCountry={updatedUserDetails?.user?.phoneNumber?.countryCode ?? 'gb'}
-              value={updatedUserDetails?.user?.phoneNumber?.phoneNumber ?? ''}
-              onPhoneNumberChange={onIntlChange}
-              onPhoneNumberBlur={onIntlBlur}
-              inputClassName="profile-intl-tel-input"
-            />
-            <Tooltip title="Click to copy" followCursor>
-              <TextField
-                id="wallet-address"
-                label="Wallet Address"
-                value={updatedAuthDetails?.address}
-                onClick={() => {
-                  navigator.clipboard.writeText(
-                    updatedAuthDetails ? updatedAuthDetails.address ?? '' : ''
-                  )
-                }}
-                InputProps={{
-                  readOnly: true
-                }}
-                InputLabelProps={{
-                  shrink: true
-                }}
-                disabled={true}
-              />
-            </Tooltip>
-            <BootStrapBlueBtn
-              variant="contained"
-              disableRipple
-              size="large"
-              onClick={saveProfileData}>
-              Save
-            </BootStrapBlueBtn>
-          </Stack>
-        </FormControl>
       </Container>
     </div>
   )

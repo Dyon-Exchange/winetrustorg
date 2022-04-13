@@ -60,7 +60,8 @@ const Homepage = () => {
                 endIcon={<Avatar src={'/images/general/arrow-right-white.svg'} />}
                 onClick={() => {
                   navigate(RoutesPath.SECURITY)
-                }}>
+                }}
+                className="learn-more-btn">
                 Learn More
               </BootstrapBlueBtn>
               <Box sx={{ marginTop: '34px', position: 'relative' }}>

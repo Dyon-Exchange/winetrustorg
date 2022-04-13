@@ -10,22 +10,17 @@ const profileStyles = makeStyles(theme => {
       '& .profile-bg-outer': {
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '66vh',
-        justifyContent: 'center'
-      },
-      '& .profile-backdrop ': {
-        height: '300px',
-        background: 'rgb(229, 232, 235)',
-        borderRadius: '5px',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        position: 'relative'
+        justifyContent: 'center',
+        '& .profile-section': {
+          display: 'block'
+        }
       },
       '& .profile-outer': {
-        position: 'absolute',
-        bottom: '-28%',
-        left: '10%',
-        display: 'flex'
+        display: 'flex',
+        height: 'max-content'
+      },
+      '& #profile-img': {
+        position: 'relative'
       },
       '& .profile-pic': {
         height: '150px',
@@ -34,16 +29,14 @@ const profileStyles = makeStyles(theme => {
         objectFit: 'cover'
       },
       '& .profile-name': {
-        float: 'right',
         fontWeight: '500',
-        alignSelf: 'flex-end',
+        alignSelf: 'center',
         marginLeft: '20px'
       },
       '& .mobile-profile': {
         display: 'flex'
       },
       '& .profile-form': {
-        marginTop: '140px',
         width: '100%',
         '& .profile-intl-tel-input': {
           padding: '13px 20px',
@@ -55,11 +48,10 @@ const profileStyles = makeStyles(theme => {
       },
       '& .profile-img-overlay': {
         position: 'absolute',
-        bottom: '8px',
-        left: '0',
         backgroundColor: 'rgba(0, 0, 0, 0.54)',
         color: '#fff',
-        display: 'none !important'
+        display: 'none !important',
+        top: 0
       },
       '& .mobile-profile-edit': {
         display: 'block',
@@ -74,6 +66,12 @@ const profileStyles = makeStyles(theme => {
         }
       },
       [theme.breakpoints.up('md')]: {
+        '& .profile-bg-outer': {
+          '& .profile-section': {
+            display: 'flex!important',
+            justifyContent: 'space-between'
+          }
+        },
         '& .profile-form': {
           width: '40%',
           paddingLeft: '7rem'
@@ -88,21 +86,15 @@ const profileStyles = makeStyles(theme => {
       [theme.breakpoints.between('sm', 'md')]: {
         '& .profile-form': {
           width: '60%',
-          paddingLeft: '5rem'
+          paddingLeft: '1rem'
         }
       },
       [theme.breakpoints.between('xs', 'sm')]: {
-        '& .profile-outer': {
-          display: 'block',
-          bottom: '-40%'
-        },
         '& .profile-name': {
-          margin: 0,
-          textAlign: 'center',
-          float: 'unset'
+          marginTop: '9px'
         },
         '& .profile-form': {
-          marginTop: '160px'
+          marginTop: '80px'
         }
       }
     }

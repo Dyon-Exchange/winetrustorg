@@ -6,6 +6,9 @@ const homePageStyles = makeStyles(theme => {
       width: '60%',
       textAlign: 'center',
       margin: '0 auto',
+      '& .learn-more-btn': {
+        marginLeft: '8px'
+      },
       [theme.breakpoints.between('xs', 700)]: {
         width: '100%'
       },
