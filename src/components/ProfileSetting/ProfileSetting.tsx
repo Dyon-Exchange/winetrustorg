@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Container from '@mui/material/Container'
 import './ProfileSetting.css'
-import { Avatar, Box, FormControl, TextField, Tooltip } from '@mui/material'
+import { Avatar, Box, FormControl, InputAdornment, TextField, Tooltip } from '@mui/material'
 import BootStrapBlueBtn from './../atoms/buttons/BootStrapBlueBtn'
 import { WalletContext } from 'contexts/WalletContext'
 import { LoaderContext } from 'contexts/LoaderContext'
@@ -19,6 +19,7 @@ import { styled } from '@mui/material/styles'
 import CameraAltIcon from '@mui/icons-material/CameraAlt'
 import { profileUpdateRequest, profileImageUpdateRequest } from 'api/profile/profileUpdate'
 import profileStyles from './ProfileStyle'
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 
 const ProfileSetting = () => {
   const classes = profileStyles()
@@ -302,25 +303,36 @@ const ProfileSetting = () => {
                   onPhoneNumberBlur={onIntlBlur}
                   inputClassName="profile-intl-tel-input"
                 />
-                <Tooltip title="Click to copy" followCursor>
-                  <TextField
-                    id="wallet-address"
-                    label="Wallet Address"
-                    value={updatedAuthDetails?.address}
-                    onClick={() => {
-                      navigator.clipboard.writeText(
-                        updatedAuthDetails ? updatedAuthDetails.address ?? '' : ''
-                      )
-                    }}
-                    InputProps={{
-                      readOnly: true
-                    }}
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                    disabled={true}
-                  />
-                </Tooltip>
+                <TextField
+                  id="wallet-address"
+                  label="Wallet Address"
+                  value={updatedAuthDetails?.address}
+                  InputProps={{
+                    readOnly: true,
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <ContentCopyIcon
+                          onClick={() => {
+                            navigator.clipboard.writeText(
+                              updatedAuthDetails ? updatedAuthDetails.address ?? '' : ''
+                            )
+                            toast.success('Wallet Address is copied to clipboard!', {
+                              position: toast.POSITION.TOP_RIGHT,
+                              hideProgressBar: true,
+                              closeOnClick: true,
+                              pauseOnHover: true,
+                              progress: undefined
+                            })
+                          }}
+                        />
+                      </InputAdornment>
+                    )
+                  }}
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                  disabled={true}
+                />
                 <BootStrapBlueBtn
                   variant="contained"
                   disableRipple
