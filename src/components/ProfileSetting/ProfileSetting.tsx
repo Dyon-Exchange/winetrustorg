@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Container from '@mui/material/Container'
 import './ProfileSetting.css'
-import { Avatar, Box, FormControl, InputAdornment, TextField, Tooltip } from '@mui/material'
+import { Avatar, Box, FormControl, InputAdornment, TextField } from '@mui/material'
 import BootStrapBlueBtn from './../atoms/buttons/BootStrapBlueBtn'
 import { WalletContext } from 'contexts/WalletContext'
 import { LoaderContext } from 'contexts/LoaderContext'
