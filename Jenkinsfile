@@ -8,7 +8,7 @@ pipeline {
                 sh "npm install"
                 sh "CI=false npm run build"
                 //sh "yarn install"
-                //sh "yarn build"
+                ///sh "yarn build"
             }
         }
         stage("Deploy") {
