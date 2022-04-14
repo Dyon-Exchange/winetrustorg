@@ -20,6 +20,7 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt'
 import { profileUpdateRequest, profileImageUpdateRequest } from 'api/profile/profileUpdate'
 import profileStyles from './ProfileStyle'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
+import { Tooltip } from '@material-ui/core'
 
 const ProfileSetting = () => {
   const classes = profileStyles()
@@ -311,20 +312,22 @@ const ProfileSetting = () => {
                     readOnly: true,
                     endAdornment: (
                       <InputAdornment position="end">
-                        <ContentCopyIcon
-                          onClick={() => {
-                            navigator.clipboard.writeText(
-                              updatedAuthDetails ? updatedAuthDetails.address ?? '' : ''
-                            )
-                            toast.success('Wallet Address is copied to clipboard!', {
-                              position: toast.POSITION.TOP_RIGHT,
-                              hideProgressBar: true,
-                              closeOnClick: true,
-                              pauseOnHover: true,
-                              progress: undefined
-                            })
-                          }}
-                        />
+                        <Tooltip title="Copy" placement="top" arrow>
+                          <ContentCopyIcon
+                            onClick={() => {
+                              navigator.clipboard.writeText(
+                                updatedAuthDetails ? updatedAuthDetails.address ?? '' : ''
+                              )
+                              toast.success('Wallet Address is copied to clipboard!', {
+                                position: toast.POSITION.TOP_RIGHT,
+                                hideProgressBar: true,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                progress: undefined
+                              })
+                            }}
+                          />
+                        </Tooltip>
                       </InputAdornment>
                     )
                   }}

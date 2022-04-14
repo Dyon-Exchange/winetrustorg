@@ -3,6 +3,7 @@ import { providers } from 'ethers'
 import React, { createContext, useCallback, useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
 import Web3 from 'web3'
+import { useNavigate } from 'react-router-dom'
 
 import { SUPPORTED_NETWORKS } from '../constants'
 import {
@@ -56,6 +57,8 @@ export const WalletContextProvider = ({ children }: { children: ReactNode }) => 
     authStorageKey,
     undefined
   )
+
+  const navigate = useNavigate()
 
   const [loggedInDetails, setLoggedInDetails] = useLocalStorage<ILoggedInDetails>(
     wtLoggedInUserInfo,
@@ -152,7 +155,8 @@ export const WalletContextProvider = ({ children }: { children: ReactNode }) => 
     const handleAccountChange = async () => {
       clearConnectedAccount()
       // setup wallet context again with the new selected account
-      await connectAccount()
+      // await connectAccount()
+      navigate('/')
     }
 
     const handleChainChanged = (chainIdString: string) => {

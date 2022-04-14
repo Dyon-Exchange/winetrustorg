@@ -35,9 +35,9 @@ import Faqs from 'components/FAQ/Faq'
 const App = () => {
   return (
     <ApolloProvider client={apolloClient}>
-      <WalletContextProvider>
-        <LoaderContextProvider>
-          <BrowserRouter>
+      <BrowserRouter>
+        <WalletContextProvider>
+          <LoaderContextProvider>
             <Header />
             <Box display="flex" flexDirection="column" minH="inherit">
               <Routes>
@@ -188,9 +188,9 @@ const App = () => {
               </Routes>
             </Box>
             <Footer />
-          </BrowserRouter>
-        </LoaderContextProvider>
-      </WalletContextProvider>
+          </LoaderContextProvider>
+        </WalletContextProvider>
+      </BrowserRouter>
     </ApolloProvider>
   )
 }
