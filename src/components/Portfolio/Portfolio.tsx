@@ -16,8 +16,6 @@ const Portfolio = () => {
   const { setLoading } = React.useContext(LoaderContext)
   const { walletConnected, userDetails } = React.useContext(WalletContext)
 
-  console.log(userDetails)
-
   // const accountAddress = '0x146e82dd91e608a40ee56535dfdfb66f8291d9b8'
 
   const accountPortfolioGqlQuery = walletConnected

@@ -62,7 +62,7 @@ export const LoggedInPortfolio = (data: any) => {
           </Grid>
           <Grid item xs={12} sm={6} lg={2.3} key={item.id}>
             <Box className="cell-heading mobile-header">Asset ID</Box>
-            <div className="asset-data">{getDataFromAttribute(item, 'ID Number')}</div>
+            <div className="asset-data">{getDataFromAttribute(item, 'Asset ID')}</div>
           </Grid>
           <Grid item xs={12} sm={6} lg={3} key={item.id}>
             <Box className="cell-heading mobile-header">Warehouse Name</Box>
@@ -74,7 +74,7 @@ export const LoggedInPortfolio = (data: any) => {
           </Grid>
           <Grid item xs={12} sm={6} lg={1} key={item.id}>
             <BootstrapBlueBtn
-              onClick={() => navigateToAsset(getDataFromAttribute(item, 'ID Number'))}
+              onClick={() => navigateToAsset(getDataFromAttribute(item, 'Asset ID'))}
               className="view-btn">
               VIEW
             </BootstrapBlueBtn>
