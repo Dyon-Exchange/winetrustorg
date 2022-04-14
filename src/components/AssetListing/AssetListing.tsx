@@ -30,7 +30,7 @@ const AssetListing = () => {
           id: prod._id,
           assetImg: `${process.env.REACT_APP_PINATA}${prod.product.labelImage}`,
           assetName: prod.product.longName,
-          assetId: prod._id,
+          assetId: prod.assetId ?? prod._id,
           location: prod.preAdvice.arrivalWarehouse.name,
           owner: ownerName
         })

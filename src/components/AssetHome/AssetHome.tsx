@@ -152,8 +152,8 @@ const AssetHome = () => {
               <p>Chateau Lafite Rothschild</p>
             </Box>
             <Box>
-              <p>Token ID</p>
-              <p>2010</p>
+              <p>Asset Id</p>
+              <p>{assetData.assetId ?? assetData._id}</p>
             </Box>
             <Box>
               <p>Custodian</p>
