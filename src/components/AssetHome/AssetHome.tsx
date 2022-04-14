@@ -63,6 +63,7 @@ const AssetHome = () => {
           setLoading(false)
           navigate(-1)
         }, 1500)
+        return
       }
       setAsset(result.data)
       let product = result.data.product
