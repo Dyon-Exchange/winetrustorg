@@ -13,9 +13,11 @@ const assetListingStyle = makeStyles(theme => {
       '& .view-btn': {
         color: '#fff',
         cursor: 'pointer',
-        padding: '16px 30px 15px',
+        padding: '16px 29px 15px',
         margin: '10px',
-        marginTop: 0
+        marginTop: 0,
+        fontSize: '13px',
+        marginLeft: 0
       },
       '& .grid-container': {
         marginBottom: '30px',
@@ -29,9 +31,6 @@ const assetListingStyle = makeStyles(theme => {
         fontSize: '13px',
         lineHeight: '38px',
         padding: '14px'
-      },
-      '& .asset-data:last-child': {
-        textOverflow: 'unset'
       },
       '& .cell-heading': {
         background: '#e2e8f0',

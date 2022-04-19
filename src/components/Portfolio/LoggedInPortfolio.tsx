@@ -92,16 +92,16 @@ export const LoggedInPortfolio = (data: any) => {
         </TabPanel>
       </Box>
       <Grid container className="grid-container web-header cell-heading ">
-        <Grid item xs={12} sm={6} lg={3.1}>
+        <Grid item xs={12} sm={6} lg={4}>
           <Box>Asset</Box>
         </Grid>
-        <Grid item xs={12} sm={6} lg={2.3}>
+        <Grid item xs={12} sm={6} lg={1.8}>
           <Box>Asset ID</Box>
         </Grid>
-        <Grid item xs={12} sm={6} lg={3.1}>
+        <Grid item xs={12} sm={6} lg={3}>
           <Box>Warehouse Name</Box>
         </Grid>
-        <Grid item xs={12} sm={6} lg={2.5}>
+        <Grid item xs={12} sm={6} lg={2.8}>
           <Box>Owner</Box>
         </Grid>
         <Grid item xs={12} sm={6} lg={1}></Grid>
@@ -109,7 +109,7 @@ export const LoggedInPortfolio = (data: any) => {
 
       {rowdata.map((item: any) => (
         <Grid container className="grid-container">
-          <Grid item xs={12} sm={6} lg={3} key={item.id}>
+          <Grid item xs={12} sm={6} lg={4} key={item.id}>
             <Box className="cell-heading mobile-header">Asset</Box>
             <Box sx={{ display: 'flex' }}>
               <img
@@ -120,7 +120,7 @@ export const LoggedInPortfolio = (data: any) => {
               <div className="asset-data">{item.name}</div>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} lg={2.3} key={item.id}>
+          <Grid item xs={12} sm={6} lg={2} key={item.id}>
             <Box className="cell-heading mobile-header">Asset ID</Box>
             <div className="asset-data">{getDataFromAttribute(item, 'ID Number')}</div>
           </Grid>
@@ -128,7 +128,7 @@ export const LoggedInPortfolio = (data: any) => {
             <Box className="cell-heading mobile-header">Warehouse Name</Box>
             <div className="asset-data">{getDataFromAttribute(item, 'Warehouse Name')}</div>
           </Grid>
-          <Grid item xs={12} sm={6} lg={2.5} key={item.id}>
+          <Grid item xs={12} sm={6} lg={2} key={item.id}>
             <Box className="cell-heading mobile-header">Owner</Box>
             <div className="asset-data">{owner}</div>
           </Grid>
