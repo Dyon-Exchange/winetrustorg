@@ -49,12 +49,12 @@ const ConnectWallet = () => {
     setAnchorElUser(null)
   }
 
-  const handleGotoProfile = async () => {
-    if (!loggedIn) {
+  const navigateToMenu = async (shouldLoginCheck: boolean, path: string) => {
+    if (!loggedIn && shouldLoginCheck) {
       await login()
     }
     handleCloseUserMenu()
-    navigate(RoutesPath.PROFILESETTING)
+    navigate(path)
   }
 
   return (
@@ -67,7 +67,11 @@ const ConnectWallet = () => {
         <Box sx={{ flexGrow: 0 }}>
           <Tooltip title="Open settings">
             <IconButton
-              onClick={window.innerWidth > 900 ? handleOpenUserMenu : handleGotoProfile}
+              onClick={
+                window.innerWidth > 600
+                  ? handleOpenUserMenu
+                  : () => navigateToMenu(true, RoutesPath.PROFILESETTING)
+              }
               sx={{ p: 0 }}
               className="logged-in-btn">
               <Box sx={{ display: { xs: 'block', sm: 'none' } }} className="profile-text">
@@ -102,8 +106,15 @@ const ConnectWallet = () => {
             onClose={handleCloseUserMenu}
             disableScrollLock>
             <MenuList sx={{ padding: 0 }}>
-              <MenuItem key={123} onClick={handleGotoProfile}>
+              <MenuItem
+                key={'profile'}
+                onClick={() => navigateToMenu(true, RoutesPath.PROFILESETTING)}>
                 Profile
+              </MenuItem>
+              <MenuItem
+                key={'portfolio'}
+                onClick={() => navigateToMenu(false, RoutesPath.PORTFOLIO)}>
+                Portfolio
               </MenuItem>
             </MenuList>
           </Menu>

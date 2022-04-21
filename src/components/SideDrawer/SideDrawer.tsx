@@ -58,7 +58,7 @@ const SideDrawer: React.FC<Props> = ({ children, sendDataToParent }) => {
         <Box className="connect-wallet-btn" onClick={handleDrawerClose}>
           <ConnectWallet />
         </Box>
-        {HeaderMenu.map(menu => (
+        {HeaderMenu.filter(menu => menu.isMobileVis).map(menu => (
           <NavLink to={menu.url} onClick={handleDrawerClose}>
             <ListItem button key={menu.menuName}>
               <ListItemText primary={menu.menuName} />

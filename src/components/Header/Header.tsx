@@ -43,7 +43,7 @@ const Header = () => {
             </Link>
           </Typography>
           <Box className="menu-items">
-            {HeaderMenu.map(menu => (
+            {HeaderMenu.filter(menu => menu.isDesktopVis).map(menu => (
               <Button
                 onClick={() => navigate(menu.url)}
                 key={menu.menuName}

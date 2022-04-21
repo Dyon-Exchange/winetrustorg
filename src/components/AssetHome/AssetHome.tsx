@@ -15,15 +15,19 @@ const AssetHome = () => {
   const classes = customStyles()
   const params = useParams()
   const [assetData, setAsset] = useState<any>({})
+  const [isPdfLoading, setIsPdfLoading] = useState<boolean>(false)
+  const [isDefaultImgShow, setIsDefaultImgShow] = useState<boolean>(false)
   const [assetImages, setImageSlider] = useState<any>([])
   const { setLoading } = React.useContext(LoaderContext)
   const navigate = useNavigate()
 
   let sliderImageKeyArr = [
-    'marketingImage1',
-    'marketingImage2',
-    'marketingImage3',
-    'marketingImage4'
+    'initialConditionReport1',
+    'initialConditionReport2',
+    'initialConditionReport3',
+    'initialConditionReport4',
+    'initialConditionReport5',
+    'initialConditionReport6'
   ]
   const responsive = {
     superLargeDesktop: {
@@ -66,7 +70,7 @@ const AssetHome = () => {
         return
       }
       setAsset(result.data)
-      let product = result.data.product
+      const product = result.data
       let items: any = []
       sliderImageKeyArr.forEach(key => {
         if (product[key]) {
@@ -88,14 +92,14 @@ const AssetHome = () => {
     <div className={classes.root}>
       <Container className="asset-container">
         <ToastContainer />
-        <Box className="flex section-padding">
+        <Box className="flex section-padding" paddingTop={'75px !important'}>
           <div className="img-outer">
-            {assetData?.product?.image ? (
+            {assetData?.product?.labelImage ? (
               <img
-                src={`${process.env.REACT_APP_PINATA}${assetData?.product?.image}`}
-                onError={({ currentTarget }) =>
+                src={`${process.env.REACT_APP_PINATA}${assetData?.product?.labelImage}`}
+                onError={({ currentTarget }) => {
                   setFallbackImg(currentTarget, '/images/assetImg.jpeg')
-                }
+                }}
                 alt="asset home label"
                 height="345px"
                 width="100%"
@@ -122,26 +126,51 @@ const AssetHome = () => {
               <p>Region</p>
               <p>{assetData?.product?.region}</p>
             </Box>
-            <Box>
-              <p>Sub Region</p>
-              <p>{assetData?.product?.subRegion}</p>
-            </Box>
-            <Box>
-              <p>Sub Sub Region</p>
-              <p>{assetData?.product?.subSubRegion}</p>
-            </Box>
+            {assetData?.product?.subRegion ? (
+              <Box>
+                <p>Sub Region</p>
+                <p>{assetData?.product?.subRegion}</p>
+              </Box>
+            ) : (
+              ''
+            )}
+            {assetData?.product?.subSubRegion ? (
+              <Box>
+                <p>Sub Sub Region</p>
+                <p>{assetData?.product?.subSubRegion}</p>
+              </Box>
+            ) : (
+              ''
+            )}
           </Box>
         </Box>
         <Box className="section-border flex section-padding">
           <div className="img-outer">
-            {assetData?.product?.bottleImage ? (
-              <img
-                src={`${process.env.REACT_APP_PINATA}${assetData?.product?.bottleImage}`}
-                alt="asset home bottle img"
-                onError={({ currentTarget }) => setFallbackImg(currentTarget, '/images/wine.png')}
+            {isPdfLoading ? (
+              <iframe
+                title="asset condition report image"
+                src={`${process.env.REACT_APP_PINATA}${assetData?.initialConditionReport}`}
+                height="100%"
+                width="100%"
+                onError={() => {
+                  setIsDefaultImgShow(true)
+                }}
               />
             ) : (
-              <img src="/images/wine.png" alt="asset home bottle img" />
+              ''
+            )}
+            {assetData?.initialConditionReport && !isPdfLoading ? (
+              <img
+                src={`${process.env.REACT_APP_PINATA}${assetData?.initialConditionReport}`}
+                alt="asset home bottle img"
+                //onError={({ currentTarget }) => setFallbackImg(currentTarget, '/images/wine.png')}
+                onError={() => setIsPdfLoading(true)}
+                width="100%"
+              />
+            ) : isDefaultImgShow || !('initialConditionReport' in assetData) ? (
+              <img src="/images/assetImg.jpeg" alt="asset home bottle img" width="100%" />
+            ) : (
+              ''
             )}
           </div>
 
@@ -187,7 +216,12 @@ const AssetHome = () => {
                 arrows={window.innerWidth >= 768 ? true : false}
                 renderButtonGroupOutside={true}>
                 {assetImages.map((item: any) => (
-                  <img src={item.image} alt={item.image} className="carousel-img" height="400px" />
+                  <img
+                    src={item.image}
+                    alt={'Condition Report'}
+                    className="carousel-img"
+                    height="400px"
+                  />
                 ))}
               </StyledCarousel>
             </Box>
