@@ -7,6 +7,9 @@ const customStyles = makeStyles(theme => {
         paddingTop: '100px',
         paddingBottom: '100px'
       },
+      '& .asset-container.loading': {
+        paddingTop: 'calc(100vh - 415px)'
+      },
       '& .asset-spec-wrapper': {
         '& .MuiBox-root': {
           display: 'flex',
@@ -41,17 +44,22 @@ const customStyles = makeStyles(theme => {
       },
       '& .carousel-img': {
         [theme.breakpoints.between('xs', 470)]: {
-          width: '100%'
+          maxWidth: '100%'
         },
-        width: '92%'
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        display: 'block',
+        maxWidth: '92%'
       },
       '& .img-outer': {
         width: '40%',
         textAlign: 'center',
-        height: '552px',
+        maxHeight: '450px',
         marginBottom: '38px',
         '& img': {
-          height: '100%'
+          maxHeight: '100%',
+          maxWidth: '100%',
+          paddingTop: '10px'
         },
         [theme.breakpoints.between('xs', 'sm')]: {
           width: '100%'
