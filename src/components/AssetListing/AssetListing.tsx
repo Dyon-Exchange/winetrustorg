@@ -43,6 +43,8 @@ const AssetListing = () => {
   function handleOnClick(param: any) {
     navigate(`/asset-home/${param}`)
   }
+
+  console.log('dummy one')
   return (
     <div className={classes.root}>
       <Container className="container">
