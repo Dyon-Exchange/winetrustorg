@@ -50,10 +50,10 @@ const AssetListing = () => {
           <b>Search Results for:</b> <span>{params.product}</span>
         </Box>
         <Grid container className="grid-container web-header cell-heading ">
-          <Grid item xs={12} sm={6} lg={3.1}>
+          <Grid item xs={12} sm={6} lg={4.4}>
             <Box>Asset</Box>
           </Grid>
-          <Grid item xs={12} sm={6} lg={2.3}>
+          <Grid item xs={12} sm={6} lg={1.1}>
             <Box>Asset ID</Box>
           </Grid>
           <Grid item xs={12} sm={6} lg={3.1}>
@@ -67,18 +67,18 @@ const AssetListing = () => {
 
         {rowdata.map((item: any) => (
           <Grid container className="grid-container">
-            <Grid item xs={12} sm={6} lg={3} key={item.id}>
+            <Grid item xs={12} sm={6} lg={4.4} key={item.id}>
               <Box className="cell-heading mobile-header">Asset</Box>
               <Box sx={{ display: 'flex' }}>
                 <img src={item.assetImg} alt="Asset Img" className="asset-img" />
                 <div className="asset-data">{item.assetName}</div>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={6} lg={2.3} key={item.id}>
+            <Grid item xs={12} sm={6} lg={1} key={item.id}>
               <Box className="cell-heading mobile-header">Asset ID</Box>
               <div className="asset-data">{item.assetId}</div>
             </Grid>
-            <Grid item xs={12} sm={6} lg={3} key={item.id}>
+            <Grid item xs={12} sm={6} lg={2.9} key={item.id}>
               <Box className="cell-heading mobile-header">Warehouse Name</Box>
               <div className="asset-data">{item.location}</div>
             </Grid>

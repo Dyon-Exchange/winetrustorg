@@ -32,13 +32,13 @@ export const LoggedInPortfolio = (data: any) => {
   return (
     <div>
       <Grid container className="grid-container web-header cell-heading ">
-        <Grid item xs={12} sm={6} lg={4}>
+        <Grid item xs={12} sm={6} lg={4.5}>
           <Box>Asset</Box>
         </Grid>
-        <Grid item xs={12} sm={6} lg={1.8}>
+        <Grid item xs={12} sm={6} lg={1.1}>
           <Box>Asset ID</Box>
         </Grid>
-        <Grid item xs={12} sm={6} lg={3}>
+        <Grid item xs={12} sm={6} lg={2.9}>
           <Box>Warehouse Name</Box>
         </Grid>
         <Grid item xs={12} sm={6} lg={2.8}>
@@ -49,7 +49,7 @@ export const LoggedInPortfolio = (data: any) => {
 
       {rowdata.map((item: any) => (
         <Grid container className="grid-container">
-          <Grid item xs={12} sm={6} lg={4} key={item.id}>
+          <Grid item xs={12} sm={6} lg={4.7} key={item.id}>
             <Box className="cell-heading mobile-header">Asset</Box>
             <Box sx={{ display: 'flex' }}>
               <img
@@ -60,11 +60,11 @@ export const LoggedInPortfolio = (data: any) => {
               <div className="asset-data">{item.name}</div>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} lg={2} key={item.id}>
+          <Grid item xs={12} sm={6} lg={1.25} key={item.id}>
             <Box className="cell-heading mobile-header">Asset ID</Box>
             <div className="asset-data">{getDataFromAttribute(item, 'Asset ID')}</div>
           </Grid>
-          <Grid item xs={12} sm={6} lg={3} key={item.id}>
+          <Grid item xs={12} sm={6} lg={3.05} key={item.id}>
             <Box className="cell-heading mobile-header">Warehouse Name</Box>
             <div className="asset-data">{getDataFromAttribute(item, 'Warehouse Name')}</div>
           </Grid>

@@ -57,7 +57,7 @@ const customStyles = makeStyles(theme => {
         maxHeight: '450px',
         marginBottom: '38px',
         '& img': {
-          maxHeight: '100%',
+          maxHeight: '450px',
           maxWidth: '100%',
           paddingTop: '10px'
         },

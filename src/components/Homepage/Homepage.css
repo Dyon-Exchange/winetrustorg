@@ -50,4 +50,6 @@
   background-image: url('/public/images/banners/home-banner.jpg');
   background-position: center;
   height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

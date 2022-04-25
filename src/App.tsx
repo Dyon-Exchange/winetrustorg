@@ -31,11 +31,13 @@ import PrivacyPolicyPage from 'components/PrivacyPolicy/PrivacyPolicy'
 import TermsAndConditions from 'components/TermsAndConditions/TermsAndConditions'
 import Portfolio from 'components/Portfolio/Portfolio'
 import Faqs from 'components/FAQ/Faq'
+import ScrollToTop from 'components/util/ScrollToTop'
 
 const App = () => {
   return (
     <ApolloProvider client={apolloClient}>
       <BrowserRouter>
+        <ScrollToTop />
         <WalletContextProvider>
           <LoaderContextProvider>
             <Header />
