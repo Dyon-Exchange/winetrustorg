@@ -188,7 +188,8 @@ const AssetHome = () => {
                   <img src="/images/assetImg.jpeg" alt="asset home bottle img" width="100%" />
                 ) : (
                   ''
-                )}
+                )}{' '}
+                <div>{assetData?.initialConditionText}</div>
               </div>
               <Box className="asset-spec-wrapper">
                 <Box className="asset-desc">{assetData?.product?.description}</Box>

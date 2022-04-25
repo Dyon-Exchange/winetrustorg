@@ -1,4 +1,4 @@
-import { Avatar, Box, IconButton, MenuList, Tooltip } from '@mui/material'
+import { Avatar, Box, IconButton, MenuList } from '@mui/material'
 import * as React from 'react'
 import { WalletContext } from '../contexts/WalletContext'
 import BootstrapBlueBtn from './atoms/buttons/BootStrapBlueBtn'
@@ -65,31 +65,31 @@ const ConnectWallet = () => {
         </BootstrapBlueBtn>
       ) : (
         <Box sx={{ flexGrow: 0 }}>
-          <Tooltip title="Open settings">
-            <IconButton
-              onClick={
-                window.innerWidth > 600
-                  ? handleOpenUserMenu
-                  : () => navigateToMenu(true, RoutesPath.PROFILESETTING)
-              }
-              sx={{ p: 0 }}
-              className="logged-in-btn">
-              <Box sx={{ display: { xs: 'block', sm: 'none' } }} className="profile-text">
-                Profile
-              </Box>
+          <IconButton
+            onClick={
+              window.innerWidth > 600
+                ? handleOpenUserMenu
+                : () => navigateToMenu(true, RoutesPath.PROFILESETTING)
+            }
+            aria-haspopup="true"
+            sx={{ p: 0 }}
+            className="logged-in-btn"
+            onMouseEnter={handleOpenUserMenu}>
+            <Box sx={{ display: { xs: 'block', sm: 'none' } }} className="profile-text">
+              Profile
+            </Box>
 
-              <Avatar
-                alt="Unnamed"
-                src={currentUserInfo?.user?.profileImage}
-                sx={{
-                  background: 'linear-gradient(rgb(0, 41, 84) 0%, rgba(0, 41, 84, 0) 100%)',
-                  border: '1px solid white',
-                  borderRadius: '50%'
-                }}>
-                {initials}
-              </Avatar>
-            </IconButton>
-          </Tooltip>
+            <Avatar
+              alt="Unnamed"
+              src={currentUserInfo?.user?.profileImage}
+              sx={{
+                background: 'linear-gradient(rgb(0, 41, 84) 0%, rgba(0, 41, 84, 0) 100%)',
+                border: '1px solid white',
+                borderRadius: '50%'
+              }}>
+              {initials}
+            </Avatar>
+          </IconButton>
           <Menu
             sx={{ mt: '45px', zIndex: '9999', position: 'absolute' }}
             id="menu-appbar"
@@ -104,6 +104,7 @@ const ConnectWallet = () => {
             }}
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}
+            MenuListProps={{ onMouseLeave: handleCloseUserMenu }}
             disableScrollLock>
             <MenuList sx={{ padding: 0 }}>
               <MenuItem
