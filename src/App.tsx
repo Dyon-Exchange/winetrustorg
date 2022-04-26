@@ -33,8 +33,6 @@ import Portfolio from 'components/Portfolio/Portfolio'
 import Faqs from 'components/FAQ/Faq'
 import ScrollToTop from 'components/util/ScrollToTop'
 
-console.log('hello')
-
 const App = () => {
   return (
     <ApolloProvider client={apolloClient}>
