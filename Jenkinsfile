@@ -27,7 +27,7 @@ pipeline {
 				Jenkins_ENV_Hello_World = credentials('Jenkins_ENV_Hello_World')
 			}
             steps {
-                sh "echo '$Jenkins_ENV_Hello_World'"
+                sh "echo '$Jenkins_ENV_Hello_World' > hello.txt"
             }
         }
     }
