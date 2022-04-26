@@ -1,6 +1,6 @@
 pipeline {
      agent any
-     environment {
+	 environment {
           var_REACT_APP_PINATA = credentials('REACT_APP_PINATA')
      }
      stages {
@@ -28,6 +28,7 @@ pipeline {
         stage("Test") {
             steps {
                 sh "echo '$var_REACT_APP_PINATA' > hello.txt"
+				sh "cat .env > hello.txt"
             }
         }
     }
