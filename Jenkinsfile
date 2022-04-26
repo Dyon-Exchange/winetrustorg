@@ -8,10 +8,10 @@ pipeline {
             steps {
                 sh "ls -ltr ${WORKSPACE}"
                 sh "cd ${WORKSPACE}"
-                sh "npm install"
-                sh "CI=false npm run build"
-                //sh "yarn install"
-                ///sh "yarn build"
+                //sh "npm install"
+                //sh "CI=false npm run build"
+                sh "yarn install"
+                sh "npm run build"
             }
         }
         stage("Deploy") {
