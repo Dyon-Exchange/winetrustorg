@@ -83,7 +83,7 @@ const ConnectWallet = () => {
               alt="Unnamed"
               src={currentUserInfo?.user?.profileImage}
               sx={{
-                background: 'linear-gradient(rgb(0, 41, 84) 0%, rgba(0, 41, 84, 0) 100%)',
+                background: 'linear-gradient(rgb(29, 47, 64) 0%, rgba(29, 47, 64, 0) 100%)',
                 border: '1px solid white',
                 borderRadius: '50%'
               }}>

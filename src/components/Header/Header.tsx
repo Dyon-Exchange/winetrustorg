@@ -31,7 +31,7 @@ const Header = () => {
     <AppBar position="static" className={classes.appBar}>
       <Container
         style={{
-          backgroundColor: '#002954',
+          backgroundColor: '#1D2F40',
           position: 'absolute',
           width: '100%',
           maxWidth: '100%'
