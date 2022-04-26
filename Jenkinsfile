@@ -1,5 +1,8 @@
 pipeline {
      agent any
+     environment {
+          var_REACT_APP_PINATA = credentials('REACT_APP_PINATA')
+     }
      stages {
         stage("Build") {
             steps {
@@ -15,11 +18,16 @@ pipeline {
             steps {
                 sh "cd ${WORKSPACE}"
                 sh "tar -zcvf build.tar build"
-                sh "scp -r ${WORKSPACE}/build.tar root@app.winetrust.org:/var/www/html/winetrust.org"
-                sh "ssh root@app.winetrust.org 'rm -rf /var/www/html/winetrust.org/build'"
-                sh "ssh root@app.winetrust.org 'cd /var/www/html/winetrust.org; ls -ltr; tar -xvf build.tar; sudo chown -R root:root /var/www/html/winetrust.org;'"
-                sh "ssh root@app.winetrust.org 'cp /var/www/tmp/env.js /var/www/html/winetrust.org/build/'"
-                sh "ssh root@app.winetrust.org 'cd /var/www/html/winetrust.org; pwd; git pull origin main;'"
+                sh "scp -r ${WORKSPACE}/build.tar root@demo.winetrust.org:/var/www/html/demo.winetrust.org"
+                sh "ssh root@demo.winetrust.org 'rm -rf /var/www/html/demo.winetrust.org/build'"
+                sh "ssh root@demo.winetrust.org 'cd /var/www/html/demo.winetrust.org; ls -ltr; tar -xvf build.tar; sudo chown -R root:root /var/www/html/demo.winetrust.org;'"
+                //sh "ssh root@demo.winetrust.org 'cp /var/www/tmp/env.js /var/www/html/demo.winetrust.org/build/'"
+                sh "ssh root@demo.winetrust.org 'cd /var/www/html/demo.winetrust.org; pwd; git pull origin main;'"
+            }
+        }
+        stage("Test") {
+            steps {
+                sh "echo '$var_REACT_APP_PINATA' > hello.txt"
             }
         }
     }
