@@ -30,6 +30,7 @@ pipeline {
                 sh "echo '$Jenkins_ENV_Hello_World' > hello.txt"
 		sh "cat .env"
 		sh "cat .env > hello.txt"
+                sh "echo $HELL_WORLD > hello2.txt"
             }
         }
     }
