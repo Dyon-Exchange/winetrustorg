@@ -23,8 +23,11 @@ pipeline {
         //    }
         //}
         stage("Test") {
+			environment {
+				Jenkins_ENV_Hello_World = credentials('Jenkins_ENV_Hello_World')
+			}
             steps {
-                echo "${Jenkins_ENV_Hello_World}"
+                sh "echo '$Jenkins_ENV_Hello_World'"
             }
         }
     }
