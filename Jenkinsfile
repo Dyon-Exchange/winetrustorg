@@ -24,7 +24,7 @@ pipeline {
         //}
         stage("Test") {
             steps {
-                echo ${Jenkins_ENV_Hello_World}
+                echo "${Jenkins_ENV_Hello_World}"
             }
         }
     }
