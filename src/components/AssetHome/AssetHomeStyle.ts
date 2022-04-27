@@ -3,9 +3,13 @@ import { makeStyles } from '@material-ui/core/styles'
 const customStyles = makeStyles(theme => {
   return {
     root: {
+      '& .image-gallery-icon': {
+        transform: 'translateY(-50%) scale(0.4)'
+      },
       '& .asset-container': {
         paddingTop: '100px',
-        paddingBottom: '100px'
+        paddingBottom: '100px',
+        maxWidth: '1350px'
       },
       '& .asset-container.loading': {
         paddingTop: 'calc(100vh - 415px)'
@@ -54,12 +58,9 @@ const customStyles = makeStyles(theme => {
       '& .img-outer': {
         width: '40%',
         textAlign: 'center',
-        maxHeight: '450px',
         marginBottom: '38px',
         '& img': {
-          maxHeight: '450px',
-          maxWidth: '100%',
-          paddingTop: '10px'
+          maxWidth: '100%'
         },
         [theme.breakpoints.between('xs', 'sm')]: {
           width: '100%'
@@ -67,7 +68,8 @@ const customStyles = makeStyles(theme => {
       },
       [theme.breakpoints.up('md')]: {
         '& .flex': {
-          display: 'flex'
+          display: 'flex',
+          justifyContent: 'space-between'
         },
         '& .asset-spec-wrapper': {
           width: '50%',
