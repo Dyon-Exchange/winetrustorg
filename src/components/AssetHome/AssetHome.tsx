@@ -87,6 +87,10 @@ const AssetHome = () => {
                         thumbnailWidth: 30
                       }
                     ]}
+                    useTranslate3D={false}
+                    infinite={true}
+                    lazyLoad={true}
+                    showFullscreenButton={false}
                     showPlayButton={false}
                     thumbnailPosition="left"
                     slideDuration={450}
@@ -149,6 +153,9 @@ const AssetHome = () => {
               <div className="img-outer">
                 {assetData?.initialConditionReport ? (
                   <ImageGallery
+                    lazyLoad={true}
+                    infinite={true}
+                    showFullscreenButton={false}
                     items={assetImages}
                     showPlayButton={false}
                     thumbnailPosition="left"
