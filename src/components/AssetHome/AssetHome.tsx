@@ -106,7 +106,7 @@ const AssetHome = () => {
                 )}
               </div>
               <Box className="asset-spec-wrapper">
-                <h2 className="text-align-center mr-t-0">{assetData?.product?.longName}</h2>
+                <h2 className="mr-t-0">{assetData?.product?.longName}</h2>
                 <Box>
                   <p>Producer</p>
                   <p>Chateau Lafite Rothschild</p>
@@ -170,11 +170,7 @@ const AssetHome = () => {
                 <div style={{ marginTop: '30px' }}>{assetData?.initialConditionText}</div>
               </div>
               <Box className="asset-spec-wrapper">
-                <Box className="asset-desc">{assetData?.product?.description}</Box>
-                <Box>
-                  <p>Producer</p>
-                  <p>Chateau Lafite Rothschild</p>
-                </Box>
+                <h2>Verification & NFT Details</h2>
                 <Box>
                   <p>Asset Id</p>
                   <p>{assetData.assetId ?? assetData._id}</p>
@@ -201,6 +197,8 @@ const AssetHome = () => {
                   <p>Warehouse ID number</p>
                   <p>{assetData?.warehouseLocationNo}</p>
                 </Box>
+                <h2>About this asset</h2>
+                <Box className="asset-desc">{assetData?.product?.description}</Box>
               </Box>
             </Box>
           </Fragment>
