@@ -167,7 +167,9 @@ const AssetHome = () => {
                 ) : (
                   ''
                 )}
-                <div style={{ marginTop: '30px' }}>{assetData?.initialConditionText}</div>
+                <div style={{ marginTop: '30px', marginLeft: '100px' }}>
+                  {assetData?.initialConditionText}
+                </div>
               </div>
               <Box className="asset-spec-wrapper">
                 <h2>Verification & NFT Details</h2>
