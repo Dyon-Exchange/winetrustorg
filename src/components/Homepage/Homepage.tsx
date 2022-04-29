@@ -1,14 +1,5 @@
-import {
-  Avatar,
-  Box,
-  Card,
-  CardContent,
-  Container,
-  Grid,
-  InputAdornment,
-  Typography
-} from '@mui/material'
-import React, { useState } from 'react'
+import { Box, Card, CardContent, Container, Grid, InputAdornment, Typography } from '@mui/material'
+import React, { Fragment, useState } from 'react'
 import { RoutesPath } from '../../constants'
 import { useNavigate } from 'react-router-dom'
 import './Homepage.css'
@@ -16,10 +7,12 @@ import { wtProblemsConst } from './WtProblemsConst'
 import { TextField } from '@material-ui/core'
 import BootstrapBlueBtn from 'components/atoms/buttons/BootStrapBlueBtn'
 import homePageStyles from './HomePageStyle'
+import BootstrapWhiteBtn from 'components/atoms/buttons/BootStrapWhiteBtn'
 
 const Homepage = () => {
   const classes = homePageStyles()
   const [name, setName] = useState('')
+  const [isShowSearch, setIsShowSearch] = useState<boolean>(false)
   const navigate = useNavigate()
   function handleKeyDown(e: any) {
     if (e.keyCode === 13) {
@@ -50,58 +43,72 @@ const Homepage = () => {
             }}>
             <Box className={classes.homeTopBlock}>
               <Typography variant="h1" className="top-heading">
-                The most secure way to own and store Fine Wine & Spirits
+                Your Trusted Custodian & Creator of Wine & Spirit NFTs.
               </Typography>
-
               <BootstrapBlueBtn
                 variant="contained"
                 disableRipple
                 size="small"
-                endIcon={<Avatar src={'/images/general/arrow-right-white.svg'} />}
+                onClick={() => {
+                  setIsShowSearch(true)
+                }}
+                className="learn-more-btn">
+                Verify an NFT
+              </BootstrapBlueBtn>
+              <BootstrapWhiteBtn
+                variant="contained"
+                disableRipple
+                size="small"
                 onClick={() => {
                   navigate(RoutesPath.SECURITY)
                 }}
                 className="learn-more-btn">
                 Learn More
-              </BootstrapBlueBtn>
+              </BootstrapWhiteBtn>
               <Box sx={{ marginTop: '34px', position: 'relative' }}>
-                <Box className="search-heading">Find a Token or Product:</Box>
-                <TextField
-                  id="outlined-start-adornment"
-                  placeholder="Enter your token ID or product name to search"
-                  value={name}
-                  onChange={e => {
-                    setName(e.target.value)
-                  }}
-                  onKeyDown={handleKeyDown}
-                  className="search-bar"
-                  InputProps={{
-                    style: {
-                      borderRadius: '5px',
-                      border: 'none',
-                      padding: '5px 0px'
-                    },
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <img
-                          src="/images/general/search-icon.svg"
-                          alt="WineTrust Search"
-                          onClick={search}
-                          style={{ cursor: 'pointer', paddingRight: '16px' }}
-                        />
-                      </InputAdornment>
-                    ),
-                    disableUnderline: true
-                  }}
-                />
-                <a
-                  href="#story"
-                  className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
-                  <p className="mb-2 text-white text-uppercase">
-                    <small>Scroll Down</small>
-                  </p>
-                  <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
-                </a>
+                {isShowSearch ? (
+                  <Fragment>
+                    <Box className="search-heading">Find a Token or Product:</Box>
+                    <TextField
+                      id="outlined-start-adornment"
+                      placeholder="Enter your token ID or product name to search"
+                      value={name}
+                      onChange={e => {
+                        setName(e.target.value)
+                      }}
+                      onKeyDown={handleKeyDown}
+                      className="search-bar"
+                      InputProps={{
+                        style: {
+                          borderRadius: '5px',
+                          border: 'none',
+                          padding: '5px 0px'
+                        },
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <img
+                              src="/images/general/search-icon.svg"
+                              alt="WineTrust Search"
+                              onClick={search}
+                              style={{ cursor: 'pointer', paddingRight: '16px' }}
+                            />
+                          </InputAdornment>
+                        ),
+                        disableUnderline: true
+                      }}
+                    />
+                    <a
+                      href="#story"
+                      className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
+                      <p className="mb-2 text-white text-uppercase">
+                        <small>Scroll Down</small>
+                      </p>
+                      <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
+                    </a>
+                  </Fragment>
+                ) : (
+                  ''
+                )}
               </Box>
             </Box>
           </Box>

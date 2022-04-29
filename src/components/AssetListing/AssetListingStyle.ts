@@ -17,8 +17,16 @@ const assetListingStyle = makeStyles(theme => {
         margin: '10px',
         marginTop: 0
       },
+      '& .redeem-btn': {
+        cursor: 'pointer',
+        padding: '16px 30px 15px',
+        margin: '10px',
+        border: '1px solid #1483F8',
+        marginTop: 0
+      },
       '& .grid-container': {
         marginBottom: '30px',
+        justifyContent: 'flex-end',
         border: '1px solid rgba(224, 224, 224, 1)',
         borderRadius: '6px'
       },
@@ -56,7 +64,8 @@ const assetListingStyle = makeStyles(theme => {
       },
       [theme.breakpoints.up(1200)]: {
         '& .grid-container': {
-          marginBottom: '10px'
+          marginBottom: '10px',
+          justifyContent: 'unset'
         },
         '& .mobile-header': {
           display: 'none'
@@ -68,8 +77,12 @@ const assetListingStyle = makeStyles(theme => {
         '& .view-btn': {
           marginTop: '10px'
         },
+        '& .redeem-btn': {
+          marginTop: '10px'
+        },
         '& .container': {
-          paddingTop: '200px'
+          paddingTop: '200px',
+          maxWidth: '1400px'
         }
       }
     }

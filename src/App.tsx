@@ -41,7 +41,7 @@ const App = () => {
         <WalletContextProvider>
           <LoaderContextProvider>
             <Header />
-            <Box display="flex" flexDirection="column" minH="inherit">
+            <Box display="flex" flexDirection="column" minH="calc(100vh - 387px)">
               <Routes>
                 <Route
                   path={constants.RoutesPath.HOMEPAGE}
