@@ -115,7 +115,7 @@ const Homepage = () => {
           </Box>
         </Container>
       </div>
-      <Container className={classes.revolutionContainer}>
+      <Container id="story" className={classes.revolutionContainer}>
         <div className="wt-revolution-img">
           <img src="/images/homepage/revolution.png" alt="wt-revolution-img"></img>
         </div>
