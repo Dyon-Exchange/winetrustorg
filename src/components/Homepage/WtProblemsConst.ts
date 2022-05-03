@@ -12,7 +12,7 @@ export const wtProblemsConst = [
   {
     id: 'certified-tile',
     icon: '/images/general/certified.svg',
-    desc: 'WineTrust provides an independent audit trail of every case / bottle in the protocol'
+    desc: 'WineTrust means no more ‘double selling’ or ‘shortages’'
   },
   {
     id: 'marketplace-tile',
@@ -23,7 +23,6 @@ export const wtProblemsConst = [
   {
     id: 'wt-connect-tile',
     icon: '/images/general/wt-connect.svg',
-    desc: `WineTrust is a gateway to digital marketplaces – allowing owners sell their wines for
-            the best prices`
+    desc: `WineTrust uses the latest blockchain technology, so the protocol is interoperable and futureproof`
   }
 ]
