@@ -52,8 +52,8 @@ const Homepage = () => {
                 onClick={() => {
                   setIsShowSearch(true)
                 }}
-                className="learn-more-btn">
-                Verify an NFT
+                className="nft-verify-btn">
+                Find & Verify NFTs
               </BootstrapBlueBtn>
               <BootstrapWhiteBtn
                 variant="contained"
@@ -63,7 +63,7 @@ const Homepage = () => {
                   navigate(RoutesPath.SECURITY)
                 }}
                 className="learn-more-btn">
-                Learn More
+                How it works
               </BootstrapWhiteBtn>
               <Box sx={{ marginTop: '34px', position: 'relative' }}>
                 {isShowSearch ? (

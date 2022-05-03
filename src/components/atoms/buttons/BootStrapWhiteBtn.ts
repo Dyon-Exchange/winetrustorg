@@ -8,7 +8,7 @@ const BootstrapWhiteBtn = styled(Button)({
   borderColor: '#1483F8',
   width: 'max-content',
   borderRadius: '10px',
-  fontSize: '16px',
+  fontSize: '14px',
   fontWeight: 600,
   lineHeight: '16.7px',
   '& span': {

@@ -17,13 +17,6 @@ const assetListingStyle = makeStyles(theme => {
         margin: '10px',
         marginTop: 0
       },
-      '& .redeem-btn': {
-        cursor: 'pointer',
-        padding: '16px 30px 15px',
-        margin: '10px',
-        border: '1px solid #1483F8',
-        marginTop: 0
-      },
       '& .grid-container': {
         marginBottom: '30px',
         justifyContent: 'flex-end',
@@ -81,8 +74,7 @@ const assetListingStyle = makeStyles(theme => {
           marginTop: '10px'
         },
         '& .container': {
-          paddingTop: '200px',
-          maxWidth: '1400px'
+          paddingTop: '200px'
         }
       }
     }

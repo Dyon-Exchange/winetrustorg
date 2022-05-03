@@ -9,6 +9,9 @@ const homePageStyles = makeStyles(theme => {
       '& .learn-more-btn': {
         marginLeft: '8px'
       },
+      '& .nft-verify-btn': {
+        padding: '16px 25px 15px'
+      },
       [theme.breakpoints.between('xs', 700)]: {
         width: '100%'
       },

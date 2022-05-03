@@ -113,7 +113,7 @@ export const BurnTokenConfirmModal: React.FC<BurnTokenConfirmModalProps> = ({
               </Typography>
               <Typography fontSize={'13.5px'} marginTop={'3px'}>
                 <span>
-                  I wanna <Link to="/profile-setting">update</Link> my delivery address
+                  I want to <Link to="/profile-setting">update</Link> my delivery address
                 </span>
               </Typography>
             </Typography>

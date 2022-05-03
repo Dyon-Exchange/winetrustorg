@@ -19,6 +19,14 @@ const assetListingStyle = makeStyles(theme => {
         fontSize: '13px',
         marginLeft: 0
       },
+      '& .redeem-btn': {
+        cursor: 'pointer',
+        padding: '12px 30px 12px',
+        fontSize: '13px',
+        margin: '10px',
+        border: '1px solid #1483F8',
+        marginTop: 0
+      },
       '& .grid-container': {
         marginBottom: '30px',
         border: '1px solid rgba(224, 224, 224, 1)',
@@ -65,6 +73,9 @@ const assetListingStyle = makeStyles(theme => {
           justifyContent: 'space-between'
         },
         '& .view-btn': {
+          marginTop: '10px'
+        },
+        '& .redeem-btn': {
           marginTop: '10px'
         },
         '& .container': {
