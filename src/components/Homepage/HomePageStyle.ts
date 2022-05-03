@@ -16,7 +16,7 @@ const homePageStyles = makeStyles(theme => {
         width: '100%'
       },
       '& .top-heading': {
-        marginBottom: '1.5rem',
+        marginBottom: '3rem',
         color: '#fff',
         width: '100%',
         marginLeft: 'auto',

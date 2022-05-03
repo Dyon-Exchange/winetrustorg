@@ -65,7 +65,7 @@ const Homepage = () => {
                 className="learn-more-btn">
                 How it works
               </BootstrapWhiteBtn>
-              <Box sx={{ marginTop: '34px', position: 'relative' }}>
+              <Box sx={{ marginTop: isShowSearch ? '20px' : '34px', position: 'relative' }}>
                 {isShowSearch ? (
                   <Fragment>
                     <Box className="search-heading">Find a Token or Product:</Box>
@@ -97,6 +97,9 @@ const Homepage = () => {
                         disableUnderline: true
                       }}
                     />
+                  </Fragment>
+                ) : (
+                  <Fragment>
                     <a
                       href="#story"
                       className="btn scroll-down position-absolute start-50 bottom-0 mb-5 text-center translate-middle-x">
@@ -106,8 +109,6 @@ const Homepage = () => {
                       <img src="/images/general/arrow-down.svg" alt="Wine Trust Scroll Down" />
                     </a>
                   </Fragment>
-                ) : (
-                  ''
                 )}
               </Box>
             </Box>

@@ -12,8 +12,8 @@
 
 .logo-img {
   margin-top: 6px;
-  height: 81px;
-  width: 200px;
+  height: 91px;
+  width: 245px;
   padding: 10px;
   cursor: pointer;
 }
@@ -67,7 +67,6 @@
   flex-direction: column;
   color: white;
   text-transform: uppercase;
-  margin-top: 40px;
   /* width: max-content;
   margin: auto;
   margin-top: 60px;
