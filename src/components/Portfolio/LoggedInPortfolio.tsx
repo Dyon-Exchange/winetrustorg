@@ -97,13 +97,10 @@ export const LoggedInPortfolio = (data: any) => {
     setCurrentReedemAsset(undefined)
   }
 
-  const { userDetails, loggedIn, loggedInDetails } = React.useContext(WalletContext)
+  const { userDetails } = React.useContext(WalletContext)
   const rowdata = data.data
 
-  const owner =
-    loggedIn && loggedInDetails?.user?.firstName && loggedInDetails?.user?.lastName
-      ? loggedInDetails?.user?.firstName + ' ' + loggedInDetails?.user?.lastName
-      : userDetails?.address
+  const owner = userDetails?.address
 
   return (
     <div>
