@@ -197,7 +197,7 @@ const AssetHome = () => {
               <Box className="asset-spec-wrapper">
                 <h2>Verification & NFT Details</h2>
                 <Box>
-                  <p>Asset Id</p>
+                  <p>Asset ID</p>
                   <p>{assetData.assetId ?? assetData._id}</p>
                 </Box>
                 <Box>
