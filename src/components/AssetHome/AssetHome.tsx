@@ -11,16 +11,18 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
+import { get } from 'lodash'
 
 const AssetHome = () => {
   const classes = customStyles()
   const params = useParams()
   const [assetData, setAsset] = useState<any>({})
   const [assetImages, setImageSlider] = useState<any>([])
+  const [marketingImages, setMarketingSlider] = useState<any>([])
   const { loading, setLoading } = React.useContext(LoaderContext)
   const navigate = useNavigate()
 
-  let sliderImageKeyArr = [
+  const sliderImageKeyArr = [
     'initialConditionReport',
     'initialConditionReport1',
     'initialConditionReport2',
@@ -29,9 +31,46 @@ const AssetHome = () => {
     'initialConditionReport5',
     'initialConditionReport6'
   ]
+
+  const marketingImageKeyArr = [
+    'internalMarketingImage',
+    'product.labelImage',
+    'product.bottleImage'
+  ]
+
   useEffect(() => {
     fetchAssetDetail()
   }, [])
+
+  const setSliderImages = (product: any) => {
+    let items: any = []
+    sliderImageKeyArr.forEach(key => {
+      if (product[key]) {
+        items.push({
+          original: `${process.env.REACT_APP_PINATA}${product[key]}`,
+          thumbnail: `${process.env.REACT_APP_PINATA}${product[key]}`,
+          thumbnailWidth: 30
+        })
+      }
+    })
+    setImageSlider(items)
+  }
+
+  const setMarketingSliderImages = (product: any) => {
+    const items: any = []
+    marketingImageKeyArr.forEach(key => {
+      const imagePath = get(product, key)
+      if (imagePath) {
+        items.push({
+          original: `${process.env.REACT_APP_PINATA}${imagePath}`,
+          thumbnail: `${process.env.REACT_APP_PINATA}${imagePath}`,
+          thumbnailWidth: 30
+        })
+      }
+    })
+    setMarketingSlider(items)
+  }
+
   const fetchAssetDetail = () => {
     axios.defaults.baseURL = process.env.REACT_APP_BASE_URL ?? 'http://localhost:3030/'
     let queryStr = `/assets/${params.assetId}`
@@ -52,18 +91,8 @@ const AssetHome = () => {
         return
       }
       setAsset(result.data)
-      const product = result.data
-      let items: any = []
-      sliderImageKeyArr.forEach(key => {
-        if (product[key]) {
-          items.push({
-            original: `${process.env.REACT_APP_PINATA}${product[key]}`,
-            thumbnail: `${process.env.REACT_APP_PINATA}${product[key]}`,
-            thumbnailWidth: 30
-          })
-        }
-      })
-      setImageSlider(items)
+      setMarketingSliderImages(result.data)
+      setSliderImages(result.data)
       setLoading(false)
     })
   }
@@ -80,13 +109,7 @@ const AssetHome = () => {
               <div className="img-outer">
                 {assetData?.product?.labelImage ? (
                   <ImageGallery
-                    items={[
-                      {
-                        original: `${process.env.REACT_APP_PINATA}${assetData?.product?.labelImage}`,
-                        thumbnail: `${process.env.REACT_APP_PINATA}${assetData?.product?.labelImage}`,
-                        thumbnailWidth: 30
-                      }
-                    ]}
+                    items={marketingImages}
                     useTranslate3D={false}
                     infinite={true}
                     lazyLoad={true}
