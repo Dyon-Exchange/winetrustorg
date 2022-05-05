@@ -47,7 +47,7 @@ const assetsTableColumns: GridColDef[] = [
     field: 'tokenId',
     headerClassName: 'super-app-theme--header',
     headerAlign: 'center',
-    headerName: 'Token ID',
+    headerName: 'Asset ID',
     minWidth: 100,
     flex: 1,
     cellClassName: 'blue-text'

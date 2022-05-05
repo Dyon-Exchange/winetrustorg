@@ -71,7 +71,7 @@ const Homepage = () => {
                     <Box className="search-heading">Find a Token or Product:</Box>
                     <TextField
                       id="outlined-start-adornment"
-                      placeholder="Enter your token ID or product name to search"
+                      placeholder="Enter your Asset ID or product name to search"
                       value={name}
                       onChange={e => {
                         setName(e.target.value)
