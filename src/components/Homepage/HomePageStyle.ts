@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 const homePageStyles = makeStyles(theme => {
   return {
     homeTopBlock: {
-      width: '60%',
+      width: '62%',
       textAlign: 'center',
       margin: '0 auto',
       '& .learn-more-btn': {

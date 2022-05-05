@@ -49,11 +49,15 @@ const AssetHome = () => {
         items.push({
           original: `${process.env.REACT_APP_PINATA}${product[key]}`,
           thumbnail: `${process.env.REACT_APP_PINATA}${product[key]}`,
-          thumbnailWidth: 30
+          thumbnailWidth: 'auto'
         })
       }
     })
     setImageSlider(items)
+  }
+
+  const isBlank = (str: string) => {
+    return !str || /^\s*$/.test(str)
   }
 
   const setMarketingSliderImages = (product: any) => {
@@ -142,7 +146,7 @@ const AssetHome = () => {
                   <p>Pack Size</p>
                   <p>{assetData?.product?.packSize}</p>
                 </Box>
-                {assetData?.product?.country ? (
+                {isBlank(assetData?.product?.country) ? (
                   <Box>
                     <p>Country</p>
                     <p>{assetData?.product?.country}</p>
@@ -154,7 +158,7 @@ const AssetHome = () => {
                   <p>Region</p>
                   <p>{assetData?.product?.region}</p>
                 </Box>
-                {assetData?.product?.subRegion ? (
+                {!isBlank(assetData?.product?.subRegion) ? (
                   <Box>
                     <p>Sub Region</p>
                     <p>{assetData?.product?.subRegion}</p>
@@ -162,7 +166,7 @@ const AssetHome = () => {
                 ) : (
                   ''
                 )}
-                {assetData?.product?.subSubRegion ? (
+                {!isBlank(assetData?.product?.subSubRegion) ? (
                   <Box>
                     <p>Sub Sub Region</p>
                     <p>{assetData?.product?.subSubRegion}</p>
