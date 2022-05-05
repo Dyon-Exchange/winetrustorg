@@ -29,3 +29,6 @@ public/env.js
 #Build artifects
 /build
 build.tar
+
+#Jenkins Pipeline
+Jenkinsfile
