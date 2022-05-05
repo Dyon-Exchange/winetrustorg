@@ -44,8 +44,6 @@ const AssetListing = () => {
     navigate(`/asset-home/${param}`)
   }
 
-  console.log(classes)
-
   return (
     <div className={classes.root}>
       <Container className="container">
