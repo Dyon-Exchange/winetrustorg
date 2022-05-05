@@ -51,7 +51,7 @@ const AssetListing = () => {
           <b>Search Results for:</b> <span>{params.product}</span>
         </Box>
         <Grid container className="grid-container web-header cell-heading ">
-          <Grid item xs={12} sm={6} lg={4.4}>
+          <Grid item xs={12} sm={6} lg={4.6}>
             <Box>Asset</Box>
           </Grid>
           <Grid item xs={12} sm={6} lg={1.1}>
@@ -63,15 +63,15 @@ const AssetListing = () => {
           <Grid item xs={12} sm={6} lg={2.5}>
             <Box>Owner</Box>
           </Grid>
-          <Grid item xs={12} sm={6} lg={1.2}></Grid>
+          <Grid item xs={12} sm={6} lg={1}></Grid>
         </Grid>
         {rowdata.map((item: any) => (
           <Grid container className="grid-container" key={item.assetId}>
-            <Grid item xs={12} sm={6} lg={4.4}>
+            <Grid item xs={12} sm={6} lg={4.6}>
               <Box className="cell-heading mobile-header">Asset</Box>
               <Box sx={{ display: 'flex' }}>
                 <img src={item.assetImg} alt="Asset Img" className="asset-img" />
-                <div className="asset-data">{item.assetName}</div>
+                <div className="asset-data asset-name">{item.assetName}</div>
               </Box>
             </Grid>
             <Grid item xs={12} sm={6} lg={1} key={item.id}>
@@ -90,7 +90,7 @@ const AssetListing = () => {
               item
               xs={12}
               sm={6}
-              lg={1.2}
+              lg={1}
               key={item.id}
               sx={{ display: 'flex' }}
               flexDirection="row">
