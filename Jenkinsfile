@@ -11,13 +11,13 @@ pipeline {
             steps {
                 echo 'Building Container..'
 
-                script {
-                    if (ENVIRONMENT_NAME == 'demo') {
-                        ENV_NAME = 'Demo'
-                    } else if (ENVIRONMENT_NAME == 'main') {
-                        ENV_NAME = 'Production'
-                    }
-                }
+                // script {
+                //     if (ENVIRONMENT_NAME == 'demo') {
+                //         ENV_NAME = 'Demo'
+                //     } else if (ENVIRONMENT_NAME == 'main') {
+                //         ENV_NAME = 'Production'
+                //     }
+                // }
                 echo 'Building Branch: ' + env.BRANCH_NAME
                 echo 'Build Number: ' + env.BUILD_NUMBER
                 echo 'Building Environment: ' + ENV_NAME
