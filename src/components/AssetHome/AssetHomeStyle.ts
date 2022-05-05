@@ -55,6 +55,13 @@ const customStyles = makeStyles(theme => {
         display: 'block',
         maxWidth: '92%'
       },
+      '& .image-gallery-thumbnail .image-gallery-thumbnail-image': {
+        width: 'auto',
+        maxHeight: '150px'
+      },
+      '& .image-gallery-content.left .image-gallery-slide .image-gallery-image': {
+        maxHeight: '465px'
+      },
       '& .img-outer': {
         width: '40%',
         textAlign: 'center',
