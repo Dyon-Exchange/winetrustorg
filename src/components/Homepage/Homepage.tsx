@@ -43,7 +43,7 @@ const Homepage = () => {
             }}>
             <Box className={classes.homeTopBlock}>
               <Typography variant="h1" className="top-heading">
-                Your Trusted Custodian & Creator of Wine & Spirit NFTs.
+                Your Trusted Custodian of Wines & Spirits.
               </Typography>
               <BootstrapBlueBtn
                 variant="contained"
@@ -53,7 +53,7 @@ const Homepage = () => {
                   setIsShowSearch(true)
                 }}
                 className="nft-verify-btn">
-                Find & Verify NFTs
+                See wines
               </BootstrapBlueBtn>
               <BootstrapWhiteBtn
                 variant="contained"

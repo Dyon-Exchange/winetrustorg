@@ -7,10 +7,11 @@ const homePageStyles = makeStyles(theme => {
       textAlign: 'center',
       margin: '0 auto',
       '& .learn-more-btn': {
-        marginLeft: '8px'
+        marginLeft: '8px',
+        padding: '16px 30px 15px'
       },
       '& .nft-verify-btn': {
-        padding: '16px 25px 15px'
+        padding: '16px 40px 15px'
       },
       [theme.breakpoints.between('xs', 700)]: {
         width: '100%'

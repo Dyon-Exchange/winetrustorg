@@ -207,7 +207,7 @@ const AssetHome = () => {
                 <Box>
                   <p>Date minted</p>
                   <p>
-                    {assetData?.tokenizedAt ? new Date(assetData?.tokenisedAt).toDateString() : '-'}
+                    {assetData?.tokenisedAt ? new Date(assetData?.tokenisedAt).toDateString() : '-'}
                   </p>
                 </Box>
                 <Box>
