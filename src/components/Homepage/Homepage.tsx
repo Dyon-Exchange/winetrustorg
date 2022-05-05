@@ -68,7 +68,9 @@ const Homepage = () => {
               <Box sx={{ marginTop: isShowSearch ? '20px' : '34px', position: 'relative' }}>
                 {isShowSearch ? (
                   <Fragment>
-                    <Box className="search-heading">Find a Token or Product:</Box>
+                    <Box className="search-heading">
+                      Search below to view products & verify NFTs
+                    </Box>
                     <TextField
                       id="outlined-start-adornment"
                       placeholder="Enter your Asset ID or product name to search"

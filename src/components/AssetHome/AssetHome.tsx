@@ -134,10 +134,14 @@ const AssetHome = () => {
               </div>
               <Box className="asset-spec-wrapper">
                 <h2 className="mr-t-0">{assetData?.product?.longName}</h2>
-                <Box>
-                  <p>Producer</p>
-                  <p>Chateau Lafite Rothschild</p>
-                </Box>
+                {!isBlank(assetData?.product?.producerName) ? (
+                  <Box>
+                    <p>Producer</p>
+                    <p>{assetData?.product?.producerName}</p>
+                  </Box>
+                ) : (
+                  ''
+                )}
                 <Box>
                   <p>Year</p>
                   <p>{assetData?.product?.year}</p>

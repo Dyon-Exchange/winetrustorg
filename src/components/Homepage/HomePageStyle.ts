@@ -28,7 +28,8 @@ const homePageStyles = makeStyles(theme => {
       '& .search-heading': {
         color: '#fff',
         float: 'left',
-        marginLeft: '12px'
+        marginLeft: '12px',
+        marginBottom: '5px'
       },
 
       '& .search-bar': {
