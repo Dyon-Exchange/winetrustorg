@@ -68,6 +68,8 @@ export const LoggedInPortfolio = ({ data: rowData, onRefetch }: { data: any, onR
       WineTrustToken.contract.methods.burn(userDetails?.address, currentConfirmReedeemAsset?.identifier, 1)
         .send({
           from: userDetails?.address,
+          maxPriorityFeePerGas: null,
+          maxFeePerGas: null,
         })
         .on('receipt', () => {
           toast.success('Token has been burned successfully !', {
