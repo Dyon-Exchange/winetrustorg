@@ -123,6 +123,15 @@ const App = () => {
                     </Fragment>
                   }
                 />
+
+                <Route
+                  path={constants.RoutesPath.ASSETLISTING_OPTIONAL}
+                  element={
+                    <Fragment>
+                      <AssetListing />
+                    </Fragment>
+                  }
+                />
                 <Route
                   path={constants.RoutesPath.ASSETLISTING}
                   element={

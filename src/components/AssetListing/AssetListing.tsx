@@ -22,7 +22,7 @@ const AssetListing = () => {
   function fetchAssets() {
     axios.defaults.baseURL = process.env.REACT_APP_BASE_URL ?? 'http://localhost:3030/'
     setLoading(true)
-    axios.get(`/assets/search?query=${params.product}`).then((result: any) => {
+    axios.get(`/assets/search?query=${params.product ?? ''}`).then((result: any) => {
       const rowData: any = []
       result.data.forEach((prod: any) => {
         let ownerName = prod.preAdvice.owner.ethAddress
