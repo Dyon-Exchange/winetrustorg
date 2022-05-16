@@ -3,7 +3,7 @@ import Container from '@mui/material/Container'
 import { useQuery } from '@apollo/client'
 import assetListingStyle from './PortfolioStyle'
 import { LoaderContext } from 'contexts/LoaderContext'
-import { AccountPortfolioRequest, AccountPortfolioResponse } from 'interfaces'
+import { AccountPortfolioRequest, AccountPortfolioResponse, WineTrusttoken } from 'interfaces'
 import { getPortfolioGqlQuery } from 'api/portfolio/portfolio'
 import axios from 'axios'
 import { WalletContext } from 'contexts/WalletContext'
@@ -11,7 +11,7 @@ import { LoggedInPortfolio } from './LoggedInPortfolio'
 import PortfolioProfile from './PortfolioProfile'
 
 const Portfolio = () => {
-  let [rowdata, setrowdata] = useState<undefined | []>(undefined)
+  let [rowdata, setRowdata] = useState<undefined | []>(undefined)
   const classes = assetListingStyle()
   const { setLoading } = React.useContext(LoaderContext)
   const { walletConnected, userDetails } = React.useContext(WalletContext)
@@ -22,17 +22,17 @@ const Portfolio = () => {
     ? getPortfolioGqlQuery(userDetails!.address)
     : getPortfolioGqlQuery('')
 
-  const { loading, error, data } = useQuery<AccountPortfolioResponse, AccountPortfolioRequest>(
+  const { loading, error, data, refetch } = useQuery<AccountPortfolioResponse, AccountPortfolioRequest>(
     accountPortfolioGqlQuery,
     { skip: !walletConnected }
   )
 
-  const getAllPortfolioData = async (portfolioResources: string[]) => {
+  const getAllPortfolioData = async (tokens: WineTrusttoken[]) => {
     const portfolioRequests: Promise<any>[] = []
     delete axios.defaults.headers.common['Authorization']
-    portfolioResources.forEach(portfolioResource => {
+    tokens.forEach(token => {
       portfolioRequests.push(
-        axios.get(`https://ipfs.io/ipfs/${portfolioResource}`, {
+        axios.get(`https://ipfs.io/ipfs/${token.uri}`, {
           transformRequest: [
             (data, headers) => {
               // due to typescript error in the axios file
@@ -46,23 +46,25 @@ const Portfolio = () => {
     })
     Promise.all(portfolioRequests).then(portfolioData => {
       const rowdata: any = []
-      portfolioData.forEach(row => {
-        rowdata.push(row.data)
+      portfolioData.forEach((row, index) => {
+        rowdata.push({ ...tokens[index], metadata: row.data })
       })
-      setrowdata(rowdata)
+      setRowdata(rowdata)
     })
   }
 
   useEffect(() => {
     if (data) {
       const portfolioAccount = data.accounts[0]
-      const portfolioInfoUri: string[] = []
+      const tokens: WineTrusttoken[] = []
       if (portfolioAccount) {
-        portfolioAccount.WineTrustbalances.forEach(portfolioBalance => {
-          portfolioInfoUri.push(portfolioBalance.token.uri.replace('ipfs://', ''))
+        portfolioAccount.WineTrustbalances.forEach(balance => {
+          if (balance.valueExact === "1") {
+            tokens.push({ ...balance.token, uri: balance.token.uri.replace('ipfs://', '') })
+          }
         })
       }
-      getAllPortfolioData(portfolioInfoUri)
+      getAllPortfolioData(tokens)
     }
   }, [data])
 
@@ -79,7 +81,7 @@ const Portfolio = () => {
       <Container className="container">
         <PortfolioProfile />
         {walletConnected && rowdata && rowdata.length > 0 ? (
-          <LoggedInPortfolio data={rowdata}></LoggedInPortfolio>
+          <LoggedInPortfolio data={rowdata} onRefetch={() => refetch()}></LoggedInPortfolio>
         ) : walletConnected && rowdata && rowdata.length === 0 ? (
           <div style={{ textAlign: 'center' }}>You do not have any asset in your portfolio</div>
         ) : !walletConnected ? (

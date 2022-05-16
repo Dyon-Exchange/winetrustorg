@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { WalletContext } from 'contexts/WalletContext'
 import BootstrapBlueBtn from 'components/atoms/buttons/BootStrapBlueBtn'
 import { Box, Grid } from '@mui/material'
@@ -8,15 +8,13 @@ import { BurnTokenConfirmModal } from './BurnTokenConfirmModal'
 import { BurnTokenModal } from './BurnTokenModal'
 import { toast } from 'react-toastify'
 import { ToastContainer } from 'react-toastify'
+import { PortfolioRowData } from 'interfaces/Portfolio'
+import { WineTrustToken } from 'helpers/contract'
 
-interface CurrentReedemAsset {
-  assetId: string
-  assetName: string
-}
-
-const getDataFromAttribute = (item: { attributes: any[] }, key: string) => {
+const getDataFromAttribute = (item: PortfolioRowData, key: string) => {
+  if (!item) return '';
   let keyData = '-'
-  item.attributes.forEach((itemData: { trait_type: any; value: string }) => {
+  item.metadata.attributes.forEach((itemData: { trait_type: any; value: string }) => {
     if (itemData.trait_type === key) {
       keyData = itemData.value
     }
@@ -24,12 +22,13 @@ const getDataFromAttribute = (item: { attributes: any[] }, key: string) => {
   return keyData
 }
 
-export const LoggedInPortfolio = (data: any) => {
-  const [currentReedeemAsset, setCurrentReedemAsset] = useState<CurrentReedemAsset | undefined>(
+export const LoggedInPortfolio = ({ data: rowData, onRefetch }: { data: any, onRefetch: Function }) => {
+  const { userDetails } = useContext(WalletContext)
+  const [currentReedeemAsset, setCurrentReedemAsset] = useState<PortfolioRowData | undefined>(
     undefined
   )
   const [currentConfirmReedeemAsset, setCurrentConfirmReedemAsset] = useState<
-    CurrentReedemAsset | undefined
+    PortfolioRowData | undefined
   >(undefined)
   const [openBurnTokenModal, setOpenBurnTokenModal] = useState(false)
   const [openBurnTokenConfirmModal, setOpenBurnTokenConfirmModal] = useState(false)
@@ -41,12 +40,8 @@ export const LoggedInPortfolio = (data: any) => {
     navigate(`/asset-home/${param}`)
   }
 
-  const showBurnTokenModal = (assetId: string, assetName: string) => {
-    console.log(assetId)
-    setCurrentReedemAsset({
-      assetId,
-      assetName
-    })
+  const showBurnTokenModal = (item: PortfolioRowData) => {
+    setCurrentReedemAsset(item)
     setOpenBurnTokenModal(true)
   }
 
@@ -70,35 +65,44 @@ export const LoggedInPortfolio = (data: any) => {
         }
       )
     } else {
-      toast.success('Token has been burned successfully !', {
-        position: toast.POSITION.TOP_RIGHT,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        progress: undefined
-      })
+      WineTrustToken.contract.methods.burn(userDetails?.address, currentConfirmReedeemAsset?.identifier, 1)
+        .send({
+          from: userDetails?.address,
+          maxPriorityFeePerGas: null,
+          maxFeePerGas: null,
+        })
+        .on('receipt', () => {
+          toast.success('Token has been burned successfully !', {
+            position: toast.POSITION.TOP_RIGHT,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            progress: undefined
+          })
+          onRefetch()
+        })
+        .on('error', () => {
+          toast.error('Token redemption failed!', {
+            position: toast.POSITION.TOP_RIGHT,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            progress: undefined
+          })
+        });
+
+
       setOpenBurnTokenConfirmModal(false)
     }
   }
 
   const showConfirmRedemption = () => {
-    const confirmRedemptionData = currentReedeemAsset
-      ? {
-          assetId: currentReedeemAsset?.assetId,
-          assetName: currentReedeemAsset?.assetName
-        }
-      : undefined
+    setCurrentConfirmReedemAsset(currentReedeemAsset)
+    setOpenBurnTokenConfirmModal(true)
 
-    if (confirmRedemptionData) {
-      setCurrentConfirmReedemAsset(confirmRedemptionData)
-      setOpenBurnTokenConfirmModal(true)
-    }
     setOpenBurnTokenModal(false)
     setCurrentReedemAsset(undefined)
   }
-
-  const { userDetails } = React.useContext(WalletContext)
-  const rowdata = data.data
 
   const owner = userDetails?.address
 
@@ -110,8 +114,8 @@ export const LoggedInPortfolio = (data: any) => {
           <BurnTokenModal
             open={openBurnTokenModal}
             redeemCallback={() => showConfirmRedemption()}
-            assetName={currentReedeemAsset?.assetName}
-            assetId={currentReedeemAsset?.assetId}
+            assetName={currentReedeemAsset.metadata.name}
+            assetId={getDataFromAttribute(currentReedeemAsset, "Asset ID")}
             onCloseCallback={() => setOpenBurnTokenModal(false)}></BurnTokenModal>
         ) : (
           ''
@@ -120,8 +124,8 @@ export const LoggedInPortfolio = (data: any) => {
           <BurnTokenConfirmModal
             open={openBurnTokenConfirmModal}
             redeemConfirmCallback={() => redeemAsset()}
-            assetName={currentConfirmReedeemAsset?.assetName}
-            assetId={currentConfirmReedeemAsset?.assetId}
+            assetName={currentConfirmReedeemAsset.metadata.name}
+            assetId={getDataFromAttribute(currentConfirmReedeemAsset, "Asset ID")}
             onCloseCallback={() => setOpenBurnTokenConfirmModal(false)}></BurnTokenConfirmModal>
         ) : (
           ''
@@ -141,28 +145,28 @@ export const LoggedInPortfolio = (data: any) => {
         <Grid item xs={12} sm={6} lg={2.2}></Grid>
       </Grid>
 
-      {rowdata.map((item: any) => (
-        <Grid container className="grid-container">
-          <Grid item xs={12} sm={6} lg={4.4} key={item.id}>
+      {rowData.map((item: any) => (
+        <Grid container className="grid-container" key={item.identifier}>
+          <Grid item xs={12} sm={6} lg={4.4}>
             <Box className="cell-heading mobile-header">Asset</Box>
             <Box sx={{ display: 'flex' }}>
               <img
-                src={`https://ipfs.io/ipfs/${item.image.replace('ipfs://', '')}`}
+                src={`https://ipfs.io/ipfs/${item.metadata.image.replace('ipfs://', '')}`}
                 alt=""
                 className="asset-img"
               />
-              <div className="asset-data">{item.name}</div>
+              <div className="asset-data">{item.metadata.name}</div>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} lg={1} key={item.id}>
+          <Grid item xs={12} sm={6} lg={1}>
             <Box className="cell-heading mobile-header">Asset ID</Box>
             <div className="asset-data">{getDataFromAttribute(item, 'Asset ID')}</div>
           </Grid>
-          <Grid item xs={12} sm={6} lg={2.5} key={item.id}>
+          <Grid item xs={12} sm={6} lg={2.5}>
             <Box className="cell-heading mobile-header">Warehouse Name</Box>
             <div className="asset-data">{getDataFromAttribute(item, 'Warehouse Name')}</div>
           </Grid>
-          <Grid item xs={12} sm={6} lg={1.7} key={item.id}>
+          <Grid item xs={12} sm={6} lg={1.7}>
             <Box className="cell-heading mobile-header">Owner</Box>
             <div className="asset-data">
               <span style={{ color: 'green' }}>You</span> (
@@ -174,7 +178,6 @@ export const LoggedInPortfolio = (data: any) => {
             xs={12}
             sm={6}
             lg={2.2}
-            key={item.id}
             sx={{ display: 'flex' }}
             flexDirection="row">
             <BootstrapBlueBtn
@@ -183,7 +186,7 @@ export const LoggedInPortfolio = (data: any) => {
               VIEW
             </BootstrapBlueBtn>
             <BootstrapWhiteBtn
-              onClick={() => showBurnTokenModal(getDataFromAttribute(item, 'Asset ID'), item.name)}
+              onClick={() => showBurnTokenModal(item)}
               className="redeem-btn">
               REDEEM
             </BootstrapWhiteBtn>
