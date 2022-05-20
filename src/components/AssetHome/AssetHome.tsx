@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/scss/image-gallery.scss'
 import { get } from 'lodash'
+import BootstrapBlueBtn from 'components/atoms/buttons/BootStrapBlueBtn'
 
 const AssetHome = () => {
   const classes = customStyles()
@@ -174,6 +175,33 @@ const AssetHome = () => {
                   <Box>
                     <p>Sub Sub Region</p>
                     <p>{assetData?.product?.subSubRegion}</p>
+                  </Box>
+                ) : (
+                  ''
+                )}
+                {!isBlank(assetData?.tokenId) ? (
+                  <Box>
+                    <p>
+                      <div style={{ marginBottom: '5px' }}>View on:</div>
+                      <a
+                        href={`${process.env.REACT_APP_OPENSEA_URL}${assetData?.tokenId}`}
+                        style={{ textDecoration: 'none' }}
+                        target="_blank"
+                        rel="noreferrer">
+                        <BootstrapBlueBtn
+                          variant="contained"
+                          disableRipple
+                          size="small"
+                          className="buy-on-opensea">
+                          <img
+                            src="/images/general/opensea.svg"
+                            className="open-sea-img"
+                            alt="buy on opensea"></img>
+                          <span style={{ fontSize: '18px' }}>OpenSea</span>
+                        </BootstrapBlueBtn>
+                      </a>
+                    </p>
+                    <span></span>
                   </Box>
                 ) : (
                   ''
