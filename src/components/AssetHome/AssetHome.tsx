@@ -182,7 +182,7 @@ const AssetHome = () => {
                 {!isBlank(assetData?.tokenId) ? (
                   <Box>
                     <p>
-                      <div style={{ marginBottom: '5px' }}>Buy Now on:</div>
+                      <div style={{ marginBottom: '5px' }}>View on:</div>
                       <a
                         href={`${process.env.REACT_APP_OPENSEA_URL}${assetData?.tokenId}`}
                         style={{ textDecoration: 'none' }}
