@@ -11,6 +11,11 @@ const customStyles = makeStyles(theme => {
         paddingBottom: '100px',
         maxWidth: '1350px'
       },
+      '& .open-sea-img': {
+        height: '32px',
+        width: '32px',
+        marginRight: '10px'
+      },
       '& .asset-container.loading': {
         paddingTop: 'calc(100vh - 415px)'
       },
@@ -81,6 +86,10 @@ const customStyles = makeStyles(theme => {
         '& .asset-spec-wrapper': {
           width: '50%',
           marginLeft: theme.spacing(9)
+        },
+
+        '& .buy-on-opensea': {
+          padding: '10px 25px'
         }
       }
     }
