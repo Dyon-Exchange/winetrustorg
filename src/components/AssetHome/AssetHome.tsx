@@ -184,7 +184,7 @@ const AssetHome = () => {
                     <p>View on:</p>
                     <a
                       href={`${process.env.REACT_APP_OPENSEA_URL}${assetData?.tokenId}`}
-                      style={{ textDecoration: 'none' }}
+                      style={{ textDecoration: 'none', marginTop: '0.8rem' }}
                       target="_blank"
                       rel="noreferrer">
                       <BootstrapBlueBtn
