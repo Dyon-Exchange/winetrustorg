@@ -137,35 +137,35 @@ const AssetHome = () => {
                 <h2 className="mr-t-0">{assetData?.product?.longName}</h2>
                 {!isBlank(assetData?.product?.producerName) ? (
                   <Box>
-                    <p>Producer</p>
+                    <p>Producer:</p>
                     <p>{assetData?.product?.producerName}</p>
                   </Box>
                 ) : (
                   ''
                 )}
                 <Box>
-                  <p>Year</p>
+                  <p>Year:</p>
                   <p>{assetData?.product?.year}</p>
                 </Box>
                 <Box>
-                  <p>Pack Size</p>
+                  <p>Pack Size:</p>
                   <p>{assetData?.product?.packSize}</p>
                 </Box>
                 {isBlank(assetData?.product?.country) ? (
                   <Box>
-                    <p>Country</p>
+                    <p>Country:</p>
                     <p>{assetData?.product?.country}</p>
                   </Box>
                 ) : (
                   ''
                 )}
                 <Box>
-                  <p>Region</p>
+                  <p>Region:</p>
                   <p>{assetData?.product?.region}</p>
                 </Box>
                 {!isBlank(assetData?.product?.subRegion) ? (
                   <Box>
-                    <p>Sub Region</p>
+                    <p>Sub Region:</p>
                     <p>{assetData?.product?.subRegion}</p>
                   </Box>
                 ) : (
@@ -173,7 +173,7 @@ const AssetHome = () => {
                 )}
                 {!isBlank(assetData?.product?.subSubRegion) ? (
                   <Box>
-                    <p>Sub Sub Region</p>
+                    <p>Sub Sub Region:</p>
                     <p>{assetData?.product?.subSubRegion}</p>
                   </Box>
                 ) : (
@@ -181,27 +181,24 @@ const AssetHome = () => {
                 )}
                 {!isBlank(assetData?.tokenId) ? (
                   <Box>
-                    <p>
-                      <div style={{ marginBottom: '5px' }}>View on:</div>
-                      <a
-                        href={`${process.env.REACT_APP_OPENSEA_URL}${assetData?.tokenId}`}
-                        style={{ textDecoration: 'none' }}
-                        target="_blank"
-                        rel="noreferrer">
-                        <BootstrapBlueBtn
-                          variant="contained"
-                          disableRipple
-                          size="small"
-                          className="buy-on-opensea">
-                          <img
-                            src="/images/general/opensea.svg"
-                            className="open-sea-img"
-                            alt="buy on opensea"></img>
-                          <span style={{ fontSize: '18px' }}>OpenSea</span>
-                        </BootstrapBlueBtn>
-                      </a>
-                    </p>
-                    <span></span>
+                    <p>View on:</p>
+                    <a
+                      href={`${process.env.REACT_APP_OPENSEA_URL}${assetData?.tokenId}`}
+                      style={{ textDecoration: 'none', marginTop: '0.8rem' }}
+                      target="_blank"
+                      rel="noreferrer">
+                      <BootstrapBlueBtn
+                        variant="contained"
+                        disableRipple
+                        size="small"
+                        className="buy-on-opensea">
+                        <img
+                          src="/images/general/opensea.svg"
+                          className="open-sea-img"
+                          alt="buy on opensea"></img>
+                        <span style={{ fontSize: '18px' }}>OpenSea</span>
+                      </BootstrapBlueBtn>
+                    </a>
                   </Box>
                 ) : (
                   ''
