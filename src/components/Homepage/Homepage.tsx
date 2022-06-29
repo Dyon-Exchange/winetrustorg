@@ -53,7 +53,7 @@ const Homepage = () => {
                   setIsShowSearch(true)
                 }}
                 className="nft-verify-btn">
-                Find & Verify NFTs
+                Find & Verify Wines/Spirits
               </BootstrapBlueBtn>
               <BootstrapWhiteBtn
                 variant="contained"

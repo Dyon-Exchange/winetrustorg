@@ -14,6 +14,9 @@ const BootstrapBlueBtn = styled(Button)({
   '& span': {
     color: '#fff'
   },
+  '&.MuiButton-contained:hover': {
+    backgroundColor: 'rgba(20,131,248, 0.7)'
+  },
   '@media (max-width:600px)': {
     padding: '10px 18px 10px 18px',
     fontSize: '12px',
